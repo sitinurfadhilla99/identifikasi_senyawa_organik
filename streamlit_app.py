@@ -279,15 +279,6 @@ elif pilihan_halaman == "🔬 Post Test & Prediktor":
                 pembahasan="Tidak memiliki gugus metil keton"
 
 
-        st.markdown("---")
-        st.markdown("## 📊 Lembar Hasil Analisis")
-
-        st.info(f"Hasil : {hasil}")
-
-        st.code(reaksi)
-
-        with st.expander("📖 Lihat Pembahasan"):
-            st.write(pembahasan) 
 
     # ================= LOGIKA DATABASE REAKSI & ALASAN =================
     hasil = "(-) Tidak Bereaksi"
@@ -418,5 +409,50 @@ elif pilihan_halaman == "🔬 Post Test & Prediktor":
         else:
             pembahasan = "❌ <b>Kenapa TIDAK bereaksi:</b> Uji ini spesifik untuk gugus hidroksil (-OH) alifatik bebas. Senyawa ini tidak memiliki gugus tersebut."
 
+# ================= KOTAK OUTPUT BERDERET =================
+st.markdown("### 📊 Lembar Hasil Analisis")
 
+warna_hasil = '#d35400' if '(+)' in hasil else '#7f8c8d'
+
+st.markdown(f"""
+<div class="kotak">
+    <div class="label">Hasil Pengamatan (+)/(-)</div>
+    <p style="font-size:1.2em;color:{warna_hasil};
+    font-weight:bold;margin:0;">
+    {hasil}
+    </p>
+</div>
+""", unsafe_allow_html=True)
+
+st.markdown(f"""
+<div class="kotak">
+    <div class="label">
+    Persamaan Reaksi Kimia
+    </div>
+
+<p style="
+font-size:1.1em;
+font-family:'Courier New';
+white-space:pre-wrap;
+margin:0;
+background:#fff;
+padding:10px;
+border-radius:4px;
+border:1px solid #ddd;">
+{reaksi}
+</p>
+
+</div>
+""", unsafe_allow_html=True)
+
+st.markdown(f"""
+<div class="kotak">
+<div class="label">
+Pembahasan Teoritis & Analisis Mekanisme
+</div>
+
+<p>{pembahasan}</p>
+
+</div>
+""", unsafe_allow_html=True)
    
