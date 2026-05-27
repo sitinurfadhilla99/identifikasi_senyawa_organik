@@ -1,3 +1,5 @@
+# ===================== SIDEBAR ======================
+
 with st.sidebar:
 
     st.title("📚 Dashboard Materi")
@@ -14,7 +16,7 @@ with st.sidebar:
 • Alkana  
 • Alkena  
 • Alkuna  
-• Hidrokarbon aromatik
+• Hidrokarbon Aromatik
 """)
 
     st.write("---")
@@ -22,9 +24,9 @@ with st.sidebar:
     st.markdown("""
 🍃 **BAB 2 ALKOHOL, ETER DAN FENOL**
 
-• Alkohol primer  
-• Alkohol sekunder  
-• Alkohol tersier  
+• Alkohol Primer  
+• Alkohol Sekunder  
+• Alkohol Tersier  
 • Eter  
 • Fenol
 """)
@@ -35,9 +37,9 @@ with st.sidebar:
 ⚗ **BAB 3 ALDEHID DAN KETON**
 
 • Formaldehida  
-• Aldehid alifatik  
-• Keton  
-• Aseton
+• Aldehid Alifatik  
+• Aseton  
+• Keton
 """)
 
     st.write("---")
@@ -45,10 +47,10 @@ with st.sidebar:
     st.markdown("""
 🧫 **BAB 4 ASAM KARBOKSILAT DAN DERIVATNYA**
 
-• Asam asetat  
+• Asam Asetat  
 • Ester  
-• Etil asetat  
-• Turunan asam karboksilat
+• Etil Asetat  
+• Turunan Asam Karboksilat
 """)
 
     st.write("---")
@@ -56,12 +58,13 @@ with st.sidebar:
     st.markdown("""
 📝 **POST TEST**
 
-Uji pemahaman materi:
+✔ Identifikasi Pereaksi
 
-✔ Identifikasi pereaksi  
-✔ Prediksi hasil reaksi  
-✔ Gugus fungsi  
-✔ Analisis senyawa
+✔ Gugus Fungsi
+
+✔ Prediksi Reaksi
+
+✔ Analisis Senyawa
 """)
 
     st.write("---")
@@ -86,6 +89,8 @@ Uji pemahaman materi:
     st.write("---")
 
     st.info("""
-ChemReact membantu pembelajaran
-kimia organik berbasis praktikum.
+🧪 ChemReact membantu
+pembelajaran kimia organik
+berbasis praktikum virtual
+dan identifikasi senyawa.
 """)
