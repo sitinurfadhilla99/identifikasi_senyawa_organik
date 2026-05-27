@@ -1,4 +1,5 @@
 import streamlit as st
+import time
 
 # ==============================================================================
 # 1. KONFIGURASI HALAMAN (Harus diletakkan di baris paling atas)
@@ -90,7 +91,7 @@ if pilihan_halaman == "🏠 HALAMAN UTAMA":
     st.subheader("💡 Tentang Platform Ini")
     st.write(
         "Platform ini dirancang khusus untuk membantu mahasiswa/siswa memahami materi teoritis "
-        "sekaligus visualisasi reaksi uji kualitatif senyawa organik di laboratorium secara interaktif."
+        "sekalikos visualisasi reaksi uji kualitatif senyawa organik di laboratorium secara interaktif."
     )
     
     st.markdown("---")
@@ -154,7 +155,6 @@ elif pilihan_halaman == "🔬 POST TEST":
                 "Hidroksilamin (NH2OH)", "NaHCO3 + Uji Barit (Ba(OH)2)", "Uji Ceric Nitrat"
             ])
         
-        # Penambahan tombol pemicu analisis agar hasil tersembunyi di awal
         st.write("")
         tombol_analisis = st.button("Mulai Analisis Reaksi 🧪", type="primary", use_container_width=True)
 
@@ -288,8 +288,12 @@ elif pilihan_halaman == "🔬 POST TEST":
             pembahasan = "❌ <b>Kenapa TIDAK bereaksi:</b> Uji ini spesifik untuk gugus hidroksil (-OH) alifatik bebas. Senyawa ini tidak memiliki gugus tersebut."
 
 
-    # ================= LOGIKA MUNCUL SETELAH KLIK TOMBOL =================
+    # ================= LOGIKA MUNCUL SETELAH KLIK TOMBOL + LOADING =================
     if tombol_analisis:
+        # Menambahkan animasi loading spinner selama 1.5 detik
+        with st.spinner("⏳ Sedang mereaksikan sampel di dalam tabung reaksi..."):
+            time.sleep(1.5) # Durasi waktu loading sengaja dibuat agar animasi terasa nyata
+            
         st.write("")
         st.markdown("### 📊 Lembar Hasil Analisis")
         
