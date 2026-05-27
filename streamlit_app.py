@@ -1,6 +1,6 @@
 import streamlit as st
 
-# 1. KONFIGURASI HALAMAN (Menggunakan layout wide agar ruang web lebih maksimal & estetik)
+# 1. KONFIGURASI HALAMAN (Harus paling atas)
 st.set_page_config(
     page_title="OrganicChem | Edu-Lab",
     page_icon="🧪",
@@ -37,7 +37,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-# 3. SIDEBAR NAVIGASI (Dibuat lebih rapi dengan sub-header informasi)
+# 3. SIDEBAR NAVIGASI
 with st.sidebar:
     st.image("https://cdn-icons-png.flaticon.com/512/3022/3022607.png", width=70) # Logo Lab Kimia mini
     st.title("OrganicChem v1.0")
@@ -53,7 +53,6 @@ with st.sidebar:
 
 # ================= HALAMAN 1: HOME =================
 if pilihan_halaman == "🏠 Home":
-    # Menggunakan banner dengan gradien warna yang menarik
     st.markdown("""
         <div class="banner-home">
             <h1 style='color: white; margin-bottom: 5px;'>Selamat Datang di OrganicChem! 👋</h1>
@@ -61,7 +60,6 @@ if pilihan_halaman == "🏠 Home":
         </div>
     """, unsafe_allow_html=True)
     
-    # Layout 2 Kolom untuk Info Fitur Utama
     col_info1, col_info2 = st.columns(2)
     
     with col_info1:
@@ -81,14 +79,12 @@ elif pilihan_halaman == "📘 Bab 1: Pengantar":
     st.title("📘 Bab 1: Pengantar Senyawa Organik")
     st.write("---")
     
-    # Menggunakan Tabs agar teks panjang tidak membosankan untuk dibaca
     tab1, tab2 = st.tabs(["✨ Definisi Dasar", "🔬 Karakteristik Atom Karbon"])
     
     with tab1:
         st.markdown("### Apa itu Senyawa Organik?")
         st.write("Senyawa organik adalah golongan senyawa yang komponen utamanya terdiri dari atom karbon (C), hidrogen (H), oksigen (O), nitrogen (N), dan unsur lainnya.")
         
-        # Menggunakan kolom untuk membandingkan Organik vs Anorganik
         c1, c2 = st.columns(2)
         with c1:
             st.success("**Senyawa Organik**\n- Titik didih/leleh relatif rendah\n- Umumnya tidak stabil terhadap pemanasan tinggi\n- Reaksi cenderung berjalan lambat")
@@ -98,42 +94,7 @@ elif pilihan_halaman == "📘 Bab 1: Pengantar":
     with tab2:
         st.markdown("### Kekhasan Atom Karbon")
         st.write("Mengapa atom karbon menjadi pusat dari jutaan jenis senyawa di bumi?")
-        # Menggunakan expander interaktif agar siswa bisa mengklik detailnya
         with st.expander("1. Memiliki 4 Elektron Valensi"):
             st.write("Memungkinkan atom karbon membentuk hingga 4 ikatan kovalen tunggal, rangkap dua, maupun rangkap tiga dengan atom lainnya.")
         with st.expander("2. Jari-jari Atom Relatif Kecil"):
-            st.write("Ikatan kovalen yang terbentuk menjadi sangat kuat dan stabil.")
-
-
-# ================= HALAMAN 3: BAB 2 =================
-elif pilihan_halaman == "📙 Bab 2: Hidrokarbon":
-    st.title("📙 Bab 2: Hidrokarbon (Alkana, Alkena, Alkuna)")
-    st.write("---")
-    
-    t1, t2, t3 = st.tabs(["🔹 Alkana", "🔸 Alkena", "🔺 Alkuna"])
-    with t1:
-        st.subheader("Alkana (Hidrokarbon Jenuh)")
-        st.code("Rumus Umum: C_n H_{2n+2}", language="text")
-        st.write("Seluruh ikatannya adalah ikatan kovalen tunggal tunggal. Contoh paling sederhana: Metana ($CH_4$).")
-    with t2:
-        st.subheader("Alkena (Hidrokarbon Tak Jenuh)")
-        st.code("Rumus Umum: C_n H_{2n}", language="text")
-        st.write("Memiliki setidaknya satu ikatan rangkap dua ($C=C$). Contoh: Etena ($C_2H_4$).")
-    with t3:
-        st.subheader("Alkuna (Hidrokarbon Tak Jenuh)")
-        st.code("Rumus Umum: C_n H_{2n-2}", language="text")
-        st.write("Memiliki setidaknya satu ikatan rangkap tiga ($C≡C$). Contoh: Etuna ($C_2H_2$).")
-
-
-# ================= HALAMAN 4: BAB 3 =================
-elif pilihan_halaman == "📗 Bab 3: Gugus Fungsi":
-    st.title("📗 Bab 3: Gugus Fungsi")
-    st.write("---")
-    
-    # Menampilkan informasi dengan layout Grid Kolom (Modern & Rapi)
-    col1, col2 = st.columns(2)
-    with col1:
-        with st.container(border=True):
-            st.markdown("### 🍷 Alkohol & Eter")
-            st.write("**Alkohol (-OH):** Memiliki gugus hidroksil, mudah larut dalam air (rantai pendek), bereaksi dengan logam
-            
+            st.write("Ikatan koval
