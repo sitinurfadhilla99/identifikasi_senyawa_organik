@@ -100,9 +100,6 @@ with st.sidebar:
     menu=st.radio(
         "Pilih Menu",
         [
-
-        "🏠 Home",
-
         "🧪 BAB 1 HIDROKARBON",
 
         "🍃 BAB 2 ALKOHOL, ETER DAN FENOL",
