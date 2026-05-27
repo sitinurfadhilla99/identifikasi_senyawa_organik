@@ -122,28 +122,77 @@ with st.sidebar:
 if menu=="🏠 Home":
 
     st.markdown("""
+    <div style='
+    background:linear-gradient(90deg,#0f766e,#10b981);
+    padding:35px;
+    border-radius:25px;
+    color:white;
+    text-align:center;
+    margin-bottom:30px;
+    '>
 
-# 🧪 Selamat Datang di ChemReact
+    <h1>🧪 Media Pembelajaran Identifikasi Senyawa Organik</h1>
 
-Website pembelajaran kimia organik
-berbasis praktikum virtual.
+    <p style='font-size:18px;'>
 
-Website ini berisi:
+    Website ini dirancang sebagai sarana pembelajaran
+    untuk memahami teori dan proses identifikasi
+    berbagai senyawa organik berdasarkan sifat
+    dan reaksinya.
 
-📚 materi
+    </p>
 
-🧪 teori
+    </div>
+    """, unsafe_allow_html=True)
 
-⚗ simulasi
 
-📝 post test
+    c1,c2=st.columns(2)
 
-""")
+    with c1:
 
-    st.info(
-    "Silakan pilih materi pada dashboard."
-    )
+        if st.button(
+        "📚 Jelajahi Materi",
+        use_container_width=True
+        ):
 
+            st.success(
+            "Silakan pilih BAB pada Dashboard"
+            )
+
+    with c2:
+
+        if st.button(
+        "📝 Uji Pemahaman",
+        use_container_width=True
+        ):
+
+            st.info(
+            "Buka menu POST TEST di Dashboard"
+            )
+            
+
+
+    st.write("")
+
+    m1,m2,m3=st.columns(3)
+
+    with m1:
+        st.metric(
+        "BAB Materi",
+        "4"
+        )
+
+    with m2:
+        st.metric(
+        "Post Test",
+        "1"
+        )
+
+    with m3:
+        st.metric(
+        "Mode",
+        "Interaktif"
+        )
 
 # ================= BAB 1 =================
 
