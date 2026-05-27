@@ -1,286 +1,197 @@
 import streamlit as st
 
-# 1. KONFIGURASI HALAMAN (Harus paling atas)
+# ==============================================================================
+# 1. KONFIGURASI HALAMAN (Harus diletakkan di baris paling atas)
+# ==============================================================================
 st.set_page_config(
-    page_title="OrganicChem | Edu-Lab",
+    page_title="OrganicChem | Edu-Lab Platform",
     page_icon="🧪",
     layout="wide"
 )
 
-# 2. CUSTOM CSS (Untuk mempercantik tampilan kotak hasil prediktor dan card materi)
+# ==============================================================================
+# 2. CUSTOM CSS INTERAKTIF
+# ==============================================================================
 st.markdown("""
     <style>
-    /* Styling untuk Kotak Hasil Prediktor */
-    .kotak {
-        border-left: 5px solid #2ecc71;
-        border-radius: 6px;
-        padding: 15px;
-        margin-bottom: 15px;
-        background-color: #f4faf6;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    /* Desain Kotak Hasil Analisis yang Unik & Modern */
+    .kotak-analisis {
+        border-left: 6px solid #2ecc71;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: #f5fbf7;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.04);
     }
-    .label {
+    .label-analisis {
         font-weight: bold;
         color: #27ae60;
-        font-size: 1.1em;
-        margin-bottom: 5px;
+        font-size: 1.15em;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
     }
-    /* Styling Banner Selamat Datang */
-    .banner-home {
+    /* Desain Banner Gradasi untuk Halaman Utama */
+    .banner-utama {
         background: linear-gradient(135deg, #11998e, #38ef7d);
-        padding: 30px;
+        padding: 35px;
         border-radius: 12px;
         color: white;
-        margin-bottom: 25px;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 15px rgba(56, 239, 125, 0.2);
+    }
+    /* Card Khusus Materi Bab */
+    .card-materi {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        border: 1px solid #e6ebf4;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     }
     </style>
 """, unsafe_allow_html=True)
 
-
-# 3. SIDEBAR NAVIGASI
+# ==============================================================================
+# 3. SIDEBAR NAVIGASI (Sesuai Struktur Menu Baru)
+# ==============================================================================
 with st.sidebar:
-    st.image("https://cdn-icons-png.flaticon.com/512/3022/3022607.png", width=70) # Logo Lab Kimia mini
+    st.image("https://cdn-icons-png.flaticon.com/512/3022/3022607.png", width=75)
     st.title("OrganicChem v1.0")
-    st.write("✨ *Platform Belajar Interaktif*")
+    st.write("🔬 *E-Learning & Lab Simulator*")
     st.markdown("---")
+    
     pilihan_halaman = st.radio(
-        "Silakan Pilih Halaman:",
-        ["🏠 Home", "📘 Bab 1: Pengantar", "📙 Bab 2: Hidrokarbon", "📗 Bab 3: Gugus Fungsi", "📕 Bab 4: Turunan & Nitrogen", "🔬 Post Test & Prediktor"]
+        "Navigasi Menu:",
+        [
+            "🏠 HALAMAN UTAMA", 
+            "📘 BAB 1 HIDROKARBON", 
+            "📙 BAB 2 ALKOHOL, ETER, DAN FENOL", 
+            "📗 BAB 3 ALDEHID DAN KETON", 
+            "📕 BAB 4 ASAM KARBOKSILAT DAN DERIVATNYA", 
+            "🔬 POST TEST"
+        ]
     )
     st.markdown("---")
-    st.caption("Dibuat untuk Praktikum Kimia Organik | © 2026")
+    st.caption("E-Learning Kimia Organik | © 2026")
 
+# ==============================================================================
+# 4. LOGIKA KONTEN TIAP HALAMAN
+# ==============================================================================
 
-# ================= HALAMAN 1: HOME =================
-if pilihan_halaman == "🏠 Home":
+# --- HALAMAN UTAMA ---
+if pilihan_halaman == "🏠 HALAMAN UTAMA":
     st.markdown("""
-        <div class="banner-home">
-            <h1 style='color: white; margin-bottom: 5px;'>Selamat Datang di OrganicChem! 👋</h1>
-            <p style='font-size: 1.2em; opacity: 0.9;'>Platform Pembelajaran Digital & Prediktor Analisis Senyawa Organik</p>
+        <div class="banner-utama">
+            <h1 style='color: white; margin-bottom: 5px; font-weight: 700;'>Selamat Datang di OrganicChem! 👋</h1>
+            <p style='font-size: 1.2em; opacity: 0.95;'>Platform Media Pembelajaran Mandiri & Simulasi Identifikasi Gugus Fungsi</p>
         </div>
     """, unsafe_allow_html=True)
     
-    col_info1, col_info2 = st.columns(2)
+    st.subheader("💡 Tentang Platform Ini")
+    st.write(
+        "Platform ini dirancang khusus untuk membantu mahasiswa/siswa memahami materi teoritis "
+        "sekaligus visualisasi reaksi uji kualitatif senyawa organik di laboratorium secara interaktif."
+    )
     
-    with col_info1:
-        st.subheader("📚 Materi Terstruktur")
-        st.write("Pelajari konsep dasar kimia organik, klasifikasi hidrokarbon, hingga berbagai identifikasi gugus fungsi spesifik mulai dari Bab 1 hingga Bab 4.")
-    
-    with col_info2:
-        st.subheader("🧪 Simulasi Prediktor Lab")
-        st.write("Uji pemahamanmu secara langsung di halaman **Post Test**! Pilih sampel senyawamu dan lihat bagaimana reaksinya terhadap berbagai indikator laboratorium secara langsung.")
-        
-    st.write("---")
-    st.info("💡 **Tips Memulai:** Gunakan menu navigasi di sebelah kiri (sidebar) untuk berpindah halaman materi atau langsung mencoba alat prediktor.")
+    st.markdown("---")
+    col_petunjuk1, col_petunjuk2 = st.columns(2)
+    with col_petunjuk1:
+        with st.container(border=True):
+            st.markdown("### 📖 Pelajari Materi")
+            st.write("Silakan akses **BAB 1 sampai BAB 4** melalui sidebar untuk membaca materi dasar, struktur molekul, dan karakteristik setiap gugus fungsi.")
+    with col_petunjuk2:
+        with st.container(border=True):
+            st.markdown("### 🧪 Uji Pemahaman")
+            st.write("Buka halaman **POST TEST** untuk menjalankan simulasi reaksi lab interaktif menggunakan alat prediktor yang akurat.")
 
-
-# ================= HALAMAN 2: BAB 1 =================
-elif pilihan_halaman == "📘 Bab 1: Pengantar":
-    st.title("📘 Bab 1: Pengantar Senyawa Organik")
-    st.write("---")
-    
-    tab1, tab2 = st.tabs(["✨ Definisi Dasar", "🔬 Karakteristik Atom Karbon"])
-    
-    with tab1:
-        st.markdown("### Apa itu Senyawa Organik?")
-        st.write("Senyawa organik adalah golongan senyawa yang komponen utamanya terdiri dari atom karbon (C), hidrogen (H), oksigen (O), nitrogen (N), dan unsur lainnya.")
-        
-        c1, c2 = st.columns(2)
-        with c1:
-            st.success("**Senyawa Organik**\n- Titik didih/leleh relatif rendah\n- Umumnya tidak stabil terhadap pemanasan tinggi\n- Reaksi cenderung berjalan lambat")
-        with c2:
-            st.warning("**Senyawa Anorganik**\n- Titik didih/leleh relatif tinggi\n- Lebih stabil terhadap panas\n- Reaksi antar ion berjalan cepat")
-            
-    with tab2:
-        st.markdown("### Kekhasan Atom Karbon")
-        st.write("Mengapa atom karbon menjadi pusat dari jutaan jenis senyawa di bumi?")
-        with st.expander("1. Memiliki 4 Elektron Valensi"):
-            st.write("Memungkinkan atom karbon membentuk hingga 4 ikatan kovalen tunggal, rangkap dua, maupun rangkap tiga dengan atom lainnya.")
-        with st.expander("2. Jari-jari Atom Relatif Kecil"):
-            st.write("Ikatan kovalen yang terbentuk menjadi sangat kuat dan stabil.")
-
-
-# ================= HALAMAN 3: BAB 2 =================
-elif pilihan_halaman == "📙 Bab 2: Hidrokarbon":
-    st.title("📙 Bab 2: Hidrokarbon (Alkana, Alkena, Alkuna)")
+# --- BAB 1 ---
+elif pilihan_halaman == "📘 BAB 1 HIDROKARBON":
+    st.title("📘 BAB 1: HIDROKARBON")
+    st.markdown("*Silakan isi atau edit bagian ini dengan materi lengkap Bab 1 Hidrokarbon.*")
     st.write("---")
     
-    t1, t2, t3 = st.tabs(["🔹 Alkana", "🔸 Alkena", "🔺 Alkuna"])
-    with t1:
-        st.subheader("Alkana (Hidrokarbon Jenuh)")
-        st.code("Rumus Umum: C_n H_{2n+2}", language="text")
-        st.write("Seluruh ikatannya adalah ikatan kovalen tunggal tunggal. Contoh paling sederhana: Metana ($CH_4$).")
-    with t2:
-        st.subheader("Alkena (Hidrokarbon Tak Jenuh)")
-        st.code("Rumus Umum: C_n H_{2n}", language="text")
-        st.write("Memiliki setidaknya satu ikatan rangkap dua ($C=C$). Contoh: Etena ($C_2H_4$).")
-    with t3:
-        st.subheader("Alkuna (Hidrokarbon Tak Jenuh)")
-        st.code("Rumus Umum: C_n H_{2n-2}", language="text")
-        st.write("Memiliki setidaknya satu ikatan rangkap tiga ($C≡C$). Contoh: Etuna ($C_2H_2$).")
+    st.info("📌 **Ringkasan Materi:** Hidrokarbon merupakan rumpun senyawa organik yang hanya tersusun atas atom karbon dan hidrogen.")
+    
+    # Disediakan struktur Tab modern agar pengisian materi terlihat rapi
+    tab_teori, tab_reaksi = st.tabs(["📚 Teori Dasar", "📝 Reaksi Penting"])
+    with tab_teori:
+        st.markdown("""
+        <div class="card-materi">
+            <h3>Klasifikasi Hidrokarbon</h3>
+            <p>Tuliskan penjelasan mengenai Alkana, Alkena, dan Alkuna di sini. Anda bisa menggunakan poin-poin:</p>
+            <ul>
+                <li><b>Alkana:</b> Hidrokarbon jenuh dengan ikatan tunggal.</li>
+                <li><b>Alkena:</b> Hidrokarbon tak jenuh dengan ikatan rangkap dua.</li>
+                <li><b>Alkuna:</b> Hidrokarbon tak jenuh dengan ikatan rangkap tiga.</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+    with tab_reaksi:
+        st.write("Tempat untuk materi reaksi kimia Hidrokarbon (Substitusi, Adisi, Eliminasi).")
 
-
-# ================= HALAMAN 4: BAB 3 =================
-elif pilihan_halaman == "📗 Bab 3: Gugus Fungsi":
-    st.title("📗 Bab 3: Gugus Fungsi")
+# --- BAB 2 ---
+elif pilihan_halaman == "📙 BAB 2 ALKOHOL, ETER, DAN FENOL":
+    st.title("📙 BAB 2: ALKOHOL, ETER, DAN FENOL")
+    st.markdown("*Silakan isi atau edit bagian ini dengan materi lengkap Bab 2.*")
     st.write("---")
     
-    col1, col2 = st.columns(2)
-    with col1:
+    col_materi1, col_materi2 = st.columns(2)
+    with col_materi1:
         with st.container(border=True):
             st.markdown("### 🍷 Alkohol & Eter")
-            # Teks di bawah ini sudah disatukan dalam satu baris agar tidak memicu SyntaxError
-            st.write("**Alkohol (-OH):** Memiliki gugus hidroksil, mudah larut dalam air (rantai pendek), bereaksi dengan logam natrium.")
-            st.write("**Eter (-O-):** Isomer fungsi alkohol, cenderung kurang reaktif, sering digunakan sebagai pelarut non-polar.")
-            
-    with col2:
+            st.write("Isi konten penjelasan, perbedaan struktur senyawa, sifat fisik, dan titik didih senyawa alkohol alifatik serta senyawa eter di sini.")
+    with col_materi2:
         with st.container(border=True):
-            st.markdown("### 🧪 Aldehid & Keton")
-            st.write("**Aldehid (-CHO):** Memiliki hidrogen pada gugus karbonil, merupakan reduktor kuat (positif Tollens/Fehling).")
-            st.write("**Keton (-CO-):** Tidak memiliki hidrogen pada karbonil, hanya bisa dioksidasi oleh oksidator sangat kuat.")
+            st.markdown("### ⚗️ Senyawa Fenol")
+            st.write("Isi konten penjelasan mengenai keasaman fenol, strukturnya yang berikatan dengan cincin aromatik, dan aplikasinya di sini.")
 
-
-# ================= HALAMAN 5: BAB 4 =================
-elif pilihan_halaman == "📕 Bab 4: Turunan & Nitrogen":
-    st.title("📕 Bab 4: Asam Karboksilat, Ester, dan Senyawa Nitrogen")
+# --- BAB 3 ---
+elif pilihan_halaman == "📗 BAB 3 ALDEHID DAN KETON":
+    st.title("📗 BAB 3: ALDEHID DAN KETON")
+    st.markdown("*Silakan isi atau edit bagian ini dengan materi lengkap Bab 3.*")
     st.write("---")
     
-    with st.container(border=True):
-        st.subheader("🍋 Asam Karboksilat (-COOH) & Ester (-COOR)")
-        st.write("- **Asam Karboksilat:** Memiliki sifat asam lemah organik, memerahkan lakmus, melepaskan gas $CO_2$ jika ditambah bikarbonat.")
-        st.write("- **Ester:** Hasil reaksi esterifikasi antara asam karboksilat dan alkohol. Memiliki aroma khas buah-buahan.")
-        
-    st.write("")
-    with st.container(border=True):
-        st.subheader("🧬 Senyawa Organik Nitrogen (Amina & Amida)")
-        st.write("- **Amina ($R-NH_2$):** Senyawa turunan amonia bersifat basa lemah, memberikan bau khas (seperti bau ikan busuk).")
-        st.write("- **Amida ($R-CONH_2$):** Senyawa turunan asam karboksilat yang berikatan dengan gugus amina, membentuk dasar ikatan peptida pada protein.")
+    st.markdown("""
+    <div class="card-materi">
+        <h3>Gugus Karbonil (C=O)</h3>
+        <p>Tuliskan ulasan materi mengenai kemiripan fisik serta perbedaan daya reduksi yang kontras antara senyawa golongan Aldehid (Alkanal) dan Keton (Alkanon) di kolom ini.</p>
+    </div>
+    """, unsafe_allow_html=True)
 
+# --- BAB 4 ---
+elif pilihan_halaman == "📕 BAB 4 ASAM KARBOKSILAT DAN DERIVATNYA":
+    st.title("📕 BAB 4: ASAM KARBOKSILAT DAN DERIVATNYA")
+    st.markdown("*Silakan isi atau edit bagian ini dengan materi lengkap Bab 4.*")
+    st.write("---")
+    
+    st.write("Isi materi mengenai Asam Alkanoat (Asam Karboksilat) beserta senyawa turunannya (Ester, Amida, Anhidrida Asam, Alkanoil Klorida) pada halaman web biasa ini.")
 
-# ================= HALAMAN 6: POST TEST & PREDIKTOR =================
-elif pilihan_halaman == "🔬 Post Test & Prediktor":
-    import time
-
-    st.title("🔬 Alat Prediktor Uji Laboratorium")
-    st.write("Gunakan simulasi di bawah ini untuk memprediksi hasil uji kualitatif senyawa organik pilihanmu.")
+# --- POST TEST (LOGIKA PREDIKTOR DIKUNCI DI SINI AGAR TIDAK ERROR DI HALAMAN LAIN) ---
+elif pilihan_halaman == "🔬 POST TEST":
+    st.title("🔬 POST TEST: Alat Prediktor Uji Laboratorium")
+    st.write("Silakan pilih kombinasi Senyawa Organik dan Pereaksi di bawah ini untuk mengamati visualisasi hasil reaksinya secara teoritis.")
     st.write("---")
 
+    # Kontainer Input Parameter Uji
     with st.container(border=True):
-        st.markdown("### ⚙️ Pengaturan Parameter Uji")
-
+        st.markdown("#### ⚙️ Pengaturan Parameter Uji")
         col1, col2 = st.columns(2)
 
         with col1:
-            senyawa = st.selectbox(
-                "🎯 Pilih Senyawa Target:",
-                [
-                "Alkohol Primer",
-                "Alkohol Sekunder",
-                "Alkohol Tersier",
-                "Formaldehida",
-                "Aseton",
-                "Heksana",
-                "Etil Asetat",
-                "Asam Asetat"
-                ]
-            )
+            senyawa = st.selectbox("🎯 Pilih Senyawa Target:", [
+                "Alkohol Primer", "Alkohol Sekunder", "Alkohol Tersier", 
+                "Formaldehida", "Aseton", "Heksana", "Etil Asetat", "Asam Asetat"
+            ])
 
         with col2:
-            pereaksi = st.selectbox(
-                "🧪 Pilih Pereaksi / Indikator:",
-                [
-                "Oksidator (K2Cr2O7 / H+)",
-                "Pereaksi Lucas (ZnCl2 / HCl)",
-                "Pereaksi Tollens",
-                "Pereaksi Fehling",
-                "Uji Iodoform (I2 / NaOH)",
-                "Pereaksi Jones (CrO3 / H2SO4)",
-                "Pereaksi Schiff",
-                "Natrium Bisulfit (NaHSO3)",
-                "Hidroksilamin (NH2OH)",
-                "NaHCO3 + Uji Barit (Ba(OH)2)",
-                "Uji Ceric Nitrat"
-                ]
-            )
+            pereaksi = st.selectbox("🧪 Pilih Pereaksi / Indikator Lab:", [
+                "Oksidator (K2Cr2O7 / H+)", "Pereaksi Lucas (ZnCl2 / HCl)", 
+                "Pereaksi Tollens", "Pereaksi Fehling", "Uji Iodoform (I2 / NaOH)",
+                "Pereaksi Jones (CrO3 / H2SO4)", "Pereaksi Schiff", "Natrium Bisulfit (NaHSO3)",
+                "Hidroksilamin (NH2OH)", "NaHCO3 + Uji Barit (Ba(OH)2)", "Uji Ceric Nitrat"
+            ])
 
-    st.write("")
-
-    tombol=st.button(
-        "🔍 Analisis Sekarang",
-        use_container_width=True,
-        type="primary"
-    )
-
-    if not tombol:
-        st.info("⬆️ Pilih senyawa dan pereaksi lalu klik tombol Analisis Sekarang")
-        st.stop()
-
-    if tombol:
-
-        with st.spinner("Menganalisis sampel laboratorium..."):
-            time.sleep(2)
-
-        progress=st.progress(0)
-
-        for i in range(100):
-            time.sleep(0.01)
-            progress.progress(i+1)
-
-        st.success("✅ Analisis berhasil")
-
-        # Hasil benar-benar baru muncul setelah tombol ditekan
-
-        hasil="(-) Tidak Bereaksi"
-        reaksi="Tidak ada persamaan reaksi"
-        pembahasan=""
-
-        def alasan_negatif_umum(senyawa):
-            if senyawa=="Heksana":
-                return "Heksana sangat stabil dan tidak memiliki gugus fungsi reaktif"
-            if senyawa=="Etil Asetat":
-                return "Etil asetat adalah ester yang relatif stabil"
-            return f"{senyawa} tidak memiliki gugus fungsi yang sesuai"
-
-
-        # Oksidator
-        if pereaksi=="Oksidator (K2Cr2O7 / H+)":
-            if senyawa in ["Alkohol Primer","Alkohol Sekunder","Formaldehida"]:
-                hasil="(+) Warna jingga → hijau"
-                reaksi="Cr₂O₇²⁻ → Cr³⁺"
-                pembahasan="Senyawa mengalami oksidasi sehingga ion dikromat tereduksi menjadi Cr³⁺ hijau"
-            else:
-                pembahasan=alasan_negatif_umum(senyawa)
-
-
-        elif pereaksi=="Pereaksi Tollens":
-            if senyawa=="Formaldehida":
-                hasil="(+) Cermin perak terbentuk"
-                reaksi="RCHO + Ag+ → Ag"
-                pembahasan="Aldehid mereduksi ion perak menjadi logam perak"
-            else:
-                pembahasan="Tidak memiliki sifat pereduksi aldehid"
-
-
-        elif pereaksi=="Pereaksi Fehling":
-            if senyawa=="Formaldehida":
-                hasil="(+) Endapan merah bata"
-                reaksi="Cu²⁺ → Cu₂O"
-                pembahasan="Aldehid mereduksi Cu²⁺"
-            else:
-                pembahasan="Tidak bereaksi"
-
-
-        elif pereaksi=="Uji Iodoform (I2 / NaOH)":
-            if senyawa=="Aseton":
-                hasil="(+) Endapan kuning"
-                reaksi="CHI₃ terbentuk"
-                pembahasan="Aseton memiliki gugus metil keton"
-            else:
-                pembahasan="Tidak memiliki gugus metil keton"
-
-
-
-    # ================= LOGIKA DATABASE REAKSI & ALASAN =================
+    # ================= DATABASE LOGIKA & REAKSI KIMIA =================
     hasil = "(-) Tidak Bereaksi"
     reaksi = "Tidak ada persamaan reaksi."
     pembahasan = ""
@@ -409,48 +320,30 @@ elif pilihan_halaman == "🔬 Post Test & Prediktor":
         else:
             pembahasan = "❌ <b>Kenapa TIDAK bereaksi:</b> Uji ini spesifik untuk gugus hidroksil (-OH) alifatik bebas. Senyawa ini tidak memiliki gugus tersebut."
 
-# ================= KOTAK OUTPUT BERDERET =================
-st.markdown("### 📊 Lembar Hasil Analisis") 
 
-st.markdown(f"""
-<div class="kotak">
-    <div class="label">Hasil Pengamatan (+)/(-)</div>
-    <p style="font-size:1.2em;color:{warna_hasil};
-    font-weight:bold;margin:0;">
-    {hasil}
-    </p>
-</div>
-""", unsafe_allow_html=True)
-
-st.markdown(f"""
-<div class="kotak">
-    <div class="label">
-    Persamaan Reaksi Kimia
+    # ================= KOTAK OUTPUT KHUSUS HALAMAN POST TEST =================
+    st.markdown("### 📊 Lembar Hasil Analisis")
+    
+    # Deteksi warna dinamis untuk status (+) atau (-)
+    warna_teks_hasil = '#d35400' if '(+)' in hasil else '#7f8c8d'
+    
+    st.markdown(f"""
+    <div class="kotak-analisis">
+        <div class="label-analisis">Hasil Pengamatan (+)/(-)</div>
+        <p style="font-size: 1.25em; color: {warna_teks_hasil}; font-weight: bold; margin: 0;">{hasil}</p>
     </div>
+    """, unsafe_allow_html=True)
 
-<p style="
-font-size:1.1em;
-font-family:'Courier New';
-white-space:pre-wrap;
-margin:0;
-background:#fff;
-padding:10px;
-border-radius:4px;
-border:1px solid #ddd;">
-{reaksi}
-</p>
+    st.markdown(f"""
+    <div class="kotak-analisis">
+        <div class="label-analisis">Persamaan Reaksi Kimia</div>
+        <p style="font-size: 1.1em; font-family: 'Courier New', monospace; white-space: pre-wrap; margin: 0; background: #ffffff; padding: 12px; border-radius: 5px; border: 1px solid #e2e8f0;">{reaksi}</p>
+    </div>
+    """, unsafe_allow_html=True)
 
-</div>
-""", unsafe_allow_html=True)
-
-st.markdown(f"""
-<div class="kotak">
-<div class="label">
-Pembahasan Teoritis & Analisis Mekanisme
-</div>
-
-<p>{pembahasan}</p>
-
-</div>
-""", unsafe_allow_html=True)
-   
+    st.markdown(f"""
+    <div class="kotak-analisis">
+        <div class="label-analisis">Pembahasan Teoritis & Analisis Mekanisme</div>
+        <p style="margin: 0; line-height: 1.6; color: #2d3748;">{pembahasan}</p>
+    </div>
+    """, unsafe_allow_html=True)
