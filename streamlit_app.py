@@ -286,8 +286,6 @@ elif pilihan_halaman == "🔬 Post Test & Prediktor":
         st.balloons()
 ```
 
-Lalu salin logika pereaksi lain dari script lama kamu (Lucas, Jones, Schiff, Ceric Nitrat, dll) ke bagian bawahnya dengan pola yang sama.
-
     # ================= LOGIKA DATABASE REAKSI & ALASAN =================
     hasil = "(-) Tidak Bereaksi"
     reaksi = "Tidak ada persamaan reaksi."
