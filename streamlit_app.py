@@ -158,6 +158,12 @@ elif pilihan_halaman == "📕 Bab 4: Turunan & Nitrogen":
 
 
 # ================= HALAMAN 6: POST TEST & PREDIKTOR =================
+# Upgrade Script OrganicChem (Versi lebih interaktif)
+
+Ganti bagian HALAMAN 6 (Post Test & Prediktor) milikmu dengan versi ini:
+
+```python
+# ================= HALAMAN 6: POST TEST & PREDIKTOR =================
 elif pilihan_halaman == "🔬 Post Test & Prediktor":
     import time
 
@@ -211,6 +217,10 @@ elif pilihan_halaman == "🔬 Post Test & Prediktor":
         type="primary"
     )
 
+    if not tombol:
+        st.info("⬆️ Pilih senyawa dan pereaksi lalu klik tombol Analisis Sekarang")
+        st.stop()
+
     if tombol:
 
         with st.spinner("Menganalisis sampel laboratorium..."):
@@ -223,6 +233,8 @@ elif pilihan_halaman == "🔬 Post Test & Prediktor":
             progress.progress(i+1)
 
         st.success("✅ Analisis berhasil")
+
+        # Hasil benar-benar baru muncul setelah tombol ditekan
 
         hasil="(-) Tidak Bereaksi"
         reaksi="Tidak ada persamaan reaksi"
@@ -281,9 +293,8 @@ elif pilihan_halaman == "🔬 Post Test & Prediktor":
         st.code(reaksi)
 
         with st.expander("📖 Lihat Pembahasan"):
-            st.write(pembahasan)
+            st.write(pembahasan) 
 
-        st.balloons() 
     # ================= LOGIKA DATABASE REAKSI & ALASAN =================
     hasil = "(-) Tidak Bereaksi"
     reaksi = "Tidak ada persamaan reaksi."
