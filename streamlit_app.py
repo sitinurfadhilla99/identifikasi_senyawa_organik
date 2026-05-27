@@ -1,151 +1,265 @@
 import streamlit as st
-import pandas as pd
-import math
-from pathlib import Path
+import time
 
-# Set the title and favicon that appear in the Browser's tab bar.
+# ================= KONFIGURASI HALAMAN =================
+
 st.set_page_config(
-    page_title='GDP dashboard',
-    page_icon=':earth_americas:', # This is an emoji shortcode. Could be a URL too.
+    page_title="ChemReact",
+    page_icon="🧪",
+    layout="centered"
 )
 
-# -----------------------------------------------------------------------------
-# Declare some useful functions.
+# ================= CSS =================
 
-@st.cache_data
-def get_gdp_data():
-    """Grab GDP data from a CSV file.
+st.markdown("""
+<style>
 
-    This uses caching to avoid having to read the file every time. If we were
-    reading from an HTTP endpoint instead of a file, it's a good idea to set
-    a maximum age to the cache with the TTL argument: @st.cache_data(ttl='1d')
-    """
+.stApp{
+background: linear-gradient(to bottom,#edf7ff,#f6fff6);
+}
 
-    # Instead of a CSV on disk, you could read from an HTTP endpoint here too.
-    DATA_FILENAME = Path(__file__).parent/'data/gdp_data.csv'
-    raw_gdp_df = pd.read_csv(DATA_FILENAME)
+.main-title{
+text-align:center;
+font-size:42px;
+font-weight:bold;
+color:#0f766e;
+margin-bottom:0px;
+}
 
-    MIN_YEAR = 1960
-    MAX_YEAR = 2022
+.sub{
+text-align:center;
+color:#666;
+margin-bottom:20px;
+font-size:17px;
+}
 
-    # The data above has columns like:
-    # - Country Name
-    # - Country Code
-    # - [Stuff I don't care about]
-    # - GDP for 1960
-    # - GDP for 1961
-    # - GDP for 1962
-    # - ...
-    # - GDP for 2022
-    #
-    # ...but I want this instead:
-    # - Country Name
-    # - Country Code
-    # - Year
-    # - GDP
-    #
-    # So let's pivot all those year-columns into two: Year and GDP
-    gdp_df = raw_gdp_df.melt(
-        ['Country Code'],
-        [str(x) for x in range(MIN_YEAR, MAX_YEAR + 1)],
-        'Year',
-        'GDP',
+.kotak{
+background:white;
+padding:20px;
+border-radius:20px;
+box-shadow:0px 4px 15px rgba(0,0,0,.1);
+margin-bottom:20px;
+border-left:8px solid #10b981;
+}
+
+.footer{
+text-align:center;
+font-size:13px;
+color:gray;
+margin-top:30px;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
+# ================= HEADER =================
+
+st.markdown("""
+<div class='main-title'>
+🧪 ChemReact
+</div>
+
+<div class='sub'>
+Prediktor Uji Senyawa Organik Interaktif
+</div>
+""", unsafe_allow_html=True)
+
+# ================= SIDEBAR =================
+
+with st.sidebar:
+
+    st.title("🧪 Menu")
+
+    st.info("""
+Website ini membantu:
+
+✔ Prediksi hasil uji
+
+✔ Persamaan reaksi
+
+✔ Analisis reaksi
+
+✔ Alasan spesifik
+""")
+
+    st.write("---")
+
+    st.success("Kelompok 3")
+
+# ================= METRIC =================
+
+c1,c2,c3=st.columns(3)
+
+with c1:
+    st.metric(
+        "Senyawa",
+        "8"
     )
 
-    # Convert years from string to integers
-    gdp_df['Year'] = pd.to_numeric(gdp_df['Year'])
+with c2:
+    st.metric(
+        "Pereaksi",
+        "11"
+    )
 
-    return gdp_df
+with c3:
+    st.metric(
+        "Jenis",
+        "Organik"
+    )
 
-gdp_df = get_gdp_data()
+st.write("---")
 
-# -----------------------------------------------------------------------------
-# Draw the actual page
+# ================= TEORI =================
 
-# Set the title that appears at the top of the page.
-'''
-# :earth_americas: GDP dashboard
+with st.expander("📖 Teori Singkat Pereaksi"):
 
-Browse GDP data from the [World Bank Open Data](https://data.worldbank.org/) website. As you'll
-notice, the data only goes to 2022 right now, and datapoints for certain years are often missing.
-But it's otherwise a great (and did I mention _free_?) source of data.
-'''
+    st.write("""
+Tollens → identifikasi aldehid
 
-# Add some spacing
-''
-''
+Fehling → endapan merah bata
 
-min_value = gdp_df['Year'].min()
-max_value = gdp_df['Year'].max()
+Lucas → membedakan alkohol primer, sekunder, tersier
 
-from_year, to_year = st.slider(
-    'Which years are you interested in?',
-    min_value=min_value,
-    max_value=max_value,
-    value=[min_value, max_value])
+Jones → oksidasi alkohol
 
-countries = gdp_df['Country Code'].unique()
+Schiff → aldehid menghasilkan warna magenta
 
-if not len(countries):
-    st.warning("Select at least one country")
+Iodoform → mendeteksi metil keton
+""")
 
-selected_countries = st.multiselect(
-    'Which countries would you like to view?',
-    countries,
-    ['DEU', 'FRA', 'GBR', 'BRA', 'MEX', 'JPN'])
+# ================= INPUT =================
 
-''
-''
-''
+col1,col2=st.columns(2)
 
-# Filter the data
-filtered_gdp_df = gdp_df[
-    (gdp_df['Country Code'].isin(selected_countries))
-    & (gdp_df['Year'] <= to_year)
-    & (from_year <= gdp_df['Year'])
-]
+with col1:
 
-st.header('GDP over time', divider='gray')
+    senyawa=st.selectbox(
+        "Pilih Senyawa",
+        [
+        "Alkohol Primer",
+        "Alkohol Sekunder",
+        "Alkohol Tersier",
+        "Formaldehida",
+        "Aseton",
+        "Heksana",
+        "Etil Asetat",
+        "Asam Asetat"
+        ]
+    )
 
-''
+with col2:
 
-st.line_chart(
-    filtered_gdp_df,
-    x='Year',
-    y='GDP',
-    color='Country Code',
+    pereaksi=st.selectbox(
+        "Pilih Pereaksi",
+        [
+        "Oksidator (K2Cr2O7 / H+)",
+        "Pereaksi Lucas (ZnCl2 / HCl)",
+        "Pereaksi Tollens",
+        "Pereaksi Fehling",
+        "Uji Iodoform (I2 / NaOH)",
+        "Pereaksi Jones (CrO3 / H2SO4)",
+        "Pereaksi Schiff",
+        "Natrium Bisulfit (NaHSO3)",
+        "Hidroksilamin (NH2OH)",
+        "NaHCO3 + Uji Barit (Ba(OH)2)",
+        "Uji Ceric Nitrat"
+        ]
+    )
+
+
+prediksi=st.button(
+    "🔍 Prediksi Sekarang"
 )
 
-''
-''
+# ================= DEFAULT =================
+
+hasil="(-) Tidak Bereaksi"
+reaksi="Tidak ada persamaan reaksi."
+pembahasan=""
+
+# ===========================================
+# LETAKKAN SELURUH LOGIKA REAKSI PUNYA KAMU
+# MULAI:
+#
+# if pereaksi=="....":
+# dst
+#
+# sampai akhir
+#
+# JANGAN DIUBAH
+# ===========================================
 
 
-first_year = gdp_df[gdp_df['Year'] == from_year]
-last_year = gdp_df[gdp_df['Year'] == to_year]
+# ================= OUTPUT =================
 
-st.header(f'GDP in {to_year}', divider='gray')
+if prediksi:
 
-''
+    with st.spinner(
+        "Menganalisis reaksi..."
+    ):
 
-cols = st.columns(4)
+        time.sleep(1)
 
-for i, country in enumerate(selected_countries):
-    col = cols[i % len(cols)]
+    progress=st.progress(0)
 
-    with col:
-        first_gdp = first_year[first_year['Country Code'] == country]['GDP'].iat[0] / 1000000000
-        last_gdp = last_year[last_year['Country Code'] == country]['GDP'].iat[0] / 1000000000
+    for i in range(100):
 
-        if math.isnan(first_gdp):
-            growth = 'n/a'
-            delta_color = 'off'
+        time.sleep(.01)
+
+        progress.progress(i+1)
+
+    st.write("")
+
+    tab1,tab2,tab3=st.tabs(
+        [
+        "🧪 Hasil",
+        "⚗ Reaksi",
+        "📚 Analisis"
+        ]
+    )
+
+    with tab1:
+
+        if "(+)" in hasil:
+
+            st.balloons()
+
+            st.success(
+                hasil
+            )
+
         else:
-            growth = f'{last_gdp / first_gdp:,.2f}x'
-            delta_color = 'normal'
 
-        st.metric(
-            label=f'{country} GDP',
-            value=f'{last_gdp:,.0f}B',
-            delta=growth,
-            delta_color=delta_color
+            st.error(
+                hasil
+            )
+
+    with tab2:
+
+        st.code(
+            reaksi
         )
+
+    with tab3:
+
+        st.markdown(
+            pembahasan,
+            unsafe_allow_html=True
+        )
+
+
+# ================= FOOTER =================
+
+st.write("---")
+
+st.markdown("""
+<div class='footer'>
+
+ChemReact © 2026
+
+Web Identifikasi Senyawa Organik
+berbasis Python + Streamlit
+
+</div>
+""", unsafe_allow_html=True)
