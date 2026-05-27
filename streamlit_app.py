@@ -91,15 +91,18 @@ Memprediksi hasil reaksi, persamaan kimia, dan analisis senyawa.
 
 """,unsafe_allow_html=True)
 
-# ===================== SIDEBAR ======================
+# ================= SIDEBAR =================
 
 with st.sidebar:
 
     st.title("📚 Dashboard")
 
-    menu=st.radio(
-        "Pilih Menu",
+    menu = st.radio(
+        "Pilih Halaman",
         [
+
+        "🏠 Home",
+
         "🧪 BAB 1 HIDROKARBON",
 
         "🍃 BAB 2 ALKOHOL, ETER DAN FENOL",
@@ -112,6 +115,227 @@ with st.sidebar:
 
         ]
     )
+
+
+# ================= HOME =================
+
+if menu=="🏠 Home":
+
+    st.markdown("""
+
+# 🧪 Selamat Datang di ChemReact
+
+Website pembelajaran kimia organik
+berbasis praktikum virtual.
+
+Website ini berisi:
+
+📚 materi
+
+🧪 teori
+
+⚗ simulasi
+
+📝 post test
+
+""")
+
+    st.info(
+    "Silakan pilih materi pada dashboard."
+    )
+
+
+# ================= BAB 1 =================
+
+elif menu=="🧪 BAB 1 HIDROKARBON":
+
+    st.header(
+    "BAB 1 HIDROKARBON"
+    )
+
+    st.subheader(
+    "Pengertian"
+    )
+
+    st.write("""
+
+Hidrokarbon merupakan senyawa
+organik yang hanya tersusun
+oleh atom karbon (C)
+dan hidrogen (H).
+
+""")
+
+    st.subheader(
+    "Jenis Hidrokarbon"
+    )
+
+    st.write("""
+
+• Alkana
+
+• Alkena
+
+• Alkuna
+
+• Aromatik
+
+""")
+
+    st.info("""
+Alkana memiliki ikatan tunggal,
+alkena ikatan rangkap dua,
+dan alkuna ikatan rangkap tiga.
+""")
+
+
+# ================= BAB 2 =================
+
+elif menu=="🍃 BAB 2 ALKOHOL, ETER DAN FENOL":
+
+    st.header(
+    "BAB 2 ALKOHOL"
+    )
+
+    st.subheader(
+    "Pengertian"
+    )
+
+    st.write("""
+
+Alkohol adalah senyawa organik
+yang memiliki gugus fungsi:
+
+R-OH
+
+""")
+
+    st.subheader(
+    "Klasifikasi"
+    )
+
+    st.write("""
+
+• Alkohol primer
+
+• Alkohol sekunder
+
+• Alkohol tersier
+
+""")
+
+    st.success("""
+Alkohol primer dan sekunder
+dapat dioksidasi.
+""")
+
+
+# ================= BAB 3 =================
+
+elif menu=="⚗ BAB 3 ALDEHID DAN KETON":
+
+    st.header(
+    "BAB 3 ALDEHID DAN KETON"
+    )
+
+    st.subheader(
+    "Aldehid"
+    )
+
+    st.write("""
+
+Memiliki gugus:
+
+R-CHO
+
+Mudah teroksidasi
+
+Positif Tollens
+
+Positif Fehling
+
+""")
+
+    st.subheader(
+    "Keton"
+    )
+
+    st.write("""
+
+Memiliki gugus:
+
+R-CO-R
+
+Tidak bereaksi
+dengan Tollens
+
+""")
+
+    st.warning("""
+Aldehid lebih mudah
+dioksidasi dibanding keton.
+""")
+
+
+# ================= BAB 4 =================
+
+elif menu=="🧫 BAB 4 ASAM KARBOKSILAT":
+
+    st.header(
+    "BAB 4 ASAM KARBOKSILAT"
+    )
+
+    st.write("""
+
+Asam karboksilat memiliki
+gugus:
+
+R-COOH
+
+""")
+
+    st.subheader(
+    "Sifat"
+    )
+
+    st.write("""
+
+• Bersifat asam
+
+• Bereaksi dengan NaHCO₃
+
+• Membentuk ester
+
+""")
+
+    st.info("""
+Contoh:
+Asam asetat
+(CH3COOH)
+""")
+
+
+# ================= POST TEST =================
+
+elif menu=="📝 POST TEST":
+
+    st.header(
+    "🧪 ChemReact"
+    )
+
+    st.write("""
+Prediksi hasil reaksi
+berdasarkan pereaksi
+dan senyawa
+""")
+
+    # TEMPEL SELURUH
+    # SCRIPT ChemReact
+    # mulai dari:
+
+    # senyawa=st.selectbox()
+
+    # sampai output
 # ===================== METRIC ======================
 
 m1,m2,m3,m4=st.columns(4)
