@@ -283,9 +283,7 @@ elif pilihan_halaman == "🔬 Post Test & Prediktor":
         with st.expander("📖 Lihat Pembahasan"):
             st.write(pembahasan)
 
-        st.balloons()
-```
-
+        st.balloons() 
     # ================= LOGIKA DATABASE REAKSI & ALASAN =================
     hasil = "(-) Tidak Bereaksi"
     reaksi = "Tidak ada persamaan reaksi."
