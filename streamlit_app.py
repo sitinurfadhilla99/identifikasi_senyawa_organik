@@ -410,9 +410,7 @@ elif pilihan_halaman == "🔬 Post Test & Prediktor":
             pembahasan = "❌ <b>Kenapa TIDAK bereaksi:</b> Uji ini spesifik untuk gugus hidroksil (-OH) alifatik bebas. Senyawa ini tidak memiliki gugus tersebut."
 
 # ================= KOTAK OUTPUT BERDERET =================
-st.markdown("### 📊 Lembar Hasil Analisis")
-
-warna_hasil = '#d35400' if '(+)' in hasil else '#7f8c8d'
+st.markdown("### 📊 Lembar Hasil Analisis") 
 
 st.markdown(f"""
 <div class="kotak">
