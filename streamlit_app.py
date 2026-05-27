@@ -1,738 +1,104 @@
 import streamlit as st
-import time
 
-# ===================== KONFIG ======================
-
+# Pengaturan konfigurasi halaman
 st.set_page_config(
-    page_title="ChemReact",
+    page_title="Identifikasi Senyawa Organik",
     page_icon="🧪",
-    layout="wide"
+    layout="centered"
 )
 
-# ===================== CSS ======================
+# --- SIDEBAR NAVIGASI ---
+st.sidebar.title("Navigasi")
+pilihan_halaman = st.sidebar.radio(
+    "Pilih Halaman:",
+    ["Home", "Bab 1", "Bab 2", "Bab 3", "Bab 4", "Post Test"]
+)
 
-st.markdown("""
-<style>
-
-.stApp{
-background: linear-gradient(135deg,#edf8ff,#f7fff7);
-}
-
-.hero{
-padding:35px;
-border-radius:25px;
-background: linear-gradient(90deg,#0f766e,#10b981);
-color:white;
-box-shadow:0 10px 25px rgba(0,0,0,0.2);
-margin-bottom:25px;
-}
-
-.hero-title{
-font-size:42px;
-font-weight:800;
-}
-
-.hero-sub{
-font-size:18px;
-opacity:0.9;
-}
-
-.card{
-background:white;
-padding:20px;
-border-radius:20px;
-box-shadow:0 4px 20px rgba(0,0,0,0.08);
-margin-bottom:20px;
-}
-
-.footer{
-text-align:center;
-font-size:12px;
-color:gray;
-padding-top:30px;
-}
-
-.badge-pos{
-background:#dcfce7;
-padding:8px;
-border-radius:12px;
-color:#166534;
-font-weight:bold;
-}
-
-.badge-neg{
-background:#fee2e2;
-padding:8px;
-border-radius:12px;
-color:#991b1b;
-font-weight:bold;
-}
-
-</style>
-""",unsafe_allow_html=True)
-
-# ===================== HERO ======================
-
-st.markdown("""
-
-<div class='hero'>
-
-<div class='hero-title'>
-🧪 ChemReact
-</div>
-
-<div class='hero-sub'>
-Prediktor Uji Senyawa Organik Interaktif Berbasis Python & Streamlit
-<br>
-Memprediksi hasil reaksi, persamaan kimia, dan analisis senyawa.
-</div>
-
-</div>
-
-""",unsafe_allow_html=True)
-
-# ================= SIDEBAR =================
-
-with st.sidebar:
-
-    st.title("📚 Dashboard")
-
-    menu = st.radio(
-        "Pilih Halaman",
-        [
-
-        "🏠 Home",
-
-        "🧪 BAB 1 HIDROKARBON",
-
-        "🍃 BAB 2 ALKOHOL, ETER DAN FENOL",
-
-        "⚗ BAB 3 ALDEHID DAN KETON",
-
-        "🧫 BAB 4 ASAM KARBOKSILAT",
-
-        "📝 POST TEST"
-
-        ]
-    )
-
-
-# ================= HOME =================
-
-if menu=="🏠 Home":
-
-    st.markdown("""
-    <div style='
-    background:linear-gradient(90deg,#0f766e,#10b981);
-    padding:35px;
-    border-radius:25px;
-    color:white;
-    text-align:center;
-    margin-bottom:30px;
-    '>
-
-    <h1>🧪 Media Pembelajaran Identifikasi Senyawa Organik</h1>
-
-    <p style='font-size:18px;'>
-
-    Website ini dirancang sebagai sarana pembelajaran
-    untuk memahami teori dan proses identifikasi
-    berbagai senyawa organik berdasarkan sifat
-    dan reaksinya.
-
-    </p>
-
-    </div>
-    """, unsafe_allow_html=True)
-
-
-    c1,c2=st.columns(2)
-
-    with c1:
-
-        if st.button(
-        "📚 Jelajahi Materi",
-        use_container_width=True
-        ):
-
-            st.success(
-            "Silakan pilih BAB pada Dashboard"
-            )
-
-    with c2:
-
-        if st.button(
-        "📝 Uji Pemahaman",
-        use_container_width=True
-        ):
-
-            st.info(
-            "Buka menu POST TEST di Dashboard"
-            )
-            
-
-
-    st.write("")
-
-    m1,m2,m3=st.columns(3)
-
-    with m1:
-        st.metric(
-        "BAB Materi",
-        "4"
-        )
-
-    with m2:
-        st.metric(
-        "Post Test",
-        "1"
-        )
-
-    with m3:
-        st.metric(
-        "Mode",
-        "Interaktif"
-        )
-
-# ================= BAB 1 =================
-
-elif menu=="🧪 BAB 1 HIDROKARBON":
-
-    st.header(
-    "BAB 1 HIDROKARBON"
-    )
-
-    st.subheader(
-    "Pengertian"
-    )
-
+# --- HALAMAN 1: HOME ---
+if pilihan_halaman == "Home":
+    st.title("Selamat Datang! 👋")
+    st.subheader("Web Analisis dan Identifikasi Senyawa Organik")
+    st.write("---")
     st.write("""
+    Selamat datang di platform pembelajaran digital untuk Identifikasi Senyawa Organik. 
+    Web ini dirancang untuk membantu Anda memahami teori, konsep, serta pengujian 
+    terkait senyawa organik secara terstruktur.
+    """)
+    st.info("Silakan gunakan menu di sebelah kiri (sidebar) untuk mulai menjelajahi materi bab dan mengikuti post-test.")
 
-Hidrokarbon merupakan senyawa
-organik yang hanya tersusun
-oleh atom karbon (C)
-dan hidrogen (H).
-
-""")
-
-    st.subheader(
-    "Jenis Hidrokarbon"
-    )
-
+# --- HALAMAN 2: BAB 1 ---
+elif pilihan_halaman == "Bab 1":
+    st.title("Bab 1: Pengantar Senyawa Organik")
+    st.write("---")
+    st.header("Teori Bab 1")
     st.write("""
+    Masukkan teori atau materi Bab 1 di sini. Contoh:
+    - Definisi senyawa organik.
+    - Karakteristik atom karbon.
+    - Perbedaan senyawa organik dan anorganik.
+    """)
+    # Anda bisa menambahkan komponen lain seperti gambar atau video jika diperlukan
 
-• Alkana
-
-• Alkena
-
-• Alkuna
-
-• Aromatik
-
-""")
-
-    st.info("""
-Alkana memiliki ikatan tunggal,
-alkena ikatan rangkap dua,
-dan alkuna ikatan rangkap tiga.
-""")
-
-
-# ================= BAB 2 =================
-
-elif menu=="🍃 BAB 2 ALKOHOL, ETER DAN FENOL":
-
-    st.header(
-    "BAB 2 ALKOHOL"
-    )
-
-    st.subheader(
-    "Pengertian"
-    )
-
+# --- HALAMAN 3: BAB 2 ---
+elif pilihan_halaman == "Bab 2":
+    st.title("Bab 2: Hidrokarbon (Alkana, Alkena, Alkuna)")
+    st.write("---")
+    st.header("Teori Bab 2")
     st.write("""
-
-Alkohol adalah senyawa organik
-yang memiliki gugus fungsi:
-
-R-OH
-
-""")
-
-    st.subheader(
-    "Klasifikasi"
-    )
-
-    st.write("""
-
-• Alkohol primer
-
-• Alkohol sekunder
-
-• Alkohol tersier
-
-""")
-
-    st.success("""
-Alkohol primer dan sekunder
-dapat dioksidasi.
-""")
-
-
-# ================= BAB 3 =================
-
-elif menu=="⚗ BAB 3 ALDEHID DAN KETON":
-
-    st.header(
-    "BAB 3 ALDEHID DAN KETON"
-    )
-
-    st.subheader(
-    "Aldehid"
-    )
-
-    st.write("""
-
-Memiliki gugus:
-
-R-CHO
-
-Mudah teroksidasi
-
-Positif Tollens
-
-Positif Fehling
-
-""")
-
-    st.subheader(
-    "Keton"
-    )
-
-    st.write("""
-
-Memiliki gugus:
-
-R-CO-R
-
-Tidak bereaksi
-dengan Tollens
-
-""")
-
-    st.warning("""
-Aldehid lebih mudah
-dioksidasi dibanding keton.
-""")
-
-
-# ================= BAB 4 =================
-
-elif menu=="🧫 BAB 4 ASAM KARBOKSILAT":
-
-    st.header(
-    "BAB 4 ASAM KARBOKSILAT"
-    )
-
-    st.write("""
-
-Asam karboksilat memiliki
-gugus:
-
-R-COOH
-
-""")
-
-    st.subheader(
-    "Sifat"
-    )
-
-    st.write("""
-
-• Bersifat asam
-
-• Bereaksi dengan NaHCO₃
-
-• Membentuk ester
-
-""")
-
-    st.info("""
-Contoh:
-Asam asetat
-(CH3COOH)
-""")
-
-# ================= POST TEST =================
-
-elif menu=="📝 POST TEST":
-
-    st.header("🧪 ChemReact")
-
-    st.write("""
-    Prediksi hasil reaksi
-    berdasarkan pereaksi
-    dan senyawa
+    Masukkan teori atau materi Bab 2 di sini. Contoh:
+    - Struktur dan tata nama hidrokarbon.
+    - Sifat fisik dan kimia alkana, alkena, dan alkuna.
+    - Reaksi-reaksi khas pada hidrokarbon.
     """)
 
-    # ===== METRIC =====
+# --- HALAMAN 4: BAB 3 ---
+elif pilihan_halaman == "Bab 3":
+    st.title("Bab 3: Gugus Fungsi (Alkohol, Eter, Aldehid, Keton)")
+    st.write("---")
+    st.header("Teori Bab 3")
+    st.write("""
+    Masukkan teori atau materi Bab 3 di sini. Contoh:
+    - Identifikasi gugus fungsi oksigen.
+    - Reaksi pembeda antara alkohol primer, sekunder, dan tersier.
+    - Ujian tiazol atau pereaksi Tollens/Fehling untuk aldehid.
+    """)
 
-    m1,m2,m3,m4=st.columns(4)
+# --- HALAMAN 5: BAB 4 ---
+elif pilihan_halaman == "Bab 4":
+    st.title("Bab 4: Asam Karboksilat, Ester, dan Senyawa Nitrogen")
+    st.write("---")
+    st.header("Teori Bab 4")
+    st.write("""
+    Masukkan teori atau materi Bab 4 di sini. Contoh:
+    - Karakteristik asam karboksilat dan turunan esternya.
+    - Identifikasi senyawa organik yang mengandung nitrogen (amina, amida).
+    """)
 
-    with m1:
-        st.metric("Senyawa","8")
-
-    with m2:
-        st.metric("Pereaksi","11")
-
-    with m3:
-        st.metric("Jenis Uji","Organik")
-
-    with m4:
-        st.metric("Mode","Virtual Lab")
-
-    st.write("")
-
-    # ===== INPUT =====
-
-    left,right=st.columns([1,1])
-
-    with left:
-
-        st.markdown("### 🧫 Pilih Sampel")
-
-        senyawa=st.selectbox(
-            "",
-            [
-            "Alkohol Primer",
-            "Alkohol Sekunder",
-            "Alkohol Tersier",
-            "Formaldehida",
-            "Aseton",
-            "Heksana",
-            "Etil Asetat",
-            "Asam Asetat"
-            ]
+# --- HALAMAN 6: POST TEST ---
+elif pilihan_halaman == "Post Test":
+    st.title("📝 Post Test")
+    st.write("---")
+    st.subheader("Jawablah pertanyaan di bawah ini dengan benar!")
+    
+    # Form untuk Post Test agar input tidak langsung mereset halaman
+    with st.form("post_test_form"):
+        q1 = st.radio(
+            "1. Senyawa organik manakah yang bereaksi positif dengan pereaksi Tollens membentuk cermin perak?",
+            ["Alkana", "Alkohol", "Aldehid", "Eter"]
         )
-
-    with right:
-
-        st.markdown("### ⚗ Pilih Pereaksi")
-
-        pereaksi=st.selectbox(
-            "",
-            [
-            "Oksidator (K2Cr2O7 / H+)",
-            "Pereaksi Lucas (ZnCl2 / HCl)",
-            "Pereaksi Tollens",
-            "Pereaksi Fehling",
-            "Uji Iodoform (I2 / NaOH)",
-            "Pereaksi Jones (CrO3 / H2SO4)",
-            "Pereaksi Schiff",
-            "Natrium Bisulfit (NaHSO3)",
-            "Hidroksilamin (NH2OH)",
-            "NaHCO3 + Uji Barit (Ba(OH)2)",
-            "Uji Ceric Nitrat"
-            ]
+        
+        q2 = st.radio(
+            "2. Ikatan apa yang menjadi ciri khas dari senyawa Alkena?",
+            ["Ikatan tunggal", "Ikatan rangkap dua", "Ikatan rangkap tiga", "Ikatan ionik"]
         )
-
-    prediksi=st.button(
-    "🔬 Jalankan Analisis",
-    use_container_width=True
-    )
-
-    hasil="(-) Tidak Bereaksi"
-    reaksi="Tidak ada persamaan reaksi"
-    pembahasan=""
-
-    # ==========================================
-    # TEMPEL BLOK LOGIKA REAKSI PUNYA KAMU
-    # mulai dari:
-    #
-    # if pereaksi=="..."
-    #
-    # sampai selesai
-    # ==========================================
-
-
-    if prediksi:
-
-        with st.spinner("Menganalisis..."):
-
-            bar=st.progress(0)
-
-            for i in range(100):
-
-                time.sleep(.01)
-
-                bar.progress(i+1)
-
-        st.success("Analisis selesai")
-
-        tab1,tab2,tab3,tab4=st.tabs([
-
-        "🧪 Hasil",
-
-        "⚗ Reaksi",
-
-        "📚 Analisis",
-
-        "📖 Teori"
-
-        ])
-
-        with tab1:
-
-            if "(+)" in hasil:
-
-                st.balloons()
-
-                st.markdown(
-                f"""
-                <div class='badge-pos'>
-                {hasil}
-                </div>
-                """,
-                unsafe_allow_html=True
-                )
-
-            else:
-
-                st.markdown(
-                f"""
-                <div class='badge-neg'>
-                {hasil}
-                </div>
-                """,
-                unsafe_allow_html=True
-                )
-
-            st.info(f"Sampel : {senyawa}")
-
-            st.info(f"Pereaksi : {pereaksi}")
-
-
-        with tab2:
-
-            st.markdown(
-            "### Persamaan Reaksi"
-            )
-
-            st.code(
-            reaksi
-            )
-
-
-        with tab3:
-
-            st.markdown(
-            pembahasan,
-            unsafe_allow_html=True
-            )
-
-
-        with tab4:
-
-            st.markdown("""
-
-### Ringkasan Pereaksi
-
-🧪 Tollens  
-Mendeteksi aldehid
-
-⚗ Fehling  
-Endapan merah bata
-
-🧫 Lucas  
-Membedakan alkohol
-
-🔬 Jones  
-Oksidasi alkohol
-
-🌈 Schiff  
-Warna magenta aldehid
-
-""")
-
-# ===================== INPUT ======================
-
-left,right=st.columns([1,1])
-
-with left:
-
-    st.markdown("### 🧫 Pilih Sampel")
-
-    senyawa=st.selectbox(
-        "",
-        [
-        "Alkohol Primer",
-        "Alkohol Sekunder",
-        "Alkohol Tersier",
-        "Formaldehida",
-        "Aseton",
-        "Heksana",
-        "Etil Asetat",
-        "Asam Asetat"
-        ]
-    )
-
-with right:
-
-    st.markdown("### ⚗ Pilih Pereaksi")
-
-    pereaksi=st.selectbox(
-        "",
-        [
-        "Oksidator (K2Cr2O7 / H+)",
-        "Pereaksi Lucas (ZnCl2 / HCl)",
-        "Pereaksi Tollens",
-        "Pereaksi Fehling",
-        "Uji Iodoform (I2 / NaOH)",
-        "Pereaksi Jones (CrO3 / H2SO4)",
-        "Pereaksi Schiff",
-        "Natrium Bisulfit (NaHSO3)",
-        "Hidroksilamin (NH2OH)",
-        "NaHCO3 + Uji Barit (Ba(OH)2)",
-        "Uji Ceric Nitrat"
-        ]
-    )
-
-prediksi=st.button(
-"🔬 Jalankan Analisis",
-use_container_width=True
-)
-
-hasil="(-) Tidak Bereaksi"
-reaksi="Tidak ada persamaan reaksi"
-pembahasan=""
-
-# ==========================================
-# TEMPEL SELURUH BLOK LOGIKA PUNYA KAMU
-#
-# mulai:
-#
-# if pereaksi=="..."
-#
-# sampai akhir
-#
-# ==========================================
-
-
-# ===================== OUTPUT ======================
-
-if prediksi:
-
-    with st.spinner(
-    "Menganalisis..."
-    ):
-
-        bar=st.progress(0)
-
-        for i in range(100):
-
-            time.sleep(.01)
-
-            bar.progress(i+1)
-
-    st.success("Analisis selesai")
-
-    tab1,tab2,tab3,tab4=st.tabs([
-
-    "🧪 Hasil",
-
-    "⚗ Reaksi",
-
-    "📚 Analisis",
-
-    "📖 Teori"
-
-    ])
-
-    with tab1:
-
-        if "(+)" in hasil:
-
-            st.balloons()
-
-            st.markdown(
-            f"""
-            <div class='badge-pos'>
-            {hasil}
-            </div>
-            """,
-            unsafe_allow_html=True
-            )
-
-        else:
-
-            st.markdown(
-            f"""
-            <div class='badge-neg'>
-            {hasil}
-            </div>
-            """,
-            unsafe_allow_html=True
-            )
-
-        st.write("")
-        st.info(
-        f"Sampel : {senyawa}"
-        )
-
-        st.info(
-        f"Pereaksi : {pereaksi}"
-        )
-
-    with tab2:
-
-        st.markdown("### Persamaan Reaksi")
-
-        st.code(
-        reaksi
-        )
-
-    with tab3:
-
-        st.markdown(
-        pembahasan,
-        unsafe_allow_html=True
-        )
-
-    with tab4:
-
-        st.markdown("""
-
-### Ringkasan Pereaksi
-
-🧪 Tollens  
-Mendeteksi aldehid
-
-⚗ Fehling  
-Endapan merah bata
-
-🧫 Lucas  
-Membedakan alkohol
-
-🔬 Jones  
-Oksidasi alkohol
-
-🌈 Schiff  
-Warna magenta aldehid
-
-""")
-
-st.write("---")
-
-st.markdown("""
-
-<div class='footer'>
-
-ChemReact © 2026
-
-Web Identifikasi Senyawa Organik Interaktif
-
-Dibuat menggunakan Python + Streamlit
-
-</div>
-
-""",unsafe_allow_html=True)
+        
+        # Tombol submit didalam form
+        submitted = st.form_submit_button("Kirim Jawaban")
+        
+        if submitted:
+            st.success("Jawaban Anda telah berhasil dikirim!")
+            # Logika pemeriksaan skor bisa ditambahkan di sini
+            skor = 0
+            if q1 == "Aldehid": skor += 50
+            if q2 == "Ikatan rangkap dua": skor += 50
+            st.write(f"Skor Anda: {skor}/100")
