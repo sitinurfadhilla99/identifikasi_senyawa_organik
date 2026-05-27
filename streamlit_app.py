@@ -159,27 +159,134 @@ elif pilihan_halaman == "📕 Bab 4: Turunan & Nitrogen":
 
 # ================= HALAMAN 6: POST TEST & PREDIKTOR =================
 elif pilihan_halaman == "🔬 Post Test & Prediktor":
+    import time
+
     st.title("🔬 Alat Prediktor Uji Laboratorium")
-    st.write("Gunakan simulasi di bawah ini untuk memprediksi hasil uji kualitatif senyawa organik pilihanmu secara instan.")
+    st.write("Gunakan simulasi di bawah ini untuk memprediksi hasil uji kualitatif senyawa organik pilihanmu.")
     st.write("---")
 
     with st.container(border=True):
-        st.markdown("#### ⚙️ Pengaturan Parameter Uji")
+        st.markdown("### ⚙️ Pengaturan Parameter Uji")
+
         col1, col2 = st.columns(2)
 
         with col1:
-            senyawa = st.selectbox("🎯 Pilih Senyawa Target:", [
-                "Alkohol Primer", "Alkohol Sekunder", "Alkohol Tersier", 
-                "Formaldehida", "Aseton", "Heksana", "Etil Asetat", "Asam Asetat"
-            ])
+            senyawa = st.selectbox(
+                "🎯 Pilih Senyawa Target:",
+                [
+                "Alkohol Primer",
+                "Alkohol Sekunder",
+                "Alkohol Tersier",
+                "Formaldehida",
+                "Aseton",
+                "Heksana",
+                "Etil Asetat",
+                "Asam Asetat"
+                ]
+            )
 
         with col2:
-            pereaksi = st.selectbox("🧪 Pilih Pereaksi / Indikator Lab:", [
-                "Oksidator (K2Cr2O7 / H+)", "Pereaksi Lucas (ZnCl2 / HCl)", 
-                "Pereaksi Tollens", "Pereaksi Fehling", "Uji Iodoform (I2 / NaOH)",
-                "Pereaksi Jones (CrO3 / H2SO4)", "Pereaksi Schiff", "Natrium Bisulfit (NaHSO3)",
-                "Hidroksilamin (NH2OH)", "NaHCO3 + Uji Barit (Ba(OH)2)", "Uji Ceric Nitrat"
-            ])
+            pereaksi = st.selectbox(
+                "🧪 Pilih Pereaksi / Indikator:",
+                [
+                "Oksidator (K2Cr2O7 / H+)",
+                "Pereaksi Lucas (ZnCl2 / HCl)",
+                "Pereaksi Tollens",
+                "Pereaksi Fehling",
+                "Uji Iodoform (I2 / NaOH)",
+                "Pereaksi Jones (CrO3 / H2SO4)",
+                "Pereaksi Schiff",
+                "Natrium Bisulfit (NaHSO3)",
+                "Hidroksilamin (NH2OH)",
+                "NaHCO3 + Uji Barit (Ba(OH)2)",
+                "Uji Ceric Nitrat"
+                ]
+            )
+
+    st.write("")
+
+    tombol=st.button(
+        "🔍 Analisis Sekarang",
+        use_container_width=True,
+        type="primary"
+    )
+
+    if tombol:
+
+        with st.spinner("Menganalisis sampel laboratorium..."):
+            time.sleep(2)
+
+        progress=st.progress(0)
+
+        for i in range(100):
+            time.sleep(0.01)
+            progress.progress(i+1)
+
+        st.success("✅ Analisis berhasil")
+
+        hasil="(-) Tidak Bereaksi"
+        reaksi="Tidak ada persamaan reaksi"
+        pembahasan=""
+
+        def alasan_negatif_umum(senyawa):
+            if senyawa=="Heksana":
+                return "Heksana sangat stabil dan tidak memiliki gugus fungsi reaktif"
+            if senyawa=="Etil Asetat":
+                return "Etil asetat adalah ester yang relatif stabil"
+            return f"{senyawa} tidak memiliki gugus fungsi yang sesuai"
+
+
+        # Oksidator
+        if pereaksi=="Oksidator (K2Cr2O7 / H+)":
+            if senyawa in ["Alkohol Primer","Alkohol Sekunder","Formaldehida"]:
+                hasil="(+) Warna jingga → hijau"
+                reaksi="Cr₂O₇²⁻ → Cr³⁺"
+                pembahasan="Senyawa mengalami oksidasi sehingga ion dikromat tereduksi menjadi Cr³⁺ hijau"
+            else:
+                pembahasan=alasan_negatif_umum(senyawa)
+
+
+        elif pereaksi=="Pereaksi Tollens":
+            if senyawa=="Formaldehida":
+                hasil="(+) Cermin perak terbentuk"
+                reaksi="RCHO + Ag+ → Ag"
+                pembahasan="Aldehid mereduksi ion perak menjadi logam perak"
+            else:
+                pembahasan="Tidak memiliki sifat pereduksi aldehid"
+
+
+        elif pereaksi=="Pereaksi Fehling":
+            if senyawa=="Formaldehida":
+                hasil="(+) Endapan merah bata"
+                reaksi="Cu²⁺ → Cu₂O"
+                pembahasan="Aldehid mereduksi Cu²⁺"
+            else:
+                pembahasan="Tidak bereaksi"
+
+
+        elif pereaksi=="Uji Iodoform (I2 / NaOH)":
+            if senyawa=="Aseton":
+                hasil="(+) Endapan kuning"
+                reaksi="CHI₃ terbentuk"
+                pembahasan="Aseton memiliki gugus metil keton"
+            else:
+                pembahasan="Tidak memiliki gugus metil keton"
+
+
+        st.markdown("---")
+        st.markdown("## 📊 Lembar Hasil Analisis")
+
+        st.info(f"Hasil : {hasil}")
+
+        st.code(reaksi)
+
+        with st.expander("📖 Lihat Pembahasan"):
+            st.write(pembahasan)
+
+        st.balloons()
+```
+
+Lalu salin logika pereaksi lain dari script lama kamu (Lucas, Jones, Schiff, Ceric Nitrat, dll) ke bagian bawahnya dengan pola yang sama.
 
     # ================= LOGIKA DATABASE REAKSI & ALASAN =================
     hasil = "(-) Tidak Bereaksi"
