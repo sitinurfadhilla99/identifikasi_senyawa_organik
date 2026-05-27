@@ -52,7 +52,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ==============================================================================
-# 3. SIDEBAR NAVIGASI (Sesuai Struktur Menu Baru)
+# 3. SIDEBAR NAVIGASI
 # ==============================================================================
 with st.sidebar:
     st.image("https://cdn-icons-png.flaticon.com/512/3022/3022607.png", width=75)
@@ -109,67 +109,30 @@ elif pilihan_halaman == "📘 BAB 1 HIDROKARBON":
     st.title("📘 BAB 1: HIDROKARBON")
     st.markdown("*Silakan isi atau edit bagian ini dengan materi lengkap Bab 1 Hidrokarbon.*")
     st.write("---")
-    
     st.info("📌 **Ringkasan Materi:** Hidrokarbon merupakan rumpun senyawa organik yang hanya tersusun atas atom karbon dan hidrogen.")
-    
-    # Disediakan struktur Tab modern agar pengisian materi terlihat rapi
-    tab_teori, tab_reaksi = st.tabs(["📚 Teori Dasar", "📝 Reaksi Penting"])
-    with tab_teori:
-        st.markdown("""
-        <div class="card-materi">
-            <h3>Klasifikasi Hidrokarbon</h3>
-            <p>Tuliskan penjelasan mengenai Alkana, Alkena, dan Alkuna di sini. Anda bisa menggunakan poin-poin:</p>
-            <ul>
-                <li><b>Alkana:</b> Hidrokarbon jenuh dengan ikatan tunggal.</li>
-                <li><b>Alkena:</b> Hidrokarbon tak jenuh dengan ikatan rangkap dua.</li>
-                <li><b>Alkuna:</b> Hidrokarbon tak jenuh dengan ikatan rangkap tiga.</li>
-            </ul>
-        </div>
-        """, unsafe_allow_html=True)
-    with tab_reaksi:
-        st.write("Tempat untuk materi reaksi kimia Hidrokarbon (Substitusi, Adisi, Eliminasi).")
 
 # --- BAB 2 ---
 elif pilihan_halaman == "📙 BAB 2 ALKOHOL, ETER, DAN FENOL":
     st.title("📙 BAB 2: ALKOHOL, ETER, DAN FENOL")
     st.markdown("*Silakan isi atau edit bagian ini dengan materi lengkap Bab 2.*")
     st.write("---")
-    
-    col_materi1, col_materi2 = st.columns(2)
-    with col_materi1:
-        with st.container(border=True):
-            st.markdown("### 🍷 Alkohol & Eter")
-            st.write("Isi konten penjelasan, perbedaan struktur senyawa, sifat fisik, dan titik didih senyawa alkohol alifatik serta senyawa eter di sini.")
-    with col_materi2:
-        with st.container(border=True):
-            st.markdown("### ⚗️ Senyawa Fenol")
-            st.write("Isi konten penjelasan mengenai keasaman fenol, strukturnya yang berikatan dengan cincin aromatik, dan aplikasinya di sini.")
 
 # --- BAB 3 ---
 elif pilihan_halaman == "📗 BAB 3 ALDEHID DAN KETON":
     st.title("📗 BAB 3: ALDEHID DAN KETON")
     st.markdown("*Silakan isi atau edit bagian ini dengan materi lengkap Bab 3.*")
     st.write("---")
-    
-    st.markdown("""
-    <div class="card-materi">
-        <h3>Gugus Karbonil (C=O)</h3>
-        <p>Tuliskan ulasan materi mengenai kemiripan fisik serta perbedaan daya reduksi yang kontras antara senyawa golongan Aldehid (Alkanal) dan Keton (Alkanon) di kolom ini.</p>
-    </div>
-    """, unsafe_allow_html=True)
 
 # --- BAB 4 ---
 elif pilihan_halaman == "📕 BAB 4 ASAM KARBOKSILAT DAN DERIVATNYA":
     st.title("📕 BAB 4: ASAM KARBOKSILAT DAN DERIVATNYA")
     st.markdown("*Silakan isi atau edit bagian ini dengan materi lengkap Bab 4.*")
     st.write("---")
-    
-    st.write("Isi materi mengenai Asam Alkanoat (Asam Karboksilat) beserta senyawa turunannya (Ester, Amida, Anhidrida Asam, Alkanoil Klorida) pada halaman web biasa ini.")
 
-# --- POST TEST (LOGIKA PREDIKTOR DIKUNCI DI SINI AGAR TIDAK ERROR DI HALAMAN LAIN) ---
+# --- POST TEST ---
 elif pilihan_halaman == "🔬 POST TEST":
     st.title("🔬 POST TEST: Alat Prediktor Uji Laboratorium")
-    st.write("Silakan pilih kombinasi Senyawa Organik dan Pereaksi di bawah ini untuk mengamati visualisasi hasil reaksinya secara teoritis.")
+    st.write("Silakan pilih kombinasi Senyawa Organik dan Pereaksi di bawah ini, lalu klik tombol analisis untuk melihat hasilnya.")
     st.write("---")
 
     # Kontainer Input Parameter Uji
@@ -190,6 +153,10 @@ elif pilihan_halaman == "🔬 POST TEST":
                 "Pereaksi Jones (CrO3 / H2SO4)", "Pereaksi Schiff", "Natrium Bisulfit (NaHSO3)",
                 "Hidroksilamin (NH2OH)", "NaHCO3 + Uji Barit (Ba(OH)2)", "Uji Ceric Nitrat"
             ])
+        
+        # Penambahan tombol pemicu analisis agar hasil tersembunyi di awal
+        st.write("")
+        tombol_analisis = st.button("Mulai Analisis Reaksi 🧪", type="primary", use_container_width=True)
 
     # ================= DATABASE LOGIKA & REAKSI KIMIA =================
     hasil = "(-) Tidak Bereaksi"
@@ -321,29 +288,31 @@ elif pilihan_halaman == "🔬 POST TEST":
             pembahasan = "❌ <b>Kenapa TIDAK bereaksi:</b> Uji ini spesifik untuk gugus hidroksil (-OH) alifatik bebas. Senyawa ini tidak memiliki gugus tersebut."
 
 
-    # ================= KOTAK OUTPUT KHUSUS HALAMAN POST TEST =================
-    st.markdown("### 📊 Lembar Hasil Analisis")
-    
-    # Deteksi warna dinamis untuk status (+) atau (-)
-    warna_teks_hasil = '#d35400' if '(+)' in hasil else '#7f8c8d'
-    
-    st.markdown(f"""
-    <div class="kotak-analisis">
-        <div class="label-analisis">Hasil Pengamatan (+)/(-)</div>
-        <p style="font-size: 1.25em; color: {warna_teks_hasil}; font-weight: bold; margin: 0;">{hasil}</p>
-    </div>
-    """, unsafe_allow_html=True)
+    # ================= LOGIKA MUNCUL SETELAH KLIK TOMBOL =================
+    if tombol_analisis:
+        st.write("")
+        st.markdown("### 📊 Lembar Hasil Analisis")
+        
+        # Deteksi warna dinamis untuk status (+) atau (-)
+        warna_teks_hasil = '#d35400' if '(+)' in hasil else '#7f8c8d'
+        
+        st.markdown(f"""
+        <div class="kotak-analisis">
+            <div class="label-analisis">Hasil Pengamatan (+)/(-)</div>
+            <p style="font-size: 1.25em; color: {warna_teks_hasil}; font-weight: bold; margin: 0;">{hasil}</p>
+        </div>
+        """, unsafe_allow_html=True)
 
-    st.markdown(f"""
-    <div class="kotak-analisis">
-        <div class="label-analisis">Persamaan Reaksi Kimia</div>
-        <p style="font-size: 1.1em; font-family: 'Courier New', monospace; white-space: pre-wrap; margin: 0; background: #ffffff; padding: 12px; border-radius: 5px; border: 1px solid #e2e8f0;">{reaksi}</p>
-    </div>
-    """, unsafe_allow_html=True)
+        st.markdown(f"""
+        <div class="kotak-analisis">
+            <div class="label-analisis">Persamaan Reaksi Kimia</div>
+            <p style="font-size: 1.1em; font-family: 'Courier New', monospace; white-space: pre-wrap; margin: 0; background: #ffffff; padding: 12px; border-radius: 5px; border: 1px solid #e2e8f0;">{reaksi}</p>
+        </div>
+        """, unsafe_allow_html=True)
 
-    st.markdown(f"""
-    <div class="kotak-analisis">
-        <div class="label-analisis">Pembahasan Teoritis & Analisis Mekanisme</div>
-        <p style="margin: 0; line-height: 1.6; color: #2d3748;">{pembahasan}</p>
-    </div>
-    """, unsafe_allow_html=True)
+        st.markdown(f"""
+        <div class="kotak-analisis">
+            <div class="label-analisis">Pembahasan Teoritis & Analisis Mekanisme</div>
+            <p style="margin: 0; line-height: 1.6; color: #2d3748;">{pembahasan}</p>
+        </div>
+        """, unsafe_allow_html=True)
