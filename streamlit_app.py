@@ -158,12 +158,6 @@ elif pilihan_halaman == "📕 Bab 4: Turunan & Nitrogen":
 
 
 # ================= HALAMAN 6: POST TEST & PREDIKTOR =================
-# Upgrade Script OrganicChem (Versi lebih interaktif)
-
-Ganti bagian HALAMAN 6 (Post Test & Prediktor) milikmu dengan versi ini:
-
-```python
-# ================= HALAMAN 6: POST TEST & PREDIKTOR =================
 elif pilihan_halaman == "🔬 Post Test & Prediktor":
     import time
 
