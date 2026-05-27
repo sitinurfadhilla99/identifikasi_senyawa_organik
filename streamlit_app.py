@@ -95,99 +95,26 @@ Memprediksi hasil reaksi, persamaan kimia, dan analisis senyawa.
 
 with st.sidebar:
 
-    st.title("📚 Dashboard Materi")
+    st.title("📚 Dashboard")
 
-    st.success("Kelompok 3")
+    menu=st.radio(
+        "Pilih Menu",
+        [
 
-    st.write("---")
+        "🏠 Home",
 
-    st.markdown("## Daftar Materi")
+        "🧪 BAB 1 HIDROKARBON",
 
-    st.markdown("""
-🧪 **BAB 1 HIDROKARBON**
+        "🍃 BAB 2 ALKOHOL, ETER DAN FENOL",
 
-• Alkana  
-• Alkena  
-• Alkuna  
-• Hidrokarbon Aromatik
-""")
+        "⚗ BAB 3 ALDEHID DAN KETON",
 
-    st.write("---")
+        "🧫 BAB 4 ASAM KARBOKSILAT",
 
-    st.markdown("""
-🍃 **BAB 2 ALKOHOL, ETER DAN FENOL**
+        "📝 POST TEST"
 
-• Alkohol Primer  
-• Alkohol Sekunder  
-• Alkohol Tersier  
-• Eter  
-• Fenol
-""")
-
-    st.write("---")
-
-    st.markdown("""
-⚗ **BAB 3 ALDEHID DAN KETON**
-
-• Formaldehida  
-• Aldehid Alifatik  
-• Aseton  
-• Keton
-""")
-
-    st.write("---")
-
-    st.markdown("""
-🧫 **BAB 4 ASAM KARBOKSILAT DAN DERIVATNYA**
-
-• Asam Asetat  
-• Ester  
-• Etil Asetat  
-• Turunan Asam Karboksilat
-""")
-
-    st.write("---")
-
-    st.markdown("""
-📝 **POST TEST**
-
-✔ Identifikasi Pereaksi
-
-✔ Gugus Fungsi
-
-✔ Prediksi Reaksi
-
-✔ Analisis Senyawa
-""")
-
-    st.write("---")
-
-    st.markdown("### Cara Penggunaan")
-
-    st.write("""
-
-1. Pilih senyawa
-
-2. Pilih pereaksi
-
-3. Klik analisis
-
-4. Lihat hasil
-
-5. Pelajari teori
-
-6. Kerjakan post test
-""")
-
-    st.write("---")
-
-    st.info("""
-🧪 ChemReact membantu
-pembelajaran kimia organik
-berbasis praktikum virtual
-dan identifikasi senyawa.
-""")
-
+        ]
+    )
 # ===================== METRIC ======================
 
 m1,m2,m3,m4=st.columns(4)
