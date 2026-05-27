@@ -1,141 +1,172 @@
 import streamlit as st
 import time
 
-# ================= KONFIGURASI HALAMAN =================
+# ===================== KONFIG ======================
 
 st.set_page_config(
     page_title="ChemReact",
     page_icon="🧪",
-    layout="centered"
+    layout="wide"
 )
 
-# ================= CSS =================
+# ===================== CSS ======================
 
 st.markdown("""
 <style>
 
 .stApp{
-background: linear-gradient(to bottom,#edf7ff,#f6fff6);
+background: linear-gradient(135deg,#edf8ff,#f7fff7);
 }
 
-.main-title{
-text-align:center;
+.hero{
+padding:35px;
+border-radius:25px;
+background: linear-gradient(90deg,#0f766e,#10b981);
+color:white;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+margin-bottom:25px;
+}
+
+.hero-title{
 font-size:42px;
-font-weight:bold;
-color:#0f766e;
-margin-bottom:0px;
+font-weight:800;
 }
 
-.sub{
-text-align:center;
-color:#666;
-margin-bottom:20px;
-font-size:17px;
+.hero-sub{
+font-size:18px;
+opacity:0.9;
 }
 
-.kotak{
+.card{
 background:white;
 padding:20px;
 border-radius:20px;
-box-shadow:0px 4px 15px rgba(0,0,0,.1);
+box-shadow:0 4px 20px rgba(0,0,0,0.08);
 margin-bottom:20px;
-border-left:8px solid #10b981;
 }
 
 .footer{
 text-align:center;
-font-size:13px;
+font-size:12px;
 color:gray;
-margin-top:30px;
+padding-top:30px;
+}
+
+.badge-pos{
+background:#dcfce7;
+padding:8px;
+border-radius:12px;
+color:#166534;
+font-weight:bold;
+}
+
+.badge-neg{
+background:#fee2e2;
+padding:8px;
+border-radius:12px;
+color:#991b1b;
+font-weight:bold;
 }
 
 </style>
-""", unsafe_allow_html=True)
+""",unsafe_allow_html=True)
 
-# ================= HEADER =================
+# ===================== HERO ======================
 
 st.markdown("""
-<div class='main-title'>
+
+<div class='hero'>
+
+<div class='hero-title'>
 🧪 ChemReact
 </div>
 
-<div class='sub'>
-Prediktor Uji Senyawa Organik Interaktif
+<div class='hero-sub'>
+Prediktor Uji Senyawa Organik Interaktif Berbasis Python & Streamlit
+<br>
+Memprediksi hasil reaksi, persamaan kimia, dan analisis senyawa.
 </div>
-""", unsafe_allow_html=True)
 
-# ================= SIDEBAR =================
+</div>
+
+""",unsafe_allow_html=True)
+
+# ===================== SIDEBAR ======================
 
 with st.sidebar:
 
-    st.title("🧪 Menu")
+    st.title("🧪 Dashboard")
 
-    st.info("""
-Website ini membantu:
+    st.success("Kelompok 3")
 
-✔ Prediksi hasil uji
+    st.write("---")
 
-✔ Persamaan reaksi
+    st.markdown("### Cara Penggunaan")
 
-✔ Analisis reaksi
+    st.write("""
+1. Pilih senyawa
 
-✔ Alasan spesifik
+2. Pilih pereaksi
+
+3. Klik prediksi
+
+4. Lihat hasil reaksi
 """)
 
     st.write("---")
 
-    st.success("Kelompok 3")
+    st.info("""
+Website membantu:
 
-# ================= METRIC =================
+✔ identifikasi
 
-c1,c2,c3=st.columns(3)
+✔ pembelajaran
 
-with c1:
+✔ simulasi praktikum
+
+✔ analisis reaksi
+""")
+
+# ===================== METRIC ======================
+
+m1,m2,m3,m4=st.columns(4)
+
+with m1:
     st.metric(
         "Senyawa",
         "8"
     )
 
-with c2:
+with m2:
     st.metric(
         "Pereaksi",
         "11"
     )
 
-with c3:
+with m3:
     st.metric(
-        "Jenis",
+        "Jenis Uji",
         "Organik"
     )
 
-st.write("---")
+with m4:
+    st.metric(
+        "Mode",
+        "Virtual Lab"
+    )
 
-# ================= TEORI =================
+st.write("")
 
-with st.expander("📖 Teori Singkat Pereaksi"):
+# ===================== INPUT ======================
 
-    st.write("""
-Tollens → identifikasi aldehid
+left,right=st.columns([1,1])
 
-Fehling → endapan merah bata
+with left:
 
-Lucas → membedakan alkohol primer, sekunder, tersier
-
-Jones → oksidasi alkohol
-
-Schiff → aldehid menghasilkan warna magenta
-
-Iodoform → mendeteksi metil keton
-""")
-
-# ================= INPUT =================
-
-col1,col2=st.columns(2)
-
-with col1:
+    st.markdown("### 🧫 Pilih Sampel")
 
     senyawa=st.selectbox(
-        "Pilih Senyawa",
+        "",
         [
         "Alkohol Primer",
         "Alkohol Sekunder",
@@ -148,10 +179,12 @@ with col1:
         ]
     )
 
-with col2:
+with right:
+
+    st.markdown("### ⚗ Pilih Pereaksi")
 
     pereaksi=st.selectbox(
-        "Pilih Pereaksi",
+        "",
         [
         "Oksidator (K2Cr2O7 / H+)",
         "Pereaksi Lucas (ZnCl2 / HCl)",
@@ -167,57 +200,56 @@ with col2:
         ]
     )
 
-
 prediksi=st.button(
-    "🔍 Prediksi Sekarang"
+"🔬 Jalankan Analisis",
+use_container_width=True
 )
 
-# ================= DEFAULT =================
-
 hasil="(-) Tidak Bereaksi"
-reaksi="Tidak ada persamaan reaksi."
+reaksi="Tidak ada persamaan reaksi"
 pembahasan=""
 
-# ===========================================
-# LETAKKAN SELURUH LOGIKA REAKSI PUNYA KAMU
-# MULAI:
+# ==========================================
+# TEMPEL SELURUH BLOK LOGIKA PUNYA KAMU
 #
-# if pereaksi=="....":
-# dst
+# mulai:
+#
+# if pereaksi=="..."
 #
 # sampai akhir
 #
-# JANGAN DIUBAH
-# ===========================================
+# ==========================================
 
 
-# ================= OUTPUT =================
+# ===================== OUTPUT ======================
 
 if prediksi:
 
     with st.spinner(
-        "Menganalisis reaksi..."
+    "Menganalisis..."
     ):
 
-        time.sleep(1)
+        bar=st.progress(0)
 
-    progress=st.progress(0)
+        for i in range(100):
 
-    for i in range(100):
+            time.sleep(.01)
 
-        time.sleep(.01)
+            bar.progress(i+1)
 
-        progress.progress(i+1)
+    st.success("Analisis selesai")
 
-    st.write("")
+    tab1,tab2,tab3,tab4=st.tabs([
 
-    tab1,tab2,tab3=st.tabs(
-        [
-        "🧪 Hasil",
-        "⚗ Reaksi",
-        "📚 Analisis"
-        ]
-    )
+    "🧪 Hasil",
+
+    "⚗ Reaksi",
+
+    "📚 Analisis",
+
+    "📖 Teori"
+
+    ])
 
     with tab1:
 
@@ -225,41 +257,85 @@ if prediksi:
 
             st.balloons()
 
-            st.success(
-                hasil
+            st.markdown(
+            f"""
+            <div class='badge-pos'>
+            {hasil}
+            </div>
+            """,
+            unsafe_allow_html=True
             )
 
         else:
 
-            st.error(
-                hasil
+            st.markdown(
+            f"""
+            <div class='badge-neg'>
+            {hasil}
+            </div>
+            """,
+            unsafe_allow_html=True
             )
+
+        st.write("")
+        st.info(
+        f"Sampel : {senyawa}"
+        )
+
+        st.info(
+        f"Pereaksi : {pereaksi}"
+        )
 
     with tab2:
 
+        st.markdown("### Persamaan Reaksi")
+
         st.code(
-            reaksi
+        reaksi
         )
 
     with tab3:
 
         st.markdown(
-            pembahasan,
-            unsafe_allow_html=True
+        pembahasan,
+        unsafe_allow_html=True
         )
 
+    with tab4:
 
-# ================= FOOTER =================
+        st.markdown("""
+
+### Ringkasan Pereaksi
+
+🧪 Tollens  
+Mendeteksi aldehid
+
+⚗ Fehling  
+Endapan merah bata
+
+🧫 Lucas  
+Membedakan alkohol
+
+🔬 Jones  
+Oksidasi alkohol
+
+🌈 Schiff  
+Warna magenta aldehid
+
+""")
 
 st.write("---")
 
 st.markdown("""
+
 <div class='footer'>
 
 ChemReact © 2026
 
-Web Identifikasi Senyawa Organik
-berbasis Python + Streamlit
+Web Identifikasi Senyawa Organik Interaktif
+
+Dibuat menggunakan Python + Streamlit
 
 </div>
-""", unsafe_allow_html=True)
+
+""",unsafe_allow_html=True)
