@@ -91,7 +91,7 @@ if pilihan_halaman == "🏠 HALAMAN UTAMA":
     st.subheader("💡 Tentang Platform Ini")
     st.write(
         "Platform ini dirancang khusus untuk membantu mahasiswa/siswa memahami materi teoritis "
-        "sekaligus visualisasi reaksi uji kualitatif senyawa organik di laboratorium secara interaktif."
+        "sekalikos visualisasi reaksi uji kualitatif senyawa organik di laboratorium secara interaktif."
     )
     
     st.markdown("---")
@@ -107,223 +107,286 @@ if pilihan_halaman == "🏠 HALAMAN UTAMA":
 
 # --- BAB 1 ---
 elif pilihan_halaman == "📘 BAB 1 HIDROKARBON":
-    st.title("📘 BAB 1: HIDROKARBON")
+    st.title("📘 BAB 1 — HIDROKARBON")
     st.write("---")
     
-    st.subheader("📌 Pengertian")
-    st.write("Hidrokarbon adalah senyawa organik yang tersusun dari atom karbon (C) dan hidrogen (H).")
+    st.markdown("""
+    ### Pengertian
+    Hidrokarbon adalah senyawa organik yang tersusun dari atom karbon (C) dan hidrogen (H).
     
-    st.subheader("🌿 Jenis Hidrokarbon")
+    ### Jenis Hidrokarbon
     
-    col1, col2 = st.columns(2)
-    with col1:
-        with st.container(border=True):
-            st.markdown("#### 1. Alkana (Jenuh)")
-            st.write("- **Ikatan:** Tunggal C–C")
-            st.latex(r"C_n H_{2n+2}")
-            st.markdown("**Sifat:**")
-            st.write("- Sukar bereaksi")
-            st.write("- Mudah terbakar")
-            st.write("- Tidak larut dalam air")
-            
-        with st.container(border=True):
-            st.markdown("#### 2. Alkena (Tidak Jenuh)")
-            st.write("- **Ikatan:** Memiliki ikatan rangkap dua (C=C)")
-            st.latex(r"C_n H_{2n}")
-            
-    with col2:
-        with st.container(border=True):
-            st.markdown("#### 3. Alkuna (Tidak Jenuh)")
-            st.write("- **Ikatan:** Memiliki ikatan rangkap tiga (C≡C)")
-            st.latex(r"C_n H_{2n-2}")
-            
-        with st.container(border=True):
-            st.markdown("#### 4. Senyawa Aromatik")
-            st.write("- **Contoh utama:** Benzena")
-            st.write("- Memiliki cincin aromatik yang konjugasi dan stabil.")
-
-    st.markdown("---")
-    st.subheader("🌡️ Sifat Fisika Hidrokarbon")
-    st.write("Semakin banyak jumlah atom C pada rantai molekul, maka:")
-    st.write("- Titik didih meningkat")
-    st.write("- Titik leleh meningkat")
-    st.info("💡 **Fase Zat Berdasarkan Panjang Rantai:** Alkana rantai pendek berupa **Gas**, rantai sedang berupa **Cair**, dan rantai panjang berupa **Padat**.")
-
-    st.markdown("---")
-    st.subheader("⚡ Sifat Kimia Hidrokarbon")
-    st.markdown("- **Reaksi Pembakaran:** Menghasilkan gas $CO_2$ dan uap air $H_2O$.")
-    st.markdown("- **Reaksi Substitusi:** Umumnya terjadi pada senyawa jenuh (Alkana).")
-    st.markdown("- **Reaksi Adisi:** Terjadi pada senyawa tidak jenuh (Alkena dan Alkuna) karena adanya pemutusan ikatan rangkap.")
-
-    st.markdown("---")
-    st.subheader("🔬 Uji Identifikasi Penting")
-    col_uji1, col_uji2 = st.columns(2)
-    with col_uji1:
-        st.success("**🧪 Uji Brom:** Digunakan untuk membedakan senyawa jenuh dan tidak jenuh. Jika warna brom hilang, berarti sampel merupakan senyawa tidak jenuh.")
-    with col_uji2:
-        st.success("**🧪 Uji Bayer:** Menggunakan larutan $KMnO_4$. Jika warna ungu khasnya hilang, mengindikasikan terdapatnya ikatan rangkap.")
+    **1. Alkana (jenuh)**
+    * Ikatan tunggal C–C
+    * Rumus umum: $C_nH_{2n+2}$
+    * Sifat:
+        * Sukar bereaksi
+        * Mudah terbakar
+        * Tidak larut dalam air
+        
+    **2. Alkena (tidak jenuh)**
+    * Memiliki ikatan rangkap dua (C=C)
+    * Rumus umum: $C_nH_{2n}$
+    
+    **3. Alkuna**
+    * Memiliki ikatan rangkap tiga (C≡C)
+    * Rumus umum: $C_nH_{2n-2}$
+    
+    **4. Senyawa Aromatik**
+    * Contoh utama: benzena
+    * Memiliki cincin aromatik yang stabil
+    
+    ---
+    
+    ### Sifat Fisika Hidrokarbon
+    Semakin banyak atom C:
+    * titik didih meningkat
+    * titik leleh meningkat
+    
+    * Alkana rantai pendek $\\rightarrow$ gas
+    * Rantai sedang $\\rightarrow$ cair
+    * Rantai panjang $\\rightarrow$ padat
+    
+    ---
+    
+    ### Sifat Kimia Hidrokarbon
+    * **Reaksi Pembakaran:** Menghasilkan $CO_2$ dan $H_2O$.
+    * **Reaksi Substitusi:** Terjadi pada alkana.
+    * **Reaksi Adisi:** Terjadi pada alkena dan alkuna karena adanya ikatan rangkap.
+    
+    ---
+    
+    ### Uji Penting
+    * **Uji Brom:** Digunakan untuk membedakan senyawa jenuh dan tidak jenuh. Warna brom hilang $\\rightarrow$ senyawa tidak jenuh
+    * **Uji Bayer:** Menggunakan $KMnO_4$. Warna ungu hilang $\\rightarrow$ terdapat ikatan rangkap
+    """)
 
 # --- BAB 2 ---
 elif pilihan_halaman == "📙 BAB 2 ALKOHOL, ETER, DAN FENOL":
-    st.title("📙 BAB 2: ALKOHOL, ETER, DAN FENOL")
+    st.title("📙 BAB 2 — ALKOHOL, ETER, DAN FENOL")
     st.write("---")
     
-    tab1, tab2, tab3 = st.tabs(["💧 1. Alkohol", "🧪 2. Eter", "🏛️ 3. Fenol"])
+    st.markdown("""
+    ### 1. Alkohol
     
-    with tab1:
-        st.subheader("Pengertian Alkohol")
-        st.write("Alkohol adalah senyawa organik yang memiliki gugus fungsi hidroksil (-OH) yang terikat pada atom karbon jenuh.")
-        st.latex(r"R-OH")
-        st.write("**Contoh:** Metanol, Etanol, Propanol.")
+    **Pengertian**
+    Alkohol adalah senyawa yang memiliki gugus hidroksil (-OH).
+    * Rumus umum: R-OH
+    * Contoh: Metanol, Etanol, Propanol
+    
+    ---
+    
+    **Klasifikasi Alkohol**
+    * **Alkohol Primer:** Gugus -OH terikat pada atom C primer.
+    * **Alkohol Sekunder:** Gugus -OH terikat pada atom C sekunder.
+    * **Alkohol Tersier:** Gugus -OH terikat pada atom C tersier.
+    
+    ---
+    
+    **Sifat Alkohol**
+    * **Sifat Fisika:**
+        * Alkohol rantai pendek larut dalam air
+        * Memiliki titik didih tinggi
+        * Beberapa memiliki bau khas
+    * **Sifat Kimia:**
+        * Mengalami oksidasi
+        * Mengalami substitusi
+        * Dapat membentuk ester
         
-        st.markdown("#### 🧱 Klasifikasi Alkohol")
-        c1, c2, c3 = st.columns(3)
-        with c1:
-            st.info("**Alkohol Primer:** Gugus -OH terikat pada atom C primer (C yang mengikat 1 atom C lain).")
-        with c2:
-            st.info("**Alkohol Sekunder:** Gugus -OH terikat pada atom C sekunder (C yang mengikat 2 atom C lain).")
-        with c3:
-            st.info("**Alkohol Tersier:** Gugus -OH terikat pada atom C tersier (C yang mengikat 3 atom C lain).")
-            
-        st.markdown("#### ⚙️ Sifat-Sifat Alkohol")
-        st.markdown("**Sifat Fisika:**\n- Alkohol rantai pendek larut dengan baik dalam air.\n- Memiliki titik didih tinggi akibat adanya ikatan hidrogen antarmolekul.\n- Beberapa senyawa memiliki aroma khas yang kuat.")
-        st.markdown("**Sifat Kimia:**\n- Dapat mengalami reaksi oksidasi.\n- Dapat mengalami substitusi gugus fungsi.\n- Dapat bereaksi dengan asam karboksilat membentuk ester.")
-        
-        st.markdown("#### 🔍 Uji Identifikasi Alkohol")
-        st.warning("- **Pereaksi Lucas:** Membedakan alkohol primer, sekunder, dan tersier. Alkohol tersier bereaksi paling cepat ditandai larutan menjadi keruh seketika.\n- **Pereaksi Jones:** Mendeteksi alkohol primer dan sekunder. Warna berubah dari oranye (jingga) menjadi hijau.\n- **Uji Iodoform:** Memberikan hasil positif pada alkohol tertentu (yang mengandung gugus metil karbinol) dan metil keton, ditandai endapan kuning.")
-
-    with tab2:
-        st.subheader("Pengertian Eter")
-        st.write("Eter adalah senyawa organik dengan gugus fungsi oksi (-O-) yang menjembatani dua gugus alkil.")
-        st.latex(r"R-O-R")
-        st.markdown("#### ⚙️ Sifat Eter")
-        st.write("- Memiliki titik didih yang jauh lebih rendah daripada alkohol dengan jumlah atom C yang sama.")
-        st.write("- Kurang larut di dalam air karena sifatnya yang cenderung non-polar.")
-        st.write("- Bersifat relatif inert sehingga banyak digunakan sebagai pelarut organik di laboratorium.")
-
-    with tab3:
-        st.subheader("Pengertian Fenol")
-        st.write("Fenol adalah senyawa aromatik yang memiliki gugus hidroksil (-OH) yang terikat langsung pada cincin benzena.")
-        st.markdown("#### ⚙️ Sifat Fenol")
-        st.write("- Bersifat asam lemah (namun lebih asam daripada alkohol alifatik).")
-        st.write("- Jauh lebih reaktif terhadap substitusi aromatik elektrofilik dibandingkan benzena murni.")
-        
-        st.markdown("#### 🔍 Uji Identifikasi Fenol")
-        st.warning("- **Uji $FeCl_3$:** Membentuk kompleks koordinasi berwarna unik (ungu, biru, atau hijau).\n- **Uji Brom:** Bereaksi cepat membentuk endapan putih dari senyawa tribromofenol.")
+    ---
+    
+    **Uji Identifikasi Alkohol**
+    * **Pereaksi Lucas:** Membedakan alkohol primer, sekunder, dan tersier. Tersier $\\rightarrow$ paling cepat keruh
+    * **Pereaksi Jones:** Mendeteksi alkohol primer dan sekunder. Warna berubah dari oranye menjadi hijau
+    * **Uji Iodoform:** Positif pada alkohol tertentu dan metil keton. Menghasilkan endapan kuning
+    
+    ---
+    
+    ### 2. Eter
+    
+    **Pengertian**
+    Eter adalah senyawa dengan gugus: R-O-R
+    
+    **Sifat Eter**
+    * Titik didih lebih rendah dari alkohol
+    * Kurang larut dalam air
+    * Banyak digunakan sebagai pelarut
+    
+    ---
+    
+    ### 3. Fenol
+    
+    **Pengertian**
+    Fenol adalah senyawa aromatik yang memiliki gugus -OH pada cincin benzena.
+    
+    **Sifat Fenol**
+    * Bersifat asam lemah
+    * Lebih reaktif dibanding alkohol
+    
+    ---
+    
+    **Uji Fenol**
+    * **Uji $FeCl_3$:** Membentuk warna ungu/biru/hijau
+    * **Uji Brom:** Membentuk endapan putih
+    """)
 
 # --- BAB 3 ---
 elif pilihan_halaman == "📗 BAB 3 ALDEHID DAN KETON":
-    st.title("📗 BAB 3: ALDEHID DAN KETON")
+    st.title("📗 BAB 3 — ALDEHID DAN KETON")
     st.write("---")
     
-    st.subheader("📌 Pengertian Umum")
-    st.write("Aldehid dan keton adalah rumpun senyawa organik yang sama-sama memiliki gugus fungsi karbonil:")
-    st.latex(r"C=O")
+    st.markdown("""
+    ### Pengertian
+    Aldehid dan keton adalah senyawa yang memiliki gugus karbonil: C=O
     
-    st.markdown("---")
-    col_ak1, col_ak2 = st.columns(2)
-    with col_ak1:
-        with st.container(border=True):
-            st.markdown("### 🧪 Aldehid (Alkanal)")
-            st.write("- **Posisi Gugus:** Gugus karbonil selalu terletak di **ujung rantai** karbon.")
-            st.write("- **Karakteristik:** Sangat mudah dioksidasi.")
-            st.write("- **Contoh:** Formaldehid (Metanal), Asetaldehid (Etanal).")
-            
-    with col_ak2:
-        with st.container(border=True):
-            st.markdown("### 🧪 Keton (Alkanon)")
-            st.write("- **Posisi Gugus:** Gugus karbonil terletak di **tengah rantai** (diapit atom C).")
-            st.write("- **Karakteristik:** Sulit dioksidasi oleh oksidator lemah.")
-            st.write("- **Contoh:** Aseton (Propanon).")
-
-    st.markdown("---")
-    st.subheader("🌡️ Sifat Fisika")
-    st.write("- Senyawa dengan suku rendah (rantai pendek) mudah larut dalam air.")
-    st.write("- Memiliki aroma/bau yang khas.")
-    st.write("- Memiliki titik didih yang lebih tinggi dibandingkan senyawa hidrokarbon padanannya karena sifat kutub gugus karbonil.")
-
-    st.markdown("---")
-    st.subheader("⚡ Sifat Kimia & Reaksi Adisi")
-    st.write("Karena sifat ikatan rangkap pada gugus karbonil, aldehid dan keton dapat mengalami reaksi adisi dengan:")
-    st.write("1. **Natrium Bisulfit ($NaHSO_3$)**")
-    st.write("2. **Alkohol**")
-    st.write("3. **Pereaksi Schiff**")
-
-    st.markdown("---")
-    st.subheader("🔬 Uji Identifikasi")
-    st.success("**1. Pereaksi Schiff:** Aldehid memberikan hasil warna merah muda/magenta, sedangkan Keton memberikan hasil negatif.")
-    st.success("**2. Pereaksi Na-Bisulfit:** Baik aldehid maupun keton reaktif dapat membentuk produk adisi berbentuk kristal/endapan putih.")
-    st.success("**3. Uji Daya Reduksi:** Aldehid memiliki atom hidrogen alfa karbonil sehingga dapat mereduksi pereaksi Tollens atau Fehling, sedangkan keton tidak dapat mereduksi pereaksi tersebut.")
+    ---
+    
+    ### Perbedaan Aldehid dan Keton
+    
+    **Aldehid**
+    * Gugus karbonil di ujung rantai
+    * Mudah dioksidasi
+    * Contoh: Formaldehid, Asetaldehid
+    
+    **Keton**
+    * Gugus karbonil di tengah rantai
+    * Sulit dioksidasi
+    * Contoh: Aseton
+    
+    ---
+    
+    ### Sifat Fisika
+    * Suku rendah mudah larut dalam air
+    * Memiliki bau khas
+    * Titik didih lebih tinggi dari hidrokarbon
+    
+    ---
+    
+    ### Sifat Kimia
+    **Reaksi Adisi**  
+    Dapat bereaksi dengan:
+    * Na-bisulfit
+    * Alkohol
+    * Pereaksi Schiff
+    
+    ---
+    
+    ### Uji Identifikasi
+    * **Pereaksi Schiff:** Aldehid $\\rightarrow$ warna ungu/merah muda, Keton $\\rightarrow$ negatif
+    * **Pereaksi Na-Bisulfit:** Membentuk kristal/endapan
+    * **Uji Daya Reduksi:** Aldehid dapat mereduksi pereaksi tertentu, sedangkan keton tidak.
+    """)
 
 # --- BAB 4 ---
 elif pilihan_halaman == "📕 BAB 4 ASAM KARBOKSILAT DAN DERIVATNYA":
-    st.title("📕 BAB 4: ASAM KARBOKSILAT DAN DERIVATNYA")
+    st.title("📕 BAB 4 — ASAM KARBOKSILAT DAN DERIVATNYA")
     st.write("---")
     
-    st.subheader("📌 1. Asam Karboksilat")
-    st.write("Asam karboksilat adalah senyawa organik yang mengandung gugus fungsi karboksil **-COOH**.")
-    st.latex(r"R-COOH")
-    st.write("**Contoh Senyawa:** Asam format (asam semut), Asam asetat (asam cuka), Asam propionat.")
+    st.markdown("""
+    ### 1. Asam Karboksilat
     
-    col_sifat1, col_sifat2 = st.columns(2)
-    with col_sifat1:
-        with st.container(border=True):
-            st.markdown("#### 🌡️ Sifat Fisika")
-            st.write("- Memiliki aroma menyengat yang khas.")
-            st.write("- Rantai pendek dapat larut dengan baik di dalam air.")
-            st.write("- Memiliki titik didih relatif tinggi karena kemampuannya membentuk dimer ikatan hidrogen.")
-    with col_sifat2:
-        with st.container(border=True):
-            st.markdown("#### ⚡ Sifat Kimia")
-            st.write("- Bersifat sebagai asam lemah.")
-            st.write("- Bereaksi dengan basa untuk menghasilkan garam organik.")
-            st.write("- Bereaksi dengan senyawa alkohol menghasilkan senyawa ester.")
-
-    st.markdown("#### 🔄 Reaksi Penting: Esterifikasi")
-    st.write("Reaksi antara asam karboksilat dengan alkohol yang dikatalisis oleh asam untuk membentuk ester dan air. Reaksi ini menghasilkan aroma harum khas ester.")
-    st.latex(r"CH_3COOH + C_2H_5OH \rightarrow CH_3COOC_2H_5 + H_2O")
+    **Pengertian**  
+    Asam karboksilat adalah senyawa organik yang memiliki gugus karboksil: **-COOH**  
+    * Rumus umum: R-COOH
+    * Contoh: Asam format, Asam asetat, Asam propionat
     
-    st.markdown("#### 🔍 Uji Karakteristik Asam Karboksilat")
-    st.info("- **Uji Lakmus:** Larutannya bersifat asam sehingga mengubah lakmus biru menjadi merah.\n- **Reaksi dengan $NaHCO_3$:** Terjadi reaksi penetralan asam yang melepas gelembung gas karbondioksida ($CO_2$).")
-
-    st.markdown("---")
-    st.subheader("🧩 2. Derivat Asam Karboksilat")
-    st.write("Derivat (turunan) asam karboksilat adalah senyawa organik di mana gugus **-OH** dari karboksil telah digantikan oleh gugus nukleofil lain.")
+    ---
     
-    d1, d2, d3, d4 = st.columns(4)
-    with d1:
-        with st.container(border=True):
-            st.markdown("##### **Ester**")
-            st.latex(r"R-COOR'")
-            st.caption("Berbau harum buah-buahan. Banyak digunakan sebagai komponen utama parfum, perasa makanan (flavor), dan pelarut.")
-    with d2:
-        with st.container(border=True):
-            st.markdown("##### **Amida**")
-            st.latex(r"R-CONH_2")
-            st.caption("Memiliki gaya antarmolekul kuat dan titik didih tinggi. Banyak diaplikasikan pada industri serat plastik dan sintesis obat.")
-    with d3:
-        with st.container(border=True):
-            st.markdown("##### **Anhidrida Asam**")
-            st.write("Terbentuk dari dehidrasi dua molekul asam karboksilat. Bersifat sangat reaktif dan mudah terhidrolisis kembali oleh air.")
-    with d4:
-        with st.container(border=True):
-            st.markdown("##### **Asil Halida**")
-            st.latex(r"R-COCl")
-            st.caption("Senyawa turunan yang paling reaktif. Sangat mudah terhidrolisis dan melepaskan gas asam halida.")
-
-    st.markdown("#### 📉 Perbandingan Reaktivitas Derivat")
-    st.write("Urutan tingkat reaktivitas turunan asam karboksilat terhadap substitusi asil nukleofilik:")
-    st.warning("⚠️ **Asil Halida > Anhidrida Asam > Ester > Amida** (Semakin reaktif senyawa, maka semakin mudah mengalami reaksi substitusi).")
-
-    st.markdown("#### 💼 Tabel Fungsi dan Kegunaan")
-    data_kegunaan = {
-        "Nama Senyawa": ["Asam asetat", "Ester", "Amida", "Asil halida"],
-        "Kegunaan Utama": ["Cuka makanan / pengawet", "Parfum dan esens perasa makanan", "Pembuatan komponen plastik dan industri obat", "Bahan perantara sintesis organik"]
+    **Sifat Asam Karboksilat**
+    * **Sifat Fisika:**
+        * Memiliki bau khas
+        * Larut dalam air untuk rantai pendek
+        * Titik didih tinggi karena ikatan hidrogen
+    * **Sifat Kimia:**
+        * Bersifat asam lemah
+        * Bereaksi dengan basa membentuk garam
+        * Bereaksi dengan alkohol membentuk ester
+        
+    ---
+    
+    **Reaksi Penting**  
+    * **Reaksi Esterifikasi:**  
+      Asam karboksilat + alkohol $\\rightarrow$ ester + air  
+      Contoh:  
+      $CH_3COOH + C_2H_5OH \\rightarrow CH_3COOC_2H_5 + H_2O$  
+      Reaksi ini menghasilkan aroma harum khas ester.
+      
+    ---
+    
+    **Uji Asam Karboksilat**
+    * **Uji Lakmus:** Mengubah lakmus biru menjadi merah
+    * **Reaksi dengan $NaHCO_3$:** Menghasilkan gelembung gas $CO_2$.
+    
+    ---
+    
+    ### 2. Derivat Asam Karboksilat
+    
+    **Pengertian**  
+    Derivat asam karboksilat adalah turunan asam karboksilat yang gugus -OH nya diganti gugus lain.
+    
+    ---
+    
+    **Jenis Derivat**
+    
+    **1. Ester**
+    * Rumus: R-COOR
+    * Sifat:
+        * Berbau harum
+        * Banyak digunakan sebagai: parfum, perasa makanan, pelarut
+    * Pembentukan: Melalui reaksi esterifikasi.
+    
+    ---
+    
+    **2. Amida**
+    * Rumus: $R-CONH_2$
+    * Sifat:
+        * Memiliki titik didih tinggi
+        * Digunakan dalam industri plastik dan obat
+        
+    ---
+    
+    **3. Anhidrida Asam**
+    * Terbentuk dari dua molekul asam karboksilat.
+    * Sifat:
+        * Mudah bereaksi dengan air
+        * Bersifat reaktif
+        
+    ---
+    
+    **4. Asil Halida**
+    * Contoh: R-COCl
+    * Sifat:
+        * Sangat reaktif
+        * Mudah terhidrolisis
+        
+    ---
+    
+    **Perbandingan Reaktivitas Derivat**  
+    Urutan reaktivitas:  
+    Asil Halida > Anhidrida > Ester > Amida  
+    Semakin reaktif $\\rightarrow$ semakin mudah mengalami substitusi.
+    
+    ---
+    
+    **Fungsi dan Kegunaan**
+    """)
+    
+    # Menampilkan tabel kegunaan menggunakan format bawaan Streamlit
+    data_fungsi = {
+        "Senyawa": ["Asam asetat", "Ester", "Amida", "Asil halida"],
+        "Kegunaan": ["Cuka makanan", "Parfum dan perasa", "Plastik dan obat", "Sintesis organik"]
     }
-    st.table(data_kegunaan)
-
-    st.markdown("#### 🏁 Kesimpulan Bab 4")
-    st.success("Asam karboksilat dicirikan oleh gugus fungsi -COOH yang bersifat asam lemah serta dapat disintesis menjadi turunannya melalui penggantian gugus -OH. Derivatnya meliputi ester, amida, anhidrida, dan asil halida yang memiliki peran besar dalam kehidupan sehari-hari maupun sintesis industri.")
+    st.table(data_fungsi)
+    
+    st.markdown("""
+    ---
+    
+    ### Kesimpulan Bab 4
+    * Asam karboksilat memiliki gugus fungsi -COOH.
+    * Bersifat asam lemah dan dapat membentuk ester.
+    * Derivat asam karboksilat meliputi: ester, amida, anhidrida, asil halida.
+    * Banyak digunakan dalam industri makanan, parfum, obat, dan kimia organik.
+    """)
 
 # --- POST TEST ---
 elif pilihan_halaman == "🔬 POST TEST":
@@ -446,7 +509,7 @@ elif pilihan_halaman == "🔬 POST TEST":
 
     # 8. NA-BISULFIT
     elif pereaksi == "Natrium Bisulfit (NaHSO3)":
-        if font_senyawa := senyawa in ["Formaldehida", "Aseton"]:
+        if senyawa in ["Formaldehida", "Aseton"]:
             hasil = "(+) Endapan Putih Kristalin"
             reaksi = "R₂C=O + NaHSO₃ → R₂C(OH)SO₃Na↓ (kristal putih)"
             pembahasan = "✅ <b>Kenapa bereaksi:</b> Gugus karbonil polar (C=O) pada aldehid/keton mengalami adisi nukleofilik oleh ion bisulfit yang kaya elektron, menghasilkan produk garam yang sukar larut."
@@ -476,7 +539,7 @@ elif pilihan_halaman == "🔬 POST TEST":
         if senyawa in ["Alkohol Primer", "Alkohol Sekunder", "Alkohol Tersier"]:
             hasil = "(+) Warna kuning menjadi merah/merah muda"
             reaksi = "R-OH + [Ce(NO₃)₆]²⁻ → [Ce(OR)(NO₃)₅]²⁻ (kompleks merah) + HNO₃"
-            pembahasan = "✅ <b>Kenapa bereaksi:</b> Pasangan elektron bebas pada oksigen di gugus hidroksil (-OH) alkohol mendesak ligan nitkat dan berikatan koordinasi dengan logam Cerium pusat, menghasilkan perubahan serapan cahaya (menjadi merah)."
+            pembahasan = "✅ <b>Kenapa bereaksi:</b> Pasangan elektron bebas pada oksigen di gugus hidroksil (-OH) alkohol mendesak ligan nitrat dan berikatan koordinasi dengan logam Cerium pusat, menghasilkan perubahan serapan cahaya (menjadi merah)."
         elif senyawa == "Asam Asetat":
             pembahasan = "❌ <b>Kenapa TIDAK bereaksi:</b> Meskipun punya OH, gugus karboksil sangat menarik elektron (electron-withdrawing), sehingga atom oksigennya kurang nukleofilik untuk berkoordinasi dengan Cerium."
         else:
