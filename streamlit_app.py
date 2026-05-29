@@ -41,6 +41,13 @@ st.markdown("""
         margin-bottom: 30px;
         box-shadow: 0 4px 15px rgba(56, 239, 125, 0.2);
     }
+    /* Badge Warna untuk Reaksi Kimia */
+    .badge-ungu { background-color: #8e44ad; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold; }
+    .badge-cokelat { background-color: #795548; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold; }
+    .badge-merah { background-color: #e74c3c; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold; }
+    .badge-kuning { background-color: #f1c40f; color: black; padding: 2px 8px; border-radius: 4px; font-weight: bold; }
+    .badge-jingga { background-color: #e67e22; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold; }
+    .badge-hijau { background-color: #2ecc71; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold; }
     </style>
 """, unsafe_allow_html=True)
 
@@ -87,7 +94,7 @@ if pilihan_halaman == "🏠 HALAMAN UTAMA":
     )
     
     st.markdown("---")
-    st.markdown("""
+    st.info("""
     ### **RANGKUMAN MATERI PRAKTIKUM KIMIA ORGANIK**
     Silakan gunakan menu navigasi di sebelah kiri untuk membaca kesatuan rangkuman materi praktikum Kimia Organik yang komprehensif, menggabungkan seluruh informasi sifat fisika, sifat kimia, serta persamaan reaksi lengkap dari keempat bab secara sistematis.
     """)
@@ -97,225 +104,196 @@ elif pilihan_halaman == "📘 BAB I. HIDROKARBON":
     st.title("📘 BAB I. HIDROKARBON")
     st.write("---")
     
-    st.markdown("""
-    Hidrokarbon adalah senyawa organik yang seluruh strukturnya hanya tersusun atas unsur karbon (C) dan hidrogen (H). Berdasarkan jenis ikatannya, hidrokarbon alifatik dibagi menjadi hidrokarbon jenuh (alkana) dan tidak jenuh (alkena dan alkuna). Sementara itu, hidrokarbon aromatik memiliki rantai siklik konjugasi yang sangat stabil.
+    st.info("💡 **Definisi:** Hidrokarbon adalah senyawa organik yang seluruh strukturnya hanya tersusun atas unsur karbon (C) dan hidrogen (H). Berdasarkan jenis ikatannya, hidrokarbon alifatik dibagi menjadi hidrokarbon jenuh (alkana) dan tidak jenuh (alkena dan alkuna). Sementara itu, hidrokarbon aromatik memiliki rantai siklik konjugasi yang sangat stabil.")
+    
+    # Menggunakan Tabs untuk tata letak yang rapi
+    tab1, tab2 = st.tabs(["📊 A. Sifat Fisika", "🧪 B. Sifat Kimia & Reaksi Identifikasi"])
+    
+    with tab1:
+        st.markdown("### **Karakteristik Fisika Hidrokarbon**")
+        
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.success("**Wujud Zat (Suhu Kamar)**\n\n"
+                       "* **Suku rendah ($C_1 - C_4$):** Gas (Metana, etana, etena, etuna).\n"
+                       "* **Suku sedang ($C_5 - C_{17}$):** Cair (Pentana, heksana, benzena).\n"
+                       "* **Suku tinggi ($\ge C_{18}$):** Padat (Parafin padat).")
+        with col2:
+            st.warning("**Kelarutan & Densitas**\n\n"
+                       "* **Kelarutan:** Bersifat nonpolar, sehingga **tidak larut dalam air** (polar). Larut baik dalam pelarut nonpolar seperti $CHCl_3$, $CCl_4$, atau eter.\n"
+                       "* **Densitas:** Memiliki massa jenis lebih kecil dari air. Lapisan hidrokarbon selalu berada di **bagian atas**.")
+        with col3:
+            st.info("**Titik Didih & Leleh**\n\n"
+                     "* Meningkat seiring bertambahnya massa molekul.\n"
+                     "* Untuk isomer dengan jumlah C sama, **rantai lurus** memiliki titik didih lebih tinggi daripada rantai bercabang karena luas permukaan kontak antarmolekul lebih besar.")
 
-    #### **A. Sifat Fisika Hidrokarbon**
-
-    * **Wujud Zat (pada suhu kamar):** * Suku rendah ($C_1 - C_4$) berwujud gas (contoh: metana, etana, etena, etuna).
-      * Suku sedang ($C_5 - C_{17}$) berwujud cair (contoh: pentana, heksana, benzena).
-      * Suku tinggi ($\ge C_{18}$) berwujud padat (contoh: parafin padat).
-    * **Kelarutan:** Bersifat nonpolar, sehingga tidak larut dalam air (pelarut polar). Hidrokarbon larut dengan baik dalam sesama pelarut organik nonpolar seperti kloroform ($CHCl_3$), karbon tetraklorida ($CCl_4$), atau eter.
-    * **Titik Didih dan Titik Leleh:** Meningkat seiring bertambahnya massa molekul (panjang rantai karbon). Untuk isomer dengan jumlah atom karbon sama, senyawa dengan rantai lurus memiliki titik didih lebih tinggi dibandingkan rantai bercabang karena luas permukaan kontak antarmolekul yang lebih besar.
-    * **Densitas:** Memiliki massa jenis (densitas) yang lebih kecil daripada air. Jika dicampur dengan air, lapisan hidrokarbon akan selalu berada di bagian atas.
-
-    #### **B. Sifat Kimia & Reaksi Identifikasi Hidrokarbon**
-
-    **1. Alkana (Hidrokarbon Jenuh)**
-    * Disebut juga parafin (afinitas kecil) karena sangat tidak reaktif terhadap sebagian besar pereaksi seperti asam kuat, basa kuat, dan oksidator pada suhu kamar.
-    * **Uji Iodo (Substitusi Halogen):** Alkana dapat bereaksi dengan halogen ($I_2$) melalui reaksi substitusi radikal bebas dengan bantuan paparan sinar ultraviolet (UV) atau pemanasan tinggi. Reaksi berjalan lambat dan ditandai dengan memudarnya warna ungu dari iodium.
-    """)
-    
-    st.latex(r"\text{CH}_4 + \text{I}_2 \xrightarrow{\text{Sinar UV / }\Delta} \text{CH}_3\text{I} + \text{HI}")
-    
-    st.markdown("""
-    **2. Alkena dan Alkuna (Hidrokarbon Tidak Jenuh)**
-    * Sangat reaktif karena memiliki ikatan rangkap ($\text{C}=\text{C}$ atau $\text{C}\equiv\text{C}$) yang kaya akan elektron, sehingga mudah mengalami pemutusan ikatan rangkap (adisi).
-    * **Uji Adisi Iodium:** Mengadisi halogen pada ikatan rangkap tanpa memerlukan bantuan sinar UV. Ditandai dengan warna ungu iodium yang memudar/hilang seketika.
-    """)
-    
-    st.latex(r"\text{R-CH}=\text{CH-R} + \text{I}_2 \rightarrow \text{R-CH(I)-CH(I)-R}")
-    
-    st.markdown("""
-    * **Uji Bayer (Oksidasi dengan $KMnO_4$):** Alkena atau alkuna dioksidasi oleh larutan kalium permanganat encer dalam suasana netral/basa menghasilkan senyawa glikol. Uji positif ditandai dengan hilangnya warna ungu $KMnO_4$ dan terbentuknya endapan cokelat $MnO_2$.
-    """)
-    
-    st.latex(r"3\text{CH}_2=\text{CH}_2 + 2\text{KMnO}_4 + 4\text{H}_2\text{O} \rightarrow 3\text{HO-CH}_2\text{-CH}_2\text{-OH} + 2\text{MnO}_2\downarrow \text{ (contoh cokelat)} + 2\text{KOH}")
-    
-    st.markdown("""
-    **3. Benzena (Hidrokarbon Aromatik)**
-    * Memiliki struktur siklik dengan elektron pi yang terdelokalisasi (resonansi) yang memenuhi aturan Hückel ($4n+2$), membuat intinya sangat stabil.
-    * **Uji Bakar:** Ketika dibakar dengan api langsung pada cawan porselin, benzena menghasilkan nyala api berminyak disertai jelaga hitam yang sangat tebal. Jelaga ini terbentuk akibat tingginya persentase kadar karbon dalam benzena dibandingkan kadar hidrogennya.
-    """)
-    
-    st.latex(r"\text{Benzena} + \text{O}_2 \rightarrow \text{C}_{(s)\text{ [Jelaga hitam]}} + \text{CO} + \text{H}_2\text{O (Pembakaran tidak sempurna)}")
-    
-    st.markdown("""
-    * **Reaksi Substitusi Elektrofilik:** Benzena sukar mengalami adisi melainkan cenderung mengalami reaksi substitusi. Contohnya adalah reaksi Nitrasi menggunakan campuran asam nitrat pekat dan asam sulfat pekat sebagai katalis.
-    """)
-    
-    st.latex(r"\text{C}_6\text{H}_6 + \text{HNO}_3 \xrightarrow{\text{H}_2\text{SO}_4\text{ pekat}} \text{C}_6\text{H}_5\text{NO}_2 \text{ (Nitrobenzena)} + \text{H}_2\text{O}")
+    with tab2:
+        st.markdown("### **Uji Identifikasi Laboratorium**")
+        
+        with st.expander("1. Alkana (Hidrokarbon Jenuh)", expanded=True):
+            st.write("Disebut juga parafin (afinitas kecil) karena sangat tidak reaktif terhadap asam kuat, basa kuat, dan oksidator pada suhu kamar.")
+            st.markdown("**Uji Iodo (Substitusi Halogen):** Bereaksi dengan halogen ($I_2$) melalui substitusi radikal bebas bantuan sinar UV atau pemanasan. Ditandai dengan memudarnya warna <span class='badge-ungu'>Ungu</span> iodium secara lambat.", unsafe_allow_html=True)
+            st.latex(r"\text{CH}_4 + \text{I}_2 \xrightarrow{\text{Sinar UV / }\Delta} \text{CH}_3\text{I} + \text{HI}")
+            
+        with st.expander("2. Alkena dan Alkuna (Hidrokarbon Tidak Jenuh)", expanded=True):
+            st.write("Sangat reaktif karena memiliki ikatan rangkap ($\text{C}=\text{C}$ atau $\text{C}\equiv\text{C}$) yang kaya elektron, mudah mengalami adisi.")
+            st.markdown("**Uji Adisi Iodium:** Mengadisi halogen pada ikatan rangkap tanpa bantuan sinar UV. Warna <span class='badge-ungu'>Ungu</span> iodium memudar/hilang seketika.", unsafe_allow_html=True)
+            st.latex(r"\text{R-CH}=\text{CH-R} + \text{I}_2 \rightarrow \text{R-CH(I)-CH(I)-R}")
+            
+            st.markdown("---")
+            st.markdown("**Uji Bayer (Oksidasi dengan $KMnO_4$):** Dioksidasi oleh larutan kalium permanganat encer (netral/basa) menghasilkan glikol. Uji positif ditandai hilangnya warna <span class='badge-ungu'>Ungu</span> $KMnO_4$ dan terbentuk endapan <span class='badge-cokelat'>Cokelat</span> $MnO_2$.", unsafe_allow_html=True)
+            st.latex(r"3\text{CH}_2=\text{CH}_2 + 2\text{KMnO}_4 + 4\text{H}_2\text{O} \rightarrow 3\text{HO-CH}_2\text{-CH}_2\text{-OH} + 2\text{MnO}_2\downarrow + 2\text{KOH}")
+            
+        with st.expander("3. Benzena (Hidrokarbon Aromatik)", expanded=True):
+            st.write("Memiliki struktur siklik konjugasi yang memenuhi aturan Hückel ($4n+2$), membuat intinya sangat stabil.")
+            st.markdown("**Uji Bakar:** Ketika dibakar di cawan porselin, menghasilkan nyala api berminyak disertai **jelaga hitam yang sangat tebal** karena persentase kadar karbon benzena sangat tinggi.", unsafe_allow_html=True)
+            st.latex(r"\text{Benzena} + \text{O}_2 \rightarrow \text{C}_{(s)\text{ [Jelaga hitam]}} + \text{CO} + \text{H}_2\text{O}")
+            
+            st.markdown("---")
+            st.markdown("**Reaksi Substitusi Elektrofilik:** Sukar mengalami adisi, cenderung substitusi. Contohnya reaksi Nitrasi menggunakan campuran asam nitrat pekat dan katalis asam sulfat pekat.")
+            st.latex(r"\text{C}_6\text{H}_6 + \text{HNO}_3 \xrightarrow{\text{H}_2\text{SO}_4\text{ pekat}} \text{C}_6\text{H}_5\text{NO}_2 + \text{H}_2\text{O}")
 
 # --- BAB II ---
 elif pilihan_halaman == "📙 BAB II. ALKOHOL, ETER, DAN FENOL":
     st.title("📙 BAB II. ALKOHOL, ETER, DAN FENOL")
     st.write("---")
     
-    st.markdown("""
-    #### **A. Sifat Fisika & Klasifikasi**
+    tab1, tab2, tab3 = st.tabs(["📊 A. Sifat Fisika & Klasifikasi", "🧪 B. Reaksi Kimia Alkohol & Eter", "🔬 C. Reaksi Kimia Fenol"])
+    
+    with tab1:
+        st.markdown("### **Klasifikasi & Sifat Fisika**")
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.info("**Alkohol ($R-OH$)**\n\n"
+                    "Turunan alkana dengan gugus hidroksil ($-OH$). Dibagi menjadi $1^\circ$, $2^\circ$, dan $3^\circ$. Suku rendah mudah larut dalam air (ikatan hidrogen). Kelarutan turun jika rantai C memanjang, dan naik jika struktur bercabang banyak.")
+        with col2:
+            st.warning("**Eter ($R^1-O-R^2$)**\n\n"
+                       "Isomer fungsional alkohol. Titik didih jauh lebih rendah karena tidak ada ikatan hidrogen antar-sesama eter. Kelarutan mirip alkohol karena O eter bisa menerima ikatan hidrogen dari air.")
+        with col3:
+            st.success("**Fenol ($C_6H_5OH$)**\n\n"
+                       "Gugus $-OH$ terikat langsung pada cincin benzena. Berbentuk padatan/hablur pada suhu kamar, sedikit larut dalam air, bersifat **asam lemah** karena ion fenoksidanya distabilkan oleh resonansi.")
 
-    * **Alkohol ($R-OH$):** Turunan alkana di mana satu atau lebih atom H digantikan oleh gugus hidroksil ($-OH$). Alkohol diklasifikasikan menjadi alkohol primer ($1^\circ$), sekunder ($2^\circ$), dan tersier ($3^\circ$) berdasarkan jenis atom C yang mengikat gugus $-OH$. Alkohol suku rendah mudah larut dalam air karena sanggup membentuk ikatan hidrogen dengan molekul air. Kelarutan berkurang seiring bertambah panjangnya rantai karbon, namun meningkat pada struktur yang bercabang banyak.
-    * **Eter ($R^1-O-R^2$):** Isomer fungsional dari alkohol. Titik didih eter jauh lebih rendah dibandingkan alkohol isomernya karena tidak memiliki ikatan hidrogen antar-sesama molekul eter. Kelarutannya dalam air mirip dengan alkohol karena oksigen pada eter masih bisa menerima ikatan hidrogen dari air.
-    * **Fenol ($C_6H_5OH$):** Senyawa hidrokarbon aromatik yang mengikat gugus fungsi $-OH$ langsung pada cincin benzena. Berapa padatan/hablur pada suhu kamar, sedikit larut dalam air, dan larutannya bersifat asam lemah karena ion fenoksida yang terbentuk distabilkan oleh resonansi.
+    with tab2:
+        st.markdown("### **Identifikasi Alkohol dan Eter**")
+        
+        st.markdown("**1. Pereaksi Lucas (Substitusi Gugus $-OH$ oleh Cl):** Membedakan jenis alkohol lewat kecepatan reaksi menggunakan $HCl$ pekat + katalis $ZnCl_2$.")
+        st.write("* **Alkohol $3^\circ$:** Bereaksi seketika (larutan langsung keruh/terbentuk 2 lapisan).")
+        st.write("* **Alkohol $2^\circ$:** Bereaksi dalam waktu 5-10 menit dengan sedikit pemanasan.")
+        st.write("* **Alkohol $1^\circ$:** Tidak bereaksi pada suhu kamar.")
+        st.latex(r"\text{R}_3\text{C-OH} + \text{HCl} \xrightarrow{\text{ZnCl}_2} \text{R}_3\text{C-Cl}\downarrow \text{ (Keruh)} + \text{H}_2\text{O}")
+        
+        st.markdown("---")
+        st.markdown("**2. Pereaksi Jones (Oksidasi Alkohol):** Menggunakan $CrO_3$ dalam $H_2SO_4$ pekat. Hasil positif ditandai perubahan warna dari <span class='badge-jingga'>Jingga</span> menjadi <span class='badge-hijau'>Hijau</span>.", unsafe_allow_html=True)
+        st.write("* Alkohol $1^\circ$ $\rightarrow$ Aldehida $\rightarrow$ Asam Karboksilat.")
+        st.write("* Alkohol $2^\circ$ $\rightarrow$ Keton.")
+        st.write("* Alkohol $3^\circ$ $\rightarrow$ Tidak dapat dioksidasi (warna tetap jingga).")
+        st.latex(r"\text{R-CH}_2\text{-OH} \xrightarrow{\text{CrO}_3/\text{H}_2\text{SO}_4} \text{R-COOH [Jingga }\rightarrow\text{ Hijau]}")
+        
+        st.markdown("---")
+        st.markdown("**3. Uji Iodoform:** Khusus metil alfa alkohol ($\text{CH}_3\text{-CH(OH)-}$). Direaksikan dengan $I_2$ + $NaOH$ membentuk endapan <span class='badge-kuning'>Kuning</span> kristal iodoform ($CHI_3$) yang berbau khas.", unsafe_allow_html=True)
+        st.latex(r"\text{R-CH(OH)-CH}_3 + 4\text{I}_2 + 6\text{NaOH} \rightarrow \text{R-COONa} + \text{CHI}_3\downarrow + 5\text{NaI} + 5\text{H}_2\text{O}")
+        
+        st.markdown("---")
+        st.markdown("**4. Pereaksi Ceric Ammonium Nitrate (CAN):** Alkohol membentuk senyawa kompleks koordinasi berwarna <span class='badge-merah'>Merah Cerah</span>, eter memberikan hasil negatif.", unsafe_allow_html=True)
+        st.latex(r"\text{ROH} + [ \text{Ce(NO}_3)_6 ]^{2-} \rightarrow [ \text{Ce(OR)(NO}_3)_5 ]^{2-} \text{ (Kompleks Merah)} + \text{HNO}_3")
 
-    #### **B. Persamaan Reaksi Kimia Alkohol & Eter**
-
-    **1. Pereaksi Lucas (Substitusi Gugus $-OH$ oleh Cl):** Menggunakan campuran $HCl$ pekat dan katalis $ZnCl_2$ untuk membedakan jenis alkohol berdasarkan kecepatan reaksinya.
-    * Alkohol $3^\circ$: Bereaksi seketika (larutan langsung keruh/terbentuk dua lapisan terpisah).
-    * Alkohol $2^\circ$: Bereaksi dalam waktu 5–10 menit dengan sedikit pemanasan.
-    * Alkohol $1^\circ$: Tidak bereaksi pada suhu kamar.
-    """)
-    
-    st.latex(r"\text{R}_3\text{C-OH (Alkohol }3^\circ) + \text{HCl} \xrightarrow{\text{ZnCl}_2} \text{R}_3\text{C-Cl}\downarrow \text{ (Keruh/Alkil klorida)} + \text{H}_2\text{O}")
-    
-    st.markdown("""
-    **2. Pereaksi Jones (Oksidasi Alkohol):** Menggunakan kromium trioksida ($CrO_3$) dalam asam sulfat pekat. Uji positif ditandai dengan perubahan warna pereaksi dari jingga menjadi hijau.
-    * Alkohol $1^\circ$ dioksidasi menjadi Aldehida, lalu berlanjut menjadi Asam Karboksilat.
-    * Alkohol $2^\circ$ dioksidasi menjadi Keton.
-    * Alkohol $3^\circ$ tidak dapat dioksidasi (warna tetap jingga).
-    """)
-    
-    st.latex(r"\text{R-CH}_2\text{-OH (Alkohol }1^\circ) \xrightarrow{\text{CrO}_3/\text{H}_2\text{SO}_4} \text{R-COOH (Asam Karboksilat) [Jingga }\rightarrow\text{ Hijau]}")
-    st.latex(r"\text{R}_2\text{CH-OH (Alkohol }2^\circ) \xrightarrow{\text{CrO}_3/\text{H}_2\text{SO}_4} \text{R}_2\text{C}=\text{O (Keton) [Jingga }\rightarrow\text{ Hijau]}")
-    
-    st.markdown("""
-    **3. Uji Iodoform:** Khusus untuk alkohol yang memiliki gugus metil alfa ($\text{CH}_3\text{-CH(OH)-}$), seperti etanol atau 2-propanol. Bereaksi dengan $I_2$ dalam suasana basa ($NaOH$) membentuk endapan kuning kristal iodoform ($CHI_3$) yang berbau khas.
-    """)
-    
-    st.latex(r"\text{R-CH(OH)-CH}_3 + 4\text{I}_2 + 6\text{NaOH} \rightarrow \text{R-COONa} + \text{CHI}_3\downarrow \text{ (Endapan Kuning)} + 5\text{NaI} + 5\text{H}_2\text{O}")
-    
-    st.markdown("""
-    **4. Pereaksi Ceric Ammonium Nitrate (CAN):** Alkohol bereaksi membentuk senyawa kompleks koordinasi berwarna merah cerah, sedangkan eter memberikan hasil negatif (warna tetap).
-    """)
-    
-    st.latex(r"\text{ROH} + [ \text{Ce(NO}_3)_6 ]^{2-} \rightarrow [ \text{Ce(OR)(NO}_3)_5 ]^{2-} \text{ (Kompleks Merah)} + \text{HNO}_3")
-    
-    st.markdown("""
-    #### **C. Persamaan Reaksi Kimia Fenol**
-
-    **1. Reaksi dengan Basa Kuat ($NaOH$):** Membentuk garam natrium fenoksida yang larut dalam air (menunjukkan sifat asam lemah fenol).
-    """)
-    
-    st.latex(r"\text{C}_6\text{H}_5\text{OH} + \text{NaOH} \rightarrow \text{C}_6\text{H}_5\text{ONa (Natrium fenoksida)} + \text{H}_2\text{O}")
-    
-    st.markdown("""
-    **2. Uji Besi(III) Klorida ($FeCl_3$):** Ion fenoksida membentuk senyawa kompleks koordinasi dengan besi(III) yang menghasilkan warna ungu tua/kehitaman yang khas.
-    """)
-    
-    st.latex(r"6\text{C}_6\text{H}_5\text{OH} + \text{FeCl}_3 \rightarrow [\text{Fe}(\text{OC}_6\text{H}_5)_6]^{3-} \text{ (Kompleks Ungu)} + 3\text{H}^+ + 3\text{Cl}^-")
-    
-    st.markdown("""
-    **3. Reaksi Substitusi Aromatik (Trisubstitusi Air Brom):** Cincin aromatik pada fenol sangat reaktif karena efek aktivasi dari gugus $-OH$. Jika direaksikan dengan air brom ($Br_2/H_2O$) yang bersifat polar, akan langsung mengalami trisubstitusi membentuk endapan putih 2,4,6-tribromofenol.
-    """)
-    
-    st.latex(r"\text{C}_6\text{H}_5\text{OH} + 3\text{Br}_2\text{ (dalam H}_2\text{O)} \rightarrow \text{C}_6\text{H}_2\text{Br}_3\text{OH}\downarrow \text{ (Endapan Putih)} + 3\text{HBr}")
+    with tab3:
+        st.markdown("### **Identifikasi Spesifik Fenol**")
+        
+        st.markdown("**1. Reaksi dengan Basa Kuat ($NaOH$):** Membentuk garam natrium fenoksida yang larut air (bukti fenol asam lemah).")
+        st.latex(r"\text{C}_6\text{H}_5\text{OH} + \text{NaOH} \rightarrow \text{C}_6\text{H}_5\text{ONa} + \text{H}_2\text{O}")
+        
+        st.markdown("---")
+        st.markdown("**2. Uji Besi(III) Klorida ($FeCl_3$):** Membentuk kompleks koordinasi dengan Besi(III) menghasilkan warna <span class='badge-ungu'>Ungu Tua / Kehitaman</span> yang khas.", unsafe_allow_html=True)
+        st.latex(r"6\text{C}_6\text{H}_5\text{OH} + \text{FeCl}_3 \rightarrow [\text{Fe}(\text{OC}_6\text{H}_5)_6]^{3-} \text{ (Kompleks Ungu)} + 3\text{H}^+ + 3\text{Cl}^-")
+        
+        st.markdown("---")
+        st.markdown("**3. Reaksi Substitusi Aromatik (Trisubstitusi Air Brom):** Cincin fenol sangat reaktif karena efek aktivasi gugus $-OH$. Direaksikan dengan air brom ($Br_2/H_2O$) langsung membentuk **endapan putih** 2,4,6-tribromofenol.")
+        st.latex(r"\text{C}_6\text{H}_5\text{OH} + 3\text{Br}_2 \rightarrow \text{C}_6\text{H}_2\text{Br}_3\text{OH}\downarrow \text{ (Putih)} + 3\text{HBr}")
 
 # --- BAB III ---
 elif pilihan_halaman == "📗 BAB III. ALDEHID DAN KETON":
     st.title("📗 BAB III. ALDEHID DAN KETON")
     st.write("---")
     
-    st.markdown("""
-    Aldehida ($\text{R-CHO}$) dan keton ($\text{R-CO-R'}$) adalah senyawa organik isomer fungsional yang sama-sama memiliki gugus fungsi karbonil ($\text{C}=\text{O}$). Perbedaan utamanya terletak pada atom C karbonil aldehida yang mengikat minimal satu atom hidrogen, sedangkan pada keton terikat pada dua gugus alkil/aril.
+    st.info("💡 **Kunci Perbedaan:** Aldehida ($\text{R-CHO}$) dan keton ($\text{R-CO-R'}$) adalah isomer fungsional bersisi gugus karbonil ($\text{C}=\text{O}$). Karbonil aldehida mengikat minimal satu atom hidrogen (bersifat reduktor kuat), sedangkan keton terikat pada dua gugus alkil/aril (tidak memiliki daya pereduksi).")
+    
+    tab1, tab2, tab3 = st.tabs(["📊 A. Sifat Fisika", "🧪 B. Reaksi Adisi Karbonil", "🔬 C. Reaksi Diferensiasi (Daya Reduksi)"])
+    
+    with tab1:
+        st.markdown("### **Sifat Fisika Aldehida & Keton**")
+        st.markdown("* **Metanal (Formaldehida):** Suku paling rendah, berwujud gas pada suhu kamar, bau menyengat.\n"
+                    "* **Aldehida Suku Rendah Lain:** Cairan, aromanya semakin harum (aroma buah) seiring bertambah panjangnya rantai C.\n"
+                    "* **Keton Suku Rendah (Aseton/Propanon):** Cairan encer, mudah larut air, mudah menguap, memiliki aroma yang segar.")
 
-    #### **A. Sifat Fisika**
+    with tab2:
+        st.markdown("### **Reaksi Adisi pada Gugus Karbonil**")
+        
+        st.markdown("**1. Adisi Natrium Bisulfit ($NaHSO_3$):** Reaksi adisi nukleofilik pada aldehida atau metil keton menghasilkan senyawa aduk berupa **kristal padat berwarna putih** yang sukar larut.")
+        st.latex(r"\text{R-CHO} + \text{NaHSO}_3 \rightarrow \text{R-CH(OH)-SO}_3\text{Na (Kristal Putih)}")
+        
+        st.markdown("---")
+        st.markdown("**2. Pembentukan Hemiasetal dan Asetal:** Reaksi reversibel gugus karbonil dengan alkohol dalam suasana asam gas $HCl$.")
+        st.latex(r"\text{R-CHO} + \text{R'OH} \xrightarrow{\text{HCl}} \text{R-CH(OH)(OR') (Hemiasetal)}")
+        st.latex(r"\text{R-CH(OH)(OR')} + \text{R'OH} \xrightarrow{\text{HCl}} \text{R-CH(OR')}_2 + \text{H}_2\text{O}")
 
-    Metanal (formaldehida) merupakan suku paling rendah yang berwujud gas pada suhu kamar dengan bau menyengat. Suku-suku aldehida rendah lainnya berupa cairan dengan bau yang semakin harum (seperti aroma buah-buahan) seiring bertambah panjangnya rantai C. Keton suku rendah (seperti aseton atau propanon) berupa cairan encer, mudah larut dalam air, mudah menguap, dan memiliki aroma yang segar.
-
-    #### **B. Reaksi Adisi Karbonil**
-
-    **1. Adisi Natrium Bisulfit ($NaHSO_3$):** Reaksi adisi nukleofilik pada gugus karbonil aldehida atau metil keton menghasilkan senyawa aduk berupa kristal padat berwarna putih yang sukar larut.
-    """)
-    
-    st.latex(r"\text{R-CHO} + \text{NaHSO}_3 \rightarrow \text{R-CH(OH)-SO}_3\text{Na (Kristal Putih)}")
-    
-    st.markdown("""
-    **2. Pembentukan Hemiasetal dan Asetal:** Reaksi reversibel gugus karbonil dengan alkohol dalam suasana asam gas $HCl$.
-    """)
-    
-    st.latex(r"\text{R-CHO (Aldehida)} + \text{R'OH} \xrightarrow{\text{HCl}} \text{R-CH(OH)(OR') (Hemiasetal)}")
-    st.latex(r"\text{R-CH(OH)(OR')} + \text{R'OH} \xrightarrow{\text{HCl}} \text{R-CH(OR')}_2 \text{ (Asetal)} + \text{H}_2\text{O}")
-    
-    st.markdown("""
-    #### **C. Reaksi Diferensiasi (Uji Daya Reduksi Aldehida)**
-
-    Aldehida bertindak sebagai reduktor kuat karena keberadaan atom hidrogen pada karbon karbonilnya, sedangkan keton tidak memiliki daya pereduksi dan memberikan hasil negatif pada uji-uji berikut:
-
-    **1. Uji Tollens (Cermin Perak):** Aldehida mengeksidasi dirinya menjadi asam karboksilat sekaligus mereduksi ion kompleks perak beramoniak $[\text{Ag(NH}_3)_2]^+$ menjadi logam perak mendesak yang menempel di dinding tabung reaksi membentuk cermin perak.
-    """)
-    
-    st.latex(r"\text{R-CHO} + 2[\text{Ag(NH}_3)_2]^+ + 3\text{OH}^- \rightarrow \text{R-COO}^- + 2\text{Ag}\downarrow \text{ (Cermin Perak)} + 4\text{NH}_3 + 2\text{H}_2\text{O}")
-    
-    st.markdown("""
-    **2. Uji Fehling:** Aldehida mereduksi ion $\text{Cu}^{2+}$ yang berada dalam bentuk kompleks tartrat basa, menghasilkan endapan merah bata kupro oksida ($\text{Cu}_2\text{O}$).
-    """)
-    
-    st.latex(r"\text{R-CHO} + 2\text{Cu}^{2+} + 5\text{OH}^- \rightarrow \text{R-COO}^- + \text{Cu}_2\text{O}\downarrow \text{ (Endapan Merah Bata)} + 3\text{H}_2\text{O}")
-    
-    st.markdown("""
-    **3. Uji Benedict:** Memiliki prinsip kerja yang serupa dengan Uji Fehling, namun ion $\text{Cu}^{2+}$ dikomplekskan oleh sitrat. Pereaksi berada dalam kondisi alkalis lemah untuk menghasilkan endapan merah bata $\text{Cu}_2\text{O}$ saat direaksikan dengan aldehida.
-    """)
-    
-    st.latex(r"\text{R-CHO} + 2\text{Cu}^{2+}\text{(sitrat)} + 5\text{OH}^- \rightarrow \text{R-COO}^- + \text{Cu}_2\text{O}\downarrow \text{ (Endapan Merah Bata)} + 3\text{H}_2\text{O}")
+    with tab3:
+        st.markdown("### **Uji Pembeda Aldehida (Positif) dan Keton (Negatif)**")
+        
+        st.markdown("**1. Uji Tollens (Cermin Perak):** Mereduksi ion kompleks perak beramoniak $[\text{Ag(NH}_3)_2]^+$ menjadi logam perak murni yang menempel di dinding tabung reaksi membentuk **cermin perak**.")
+        st.latex(r"\text{R-CHO} + 2[\text{Ag(NH}_3)_2]^+ + 3\text{OH}^- \rightarrow \text{R-COO}^- + 2\text{Ag}\downarrow \text{ (Cermin Perak)} + 4\text{NH}_3 + 2\text{H}_2\text{O}")
+        
+        st.markdown("---")
+        st.markdown("**2. Uji Fehling:** Mereduksi ion $\text{Cu}^{2+}$ (kompleks tartrat basa) menghasilkan endapan <span class='badge-merah'>Merah Bata</span> kupro oksida ($\text{Cu}_2\text{O}$).", unsafe_allow_html=True)
+        st.latex(r"\text{R-CHO} + 2\text{Cu}^{2+} + 5\text{OH}^- \rightarrow \text{R-COO}^- + \text{Cu}_2\text{O}\downarrow + 3\text{H}_2\text{O}")
+        
+        st.markdown("---")
+        st.markdown("**3. Uji Benedict:** Serupa dengan Fehling, namun ion $\text{Cu}^{2+}$ dikomplekskan oleh sitrat dalam kondisi alkalis lemah. Menghasilkan endapan <span class='badge-merah'>Merah Bata</span> $\text{Cu}_2\text{O}$ saat direaksikan dengan aldehida.", unsafe_allow_html=True)
+        st.latex(r"\text{R-CHO} + 2\text{Cu}^{2+}\text{(sitrat)} + 5\text{OH}^- \rightarrow \text{R-COO}^- + \text{Cu}_2\text{O}\downarrow + 3\text{H}_2\text{O}")
 
 # --- BAB IV ---
 elif pilihan_halaman == "📕 BAB IV. ASAM KARBOKSILAT DAN DERIVATNYA":
     st.title("📕 BAB IV. ASAM KARBOKSILAT DAN DERIVATNYA")
     st.write("---")
     
-    st.markdown("""
-    Asam karboksilat memiliki gugus fungsi karboksil ($-COOH$), senyawa gabungan dari gugus karbonil dan hidroksil. Derivat atau turunan asam karboksilat (seperti ester, halida asam/asil halida, anhidrida asam, dan amida) terbentuk ketika gugus $-OH$ pada karboksilat digantikan oleh nukleofil lain.
+    st.info("💡 **Definisi:** Asam karboksilat memiliki gugus fungsi karboksil ($-COOH$), gabungan gugus karbonil dan hidroksil. Derivatnya (ester, halida asam, anhidrida asam, amida) terbentuk ketika gugus $-OH$ digantikan oleh nukleofil lain.")
+    
+    tab1, tab2, tab3 = st.tabs(["📊 A. Sifat Fisika", "🧪 B. Reaksi Kimia Asam Karboksilat", "🔬 C. Identifikasi Derivat (Uji Asam Hidroksamat)"])
+    
+    with tab1:
+        st.markdown("### **Karakteristik Fisika**")
+        st.markdown("* **Kelarutan:** Rantai pendek ($C_1 - C_4$) larut sangat baik dalam air karena gugus $-COOH$ membentuk ikatan hidrogen kuat (**dimer**). Kelarutan turun jika rantai alkil nonpolar semakin panjang.\n"
+                    "* **Titik Didih:** Relatif tinggi dibandingkan senyawa organik lain dengan berat molekul setara akibat asosiasi ikatan hidrogen yang kuat.")
 
-    #### **A. Sifat Fisika**
+    with tab2:
+        st.markdown("### **Reaksi Kimia Asam Karboksilat**")
+        
+        st.markdown("**1. Reaksi dengan Basa Kuat ($NaOH$):** Menghasilkan garam karboksilat yang larut air.")
+        st.latex(r"\text{R-COOH} + \text{NaOH} \rightarrow \text{R-COONa} + \text{H}_2\text{O}")
+        
+        st.markdown("---")
+        st.markdown("**2. Reaksi dengan Basa Lemah ($NaHCO_3$):** Mengalami deprotonasi menghasilkan pelepasan **gas karbon dioksida secara cepat (*effervescence*)**. Uji ini membedakan asam karboksilat dengan fenol (fenol tidak bereaksi).")
+        st.latex(r"\text{R-COOH} + \text{NaHCO}_3 \rightarrow \text{R-COONa} + \text{H}_2\text{O} + \text{CO}_2\uparrow")
+        st.write("Jika gas $CO_2$ dialirkan ke air barit ($\text{Ba(OH)}_2$), terbentuk **endapan putih** barium karbonat ($\text{BaCO}_3$):")
+        st.latex(r"\text{CO}_2 + \text{Ba(OH)}_2 \rightarrow \text{BaCO}_3\downarrow + \text{H}_2\text{O}")
+        
+        st.markdown("---")
+        st.markdown("**3. Esterifikasi Fischer:** Kondensasi antara asam karboksilat dengan alkohol dibantu katalis asam kuat pekat ($\text{H}_2\text{SO}_4$) menghasilkan senyawa ester yang **beraroma wangi khas buah-buahan**.")
+        st.latex(r"\text{R-COOH} + \text{R'-OH} \xrightarrow{\text{H}_2\text{SO}_4\text{, }\Delta} \text{R-COOR'} + \text{H}_2\text{O}")
+        
+        st.markdown("---")
+        st.markdown("**4. Oksidasi Asam Karboksilat:** Asam karboksilat tertentu yang masih mengikat hidrogen bebas (asam format/oksalat) dapat dioksidasi oleh $KMnO_4$ dalam $H_2SO_4$ menuju biloks maksimal +4 berupa gas $CO_2$.")
+        st.latex(r"\text{R-COOH} \xrightarrow{\text{KMnO}_4 / \text{H}_2\text{SO}_4} \text{CO}_2\uparrow + \text{H}_2\text{O}")
 
-    Asam karboksilat rantai pendek ($C_1 - C_4$) memiliki kelarutan yang sangat baik di dalam air karena kemampuan gugus $-COOH$ membentuk ikatan hidrogen antarmolekul yang kuat membentuk dimer. Kelarutan senyawa akan semakin menurun seiring dengan bertambah tingginya bobot molekul (rantai alkil nonpolar semakin panjang). Titik didih asam karboksilat relatif tinggi dibandingkan senyawa organik lain dengan berat molekul setara.
-
-    #### **B. Persamaan Reaksi Kimia Asam Karboksilat**
-
-    **1. Reaksi dengan Basa Kuat ($NaOH$):** Menghasilkan garam karboksilat yang larut dan air.
-    """)
-    
-    st.latex(r"\text{R-COOH} + \text{NaOH} \rightarrow \text{R-COONa} + \text{H}_2\text{O}")
-    
-    st.markdown("""
-    **2. Reaksi dengan Basa Lemah ($NaHCO_3$):** Asam karboksilat tergolong cukup asam untuk mendeprotonasi natrium bikarbonat, menghasilkan garam, air, dan pelepasan gas karbon dioksida secara cepat (effervescence). Reaksi ini membedakan asam karboksilat dengan fenol (fenol tidak bereaksi dengan $NaHCO_3$).
-    """)
-    
-    st.latex(r"\text{R-COOH} + \text{NaHCO}_3 \rightarrow \text{R-COONa} + \text{H}_2\text{O} + \text{CO}_2\uparrow \text{ (Gas)}")
-    
-    st.markdown("""
-    Jika gas $CO_2$ yang terbentuk dialirkan ke dalam air barit ($\text{Ba(OH)}_2$), akan terbentuk endapan putih barium karbonat ($\text{BaCO}_3$):
-    """)
-    
-    st.latex(r"\text{CO}_2 + \text{Ba(OH)}_2 \rightarrow \text{BaCO}_3\downarrow \text{ (Endapan Putih)} + \text{H}_2\text{O}")
-    
-    st.markdown("""
-    **3. Esterifikasi Fischer:** Reaksi kondensasi antara asam karboksilat dengan alkohol dibantu katalis asam kuat pekat ($\text{H}_2\text{SO}_4$) menghasilkan senyawa ester yang beraroma wangi khas seperti buah-buahan.
-    """)
-    
-    st.latex(r"\text{R-COOH} + \text{R'-OH} \xrightarrow{\text{H}_2\text{SO}_4\text{, }\Delta} \text{R-COOR'} \text{ (Ester beraroma)} + \text{H}_2\text{O}")
-    
-    st.markdown("""
-    **4. Oksidasi Asam Karboksilat:** Atom C karbonil pada asam karboksilat mengemban bilangan oksidasi +3. Asam karboksilat tertentu yang masih mengikat hidrogen bebas (seperti asam format atau asam oksalat) dapat dioksidasi lebih lanjut oleh oksidator kuat ($KMnO_4$ dalam $H_2SO_4$) menuju bilangan oksidasi maksimal +4 berupa gas $CO_2$.
-    """)
-    
-    st.latex(r"\text{R-COOH} \xrightarrow{\text{KMnO}_4 / \text{H}_2\text{SO}_4} \text{CO}_2\uparrow + \text{H}_2\text{O}")
-    
-    st.markdown("""
-    #### **C. Persamaan Reaksi Identifikasi Derivat Asam Karboksilat (Uji Asam Hidroksamat)**
-
-    Derivat asam karboksilat (contohnya ester) terlebih dahulu dikondensasikan dengan hidroksilamin ($\text{NH}_2\text{OH}$) menghasilkan senyawa asam hidroksamat. Sifat kimia khas dari asam hidroksamat adalah kemampuannya mengkelat logam besi membentuk senyawa kompleks besi(III) hidroksamat yang menghasilkan warna ungu intens saat ditambahkan larutan $\text{FeCl}_3$.
-
-    *Pembentukan Asam Hidroksamat dari Ester:*
-    """)
-    
-    st.latex(r"\text{R-COOR'} \text{ (Ester)} + \text{NH}_2\text{OH} \rightarrow \text{R-CONH-OH (Asam Hidroksamat)} + \text{R'OH}")
-    
-    st.markdown("""
-    *Pembentukan Kompleks Khelat Ungu dengan $\text{FeCl}_3$:*
-    """)
-    
-    st.latex(r"3\text{R-CONH-OH} + \text{FeCl}_3 \rightarrow \text{Fe(R-CONHO)}_3 \text{ (Kompleks Ungu)} + 3\text{HCl}")
+    with tab3:
+        st.markdown("### **Uji Identifikasi Derivat Asam Karboksilat (Uji Asam Hidroksamat)**")
+        st.write("Derivat (contohnya ester) dikondensasikan dengan hidroksilamin ($\text{NH}_2\text{OH}$) menghasilkan asam hidroksamat. Sifat khasnya adalah mengkelat logam besi membentuk kompleks besi(III) hidroksamat yang menghasilkan warna <span class='badge-ungu'>Ungu Intens</span> saat ditambahkan $\text{FeCl}_3$.", unsafe_allow_html=True)
+        
+        st.markdown("**Tahap 1: Pembentukan Asam Hidroksamat dari Ester**")
+        st.latex(r"\text{R-COOR'} + \text{NH}_2\text{OH} \rightarrow \text{R-CONH-OH} + \text{R'OH}")
+        
+        st.markdown("**Tahap 2: Pembentukan Kompleks Khelat Ungu dengan $\text{FeCl}_3$**")
+        st.latex(r"3\text{R-CONH-OH} + \text{FeCl}_3 \rightarrow \text{Fe(R-CONHO)}_3 + 3\text{HCl}")
 
 # --- POST TEST ---
 elif pilihan_halaman == "🔬 POST TEST":
