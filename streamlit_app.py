@@ -105,6 +105,7 @@ if pilihan_halaman == "🏠 HALAMAN UTAMA":
             st.markdown("### 🧪 Uji Pemahaman")
             st.write("Buka halaman **POST TEST** untuk menjalankan simulasi reaksi lab interaktif menggunakan alat prediktor yang akurat.")
 
+
 # --- BAB 1 ---
 elif pilihan_halaman == "📘 BAB 1 HIDROKARBON":
     st.title("📘 BAB 1 — HIDROKARBON")
@@ -157,9 +158,8 @@ elif pilihan_halaman == "📘 BAB 1 HIDROKARBON":
     ---
     
     ### Uji Penting
-    * **Uji Brom:** Digunakan untuk membedakan senyawa jenuh dan tidak jenuh. Warna brom hilang $\\rightarrow$ senyawa tidak jenuh
-    * **Uji Bayer:** Menggunakan $KMnO_4$. Warna ungu hilang $\\rightarrow$ terdapat ikatan rangkap
-    """)
+    * **Uji Iodoform:** Hidrokarbon memberikan hasil **negatif (-)** terhadap uji ini. Uji iodoform membutuhkan gugus metil keton ($CH_3CO-$) atau metil karbinol ($CH_3CH(OH)-$). Karena hidrokarbon hanya terdiri dari atom C dan H tanpa gugus fungsi tersebut, maka tidak terbentuk endapan kuning iodoform ($CHI_3$).
+    """) 
 
 # --- BAB 2 ---
 elif pilihan_halaman == "📙 BAB 2 ALKOHOL, ETER, DAN FENOL":
