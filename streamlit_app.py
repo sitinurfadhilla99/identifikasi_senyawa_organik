@@ -502,7 +502,7 @@ elif pilihan_halaman == "📗 BAB III. ALDEHID DAN KETON":
     
     st.markdown("""
     **2. Pembentukan Hemiasetal dan Asetal:**
-    * Reaksi reversibel gugus karbonil dengan alkohol dalam suasana asam gas $\text{HCl}$.
+    * Reaksi reversibel gugus karbonil dengan alkohol dalam suasana asam gas HCl.
     """)
     
     st.latex(r"\text{R-CHO (Aldehida)} + \text{R'OH} \xrightarrow{\text{HCl}} \text{R-CH(OH)(OR') (Hemiasetal)}")
@@ -520,14 +520,14 @@ elif pilihan_halaman == "📗 BAB III. ALDEHID DAN KETON":
     
     st.markdown("""
     **2. Uji Fehling:**
-    * Aldehida mereduksi ion $\text{Cu}^{2+}$ yang berada dalam bentuk kompleks tartrat basa, menghasilkan endapan merah bata kupro oksida ($\text{Cu}_2\text{O}$).
+    * Aldehida mereduksi ion Cu^2+ yang berada dalam bentuk kompleks tartrat basa, menghasilkan endapan merah bata kupro oksida \text{Cu}_2\text{O}\downarrow\text.
     """)
     
     st.latex(r"\text{R-CHO} + 2\text{Cu}^{2+} + 5\text{OH}^- \rightarrow \text{R-COO}^- + \text{Cu}_2\text{O}\downarrow\text{ (Endapan Merah Bata)} + 3\text{H}_2\text{O}")
     
     st.markdown("""
     **3. Uji Benedict:**
-    * Memiliki prinsip kerja yang serupa dengan Uji Fehling, namun ion $\text{Cu}^{2+}$ dikomplekskan oleh sitrat. Pereaksi berada dalam kondisi alkalis lemah untuk menghasilkan endapan merah bata $\text{Cu}_2\text{O}$ saat direaksikan dengan aldehida.
+    * Memiliki prinsip kerja yang serupa dengan Uji Fehling, namun ion Cu^2+ dikomplekskan oleh sitrat. Pereaksi berada dalam kondisi alkalis lemah untuk menghasilkan endapan merah bata \text{Cu}_2\text{O}\downarrow\text saat direaksikan dengan aldehida.
     """)
     
     st.latex(r"\text{R-CHO} + 2\text{Cu}^{2+}\text{(sitrat)} + 5\text{OH}^- \rightarrow \text{R-COO}^- + \text{Cu}_2\text{O}\downarrow\text{ (Endapan Merah Bata)} + 3\text{H}_2\text{O}")
@@ -538,49 +538,49 @@ elif pilihan_halaman == "📕 BAB IV. ASAM KARBOKSILAT DAN DERIVATNYA":
     st.write("---")
     
     st.markdown("""
-    Asam karboksilat memiliki gugus fungsi karboksil ($-\text{COOH}$), senyawa gabungan dari gugus karbonil dan hidroksil. Derivat atau turunan asam karboksilat (seperti ester, halida asam/asil halida, anhidrida asam, dan amida) terbentuk ketika gugus $-\text{OH}$ pada karboksilat digantikan oleh nukleofil lain.
+    Asam karboksilat memiliki gugus fungsi karboksil (-COOH), senyawa gabungan dari gugus karbonil dan hidroksil. Derivat atau turunan asam karboksilat (seperti ester, halida asam/asil halida, anhidrida asam, dan amida) terbentuk ketika gugus -OH pada karboksilat digantikan oleh nukleofil lain.
 
     #### **A. Sifat Fisika**
-    Asam karboksilat rantai pendek ($C_1 - C_4$) memiliki kelarutan yang sangat baik di dalam air karena kemampuan gugus $-\text{COOH}$ membentuk ikatan hidrogen antarmolekul yang kuat membentuk dimer. Kelarutan senyawa akan semakin menurun seiring dengan bertambah tingginya bobot molekul (rantai alkil nonpolar semakin panjang). Titik didih asam karboksilat relatif tinggi dibandingkan senyawa organik lain dengan berat molekul setara.
+    Asam karboksilat rantai pendek ($C_1 - C_4$) memiliki kelarutan yang sangat baik di dalam air karena kemampuan gugus -COOH membentuk ikatan hidrogen antarmolekul yang kuat membentuk dimer. Kelarutan senyawa akan semakin menurun seiring dengan bertambah tingginya bobot molekul (rantai alkil nonpolar semakin panjang). Titik didih asam karboksilat relatif tinggi dibandingkan senyawa organik lain dengan berat molekul setara.
 
     #### **B. Persamaan Reaksi Kimia Asam Karboksilat**
     
-    **1. Reaksi dengan Basa Kuat ($\text{NaOH}$):**
+    **1. Reaksi dengan Basa Kuat (NaOH):**
     * Menghasilkan garam karboksilat yang larut dan air.
     """)
     
     st.latex(r"\text{R-COOH} + \text{NaOH} \rightarrow \text{R-COONa} + \text{H}_2\text{O}")
     
     st.markdown("""
-    **2. Reaksi dengan Basa Lemah ($\text{NaHCO}_3$):**
-    * Asam karboksilat tergolong cukup asam untuk mendeprotonasi natrium bikarbonat, menghasilkan garam, air, dan pelepasan gas karbon dioksida secara cepat (effervescence). Reaksi ini membedakan asam karboksilat dengan fenol (fenol tidak bereaksi dengan $\text{NaHCO}_3$).
+    **2. Reaksi dengan Basa Lemah (NaHCO_3):**
+    * Asam karboksilat tergolong cukup asam untuk mendeprotonasi natrium bikarbonat, menghasilkan garam, air, dan pelepasan gas karbon dioksida secara cepat (effervescence). Reaksi ini membedakan asam karboksilat dengan fenol (fenol tidak bereaksi dengan NaHCO_3).
     """)
     
     st.latex(r"\text{R-COOH} + \text{NaHCO}_3 \rightarrow \text{R-COONa} + \text{H}_2\text{O} + \text{CO}_2\uparrow \text{ (Gas)}")
     
     st.markdown("""
-    Jika gas $\text{CO}_2$ yang terbentuk dialirkan ke dalam air barit ($\text{Ba(OH)}_2$), akan terbentuk endapan putih barium karbonat ($\text{BaCO}_3$):
+    Jika gas CO_2 yang terbentuk dialirkan ke dalam air barit BaOH_2, akan terbentuk endapan putih barium karbonat BaCO_3:
     """)
     
     st.latex(r"\text{CO}_2 + \text{Ba(OH)}_2 \rightarrow \text{BaCO}_3\downarrow \text{ (Endapan Putih)} + \text{H}_2\text{O}")
     
     st.markdown("""
     **3. Esterifikasi Fischer:**
-    * Reaksi kondensasi antara asam karboksilat dengan alkohol dibantu katalis asam kuat pekat ($\text{H}_2\text{SO}_4$) menghasilkan senyawa ester yang beraroma wangi khas seperti buah-buahan.
+    * Reaksi kondensasi antara asam karboksilat dengan alkohol dibantu katalis asam kuat pekat H_2SO_4 menghasilkan senyawa ester yang beraroma wangi khas seperti buah-buahan.
     """)
     
     st.latex(r"\text{R-COOH} + \text{R'-OH} \xrightarrow{\text{H}_2\text{SO}_4, \Delta} \text{R-COOR' (Ester beraroma)} + \text{H}_2\text{O}")
     
     st.markdown("""
     **4. Oksidasi Asam Karboksilat:**
-    * Atom C karbonil pada asam karboksilat mengemban bilangan oksidasi +3. Asam karboksilat tertentu yang masih mengikat hidrogen bebas (seperti asam format atau asam oksalat) dapat dioksidasi lebih lanjut oleh oksidator kuat ($\text{KMnO}_4$ dalam $\text{H}_2\text{SO}_4$) menuju bilangan oksidasi maksimal +4 berupa gas $\text{CO}_2$.
+    * Atom C karbonil pada asam karboksilat mengemban bilangan oksidasi +3. Asam karboksilat tertentu yang masih mengikat hidrogen bebas (seperti asam format atau asam oksalat) dapat dioksidasi lebih lanjut oleh oksidator kuat KMnO_4 dalam H_2SO_$ menuju bilangan oksidasi maksimal +4 berupa gas CO2.
     """)
     
     st.latex(r"\text{R-COOH} \xrightarrow{\text{KMnO}_4/\text{H}_2\text{SO}_4} \text{CO}_2\uparrow + \text{H}_2\text{O}")
     
     st.markdown("""
     #### **C. Persamaan Reaksi Identifikasi Derivat Asam Karboksilat (Uji Asam Hidroksamat)**
-    Derivat asam karboksilat (contohnya ester) terlebih dahulu dikondensasikan dengan hidroksilamin ($\text{NH}_2\text{OH}$) menghasilkan senyawa asam hidroksamat. Sifat kimia khas dari asam hidroksamat adalah kemampuannya mengkelat logam besi membentuk senyawa kompleks besi(III) hidroksamat yang menghasilkan warna ungu intens saat ditambahkan larutan $\text{FeCl}_3$.
+    Derivat asam karboksilat (contohnya ester) terlebih dahulu dikondensasikan dengan hidroksilamin NH_2OH menghasilkan senyawa asam hidroksamat. Sifat kimia khas dari asam hidroksamat adalah kemampuannya mengkelat logam besi membentuk senyawa kompleks besi(III) hidroksamat yang menghasilkan warna ungu intens saat ditambahkan larutan FeCl_3.
     
     *Pembentukan Asam Hidroksamat dari Ester:*
     """)
@@ -588,7 +588,7 @@ elif pilihan_halaman == "📕 BAB IV. ASAM KARBOKSILAT DAN DERIVATNYA":
     st.latex(r"\text{R-COOR' (Ester)} + \text{NH}_2\text{OH} \rightarrow \text{R-CONH-OH (Asam Hidroksamat)} + \text{R'-OH}")
     
     st.markdown("""
-    *Pembentukan Kompleks Khelat Ungu dengan $\text{FeCl}_3$:*
+    *Pembentukan Kompleks Khelat Ungu dengan FeCl_3:*
     """)
     
     st.latex(r"3\text{R-CONH-OH} + \text{FeCl}_3 \rightarrow \text{Fe(R-CONHO)}_3 \text{ (Kompleks Ungu)} + 3\text{HCl}")
