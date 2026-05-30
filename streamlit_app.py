@@ -385,7 +385,7 @@ elif pilihan_halaman == "📘 BAB I. HIDROKARBON":
     
     st.markdown("""
     **2. Alkena dan Alkuna (Hidrokarbon Tidak Jenuh)**
-    * Sangat reaktif karena memiliki ikatan rangkap ($\text{C}=\text{C}$ atau $\text{C}\equiv\text{C}$) yang kaya akan elektron, sehingga mudah mengalami pemutusan ikatan rangkap (adisi).
+    * Sangat reaktif karena memiliki ikatan rangkap (C=C) atau (C \equiv C\)  yang kaya akan elektron, sehingga mudah mengalami pemutusan ikatan rangkap (adisi).
     * **Uji Adisi Iodium:** Mengadisi halogen pada ikatan rangkap tanpa memerlukan bantuan sinar UV. Ditandai dengan warna ungu iodium yang memudar/hilang seketika.
     """)
     
