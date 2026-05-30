@@ -5,7 +5,7 @@ import time
 # 1. KONFIGURASI HALAMAN (Harus diletakkan di baris paling atas)
 # ==============================================================================
 st.set_page_config(
-    page_title="ChemiScan | Edu-Lab Platform",
+    page_title="OrganicChem | Edu-Lab Platform",
     page_icon="🧪",
     layout="wide"
 )
@@ -313,7 +313,7 @@ if 'trigger_animation' not in st.session_state:
 with st.sidebar:
     st.image("https://cdn-icons-png.flaticon.com/512/3022/3022607.png", width=75)
     # 1. PERUBAHAN JUDUL DI SIDEBAR
-    st.title("ChemiScan")
+    st.title("OrganicChem")
     st.write("🔬 *Identifikasi Senyawa Organik*")
     st.markdown("---")
     
@@ -354,11 +354,6 @@ if pilihan_halaman == "🏠 HALAMAN UTAMA":
         "senyawa organik secara interaktif—kapan saja dan di mana saja, layaknya memiliki laboratorium pribadi."
     )
     
-    st.markdown("---")
-    st.markdown("""
-    ### **RANGKUMAN MATERI PRAKTIKUM KIMIA ORGANIK**
-    Silakan gunakan menu navigasi di sebelah kiri untuk membaca kesatuan rangkuman materi praktikum Kimia Organik yang komprehensif, menggabungkan seluruh informasi sifat fisika, sifat kimia, serta persamaan reaksi lengkap dari keempat bab secara sistematis.
-    """)
 
 # --- BAB I ---
 elif pilihan_halaman == "📘 BAB I. HIDROKARBON":
