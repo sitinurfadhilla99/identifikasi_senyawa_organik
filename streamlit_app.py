@@ -5,7 +5,7 @@ import time
 # 1. KONFIGURASI HALAMAN (Harus diletakkan di baris paling atas)
 # ==============================================================================
 st.set_page_config(
-    page_title="OrganicChem | Edu-Lab Platform",
+    page_title="ChemiScan | Edu-Lab Platform",
     page_icon="🧪",
     layout="wide"
 )
@@ -32,14 +32,14 @@ st.markdown("""
         text-transform: uppercase;
         letter-spacing: 0.5px;
     }
-    /* Desain Banner Gradasi untuk Halaman Utama */
+    /* Desain Banner Gradasi untuk Halaman Utama - DIUBAH MENJADI BIRU */
     .banner-utama {
-        background: linear-gradient(135deg, #11998e, #38ef7d);
+        background: linear-gradient(135deg, #1e3c72, #2a5298);
         padding: 35px;
         border-radius: 12px;
         color: white;
         margin-bottom: 30px;
-        box-shadow: 0 4px 15px rgba(56, 239, 125, 0.2);
+        box-shadow: 0 4px 15px rgba(42, 82, 152, 0.2);
     }
     /* CSS UNTUK TABUNG 2D */
     .tube-wrap { display: flex; justify-content: center; height: 350px; padding-top: 20px;}
@@ -154,7 +154,7 @@ database_reaksi = {
         "Uji Iodoform": {
             "hasil": "(+) Endapan Kuning", 
             "reaksi": r"$R-CH(OH)-CH_3 + 4 I_2 + 6 NaOH \rightarrow CHI_3 \downarrow + R-COONa + 5 NaI + 5 H_2O$", 
-            "alasan": "2-Butanol adalah metil karbinol yang dioksidasi iodin menjadi metil keton. Gugus metilnya tersubstitusi menjadi kristal iodoform kuning.", 
+            "alasan": "2-Butanol is metil karbinol yang dioksidasi iodin menjadi metil keton. Gugus metilnya tersubstitusi menjadi kristal iodoform kuning.", 
             "warna_akhir": "#fef08a", "efek": "precipitate"
         }
     },
@@ -312,8 +312,9 @@ if 'trigger_animation' not in st.session_state:
 # ==============================================================================
 with st.sidebar:
     st.image("https://cdn-icons-png.flaticon.com/512/3022/3022607.png", width=75)
-    st.title("OrganicChem v1.0")
-    st.write("🔬 *E-Learning & Lab Simulator*")
+    # 1. PERUBAHAN JUDUL DI SIDEBAR
+    st.title("ChemiScan")
+    st.write("🔬 *Identifikasi Senyawa Organik*")
     st.markdown("---")
     
     pilihan_halaman = st.sidebar.radio(
@@ -337,17 +338,20 @@ with st.sidebar:
 
 # --- HALAMAN UTAMA ---
 if pilihan_halaman == "🏠 HALAMAN UTAMA":
+    # 2 & 3. PERUBAHAN WARNA BANNER MENJADI BIRU DAN MODIFIKASI TEKS HERO SECTION
     st.markdown("""
         <div class="banner-utama">
-            <h1 style='color: white; margin-bottom: 5px; font-weight: 700;'>Selamat Datang di OrganicChem! 👋</h1>
-            <p style='font-size: 1.2em; opacity: 0.95;'>Platform Media Pembelajaran Mandiri & Simulasi Identifikasi Gugus Fungsi</p>
+            <h1 style='color: white; margin-bottom: 5px; font-weight: 700;'>Eksplorasi Dunia Kimia Organik Tanpa Batas! 👋</h1>
+            <p style='font-size: 1.2em; opacity: 0.95;'>Selamat datang di OrganicChem, platform media pembelajaran mandiri dan simulasi interaktif untuk menguasai identifikasi gugus fungsi dengan lebih mudah dan menyenangkan.</p>
         </div>
     """, unsafe_allow_html=True)
     
-    st.subheader("💡 Tentang Platform Ini")
+    # MODIFIKASI TEKS TENTANG PLATFORM
+    st.subheader("💡 Tentang OrganicChem")
     st.write(
-        "Platform ini dirancang khusus untuk membantu mahasiswa/siswa memahami materi teoritis "
-        "sekaligus visualisasi reaksi uji kualitatif senyawa organik di laboratorium secara interaktif."
+        "Kami hadir untuk menjembatani teori dan praktik. Platform ini dirancang khusus untuk "
+        "membantu Anda memahami materi teoretis sekaligus memvisualisasikan reaksi uji kualitatif "
+        "senyawa organik secara interaktif—kapan saja dan di mana saja, layaknya memiliki laboratorium pribadi."
     )
     
     st.markdown("---")
@@ -508,7 +512,7 @@ elif pilihan_halaman == "📗 BAB III. ALDEHID DAN KETON":
     **1. Uji Tollens (Cermin Perak):** Aldehida mengeksidasi dirinya menjadi asam karboksilat sekaligus mereduksi ion kompleks perak beramoniak $[\text{Ag(NH}_3)_2]^+$ menjadi logam perak mendesak yang menempel di dinding tabung reaksi membentuk cermin perak.
     """)
     
-    st.latex(r"\text{R-CHO} + 2[\text{Ag(NH}_3)_2]^+ + 3\text{OH}^- \rightarrow \text{R-COO}^- + 2\text{Ag}\downarrow \text{ (Cermin Perak)} + 4\text{NH}_3 + 2\text{H}_2\text{O}")
+    st.latex(r"\text{R-CHO} + 2[\text{Ag(NH}_3)_2]^+ + 3\text{OH}^- \rightarrow \text{R-COO}^- + \text{Ag}\downarrow \text{ (Cermin Perak)} + 4\text{NH}_3 + 2\text{H}_2\text{O}")
     
     st.markdown("""
     **2. Uji Fehling:** Aldehida mereduksi ion $\text{Cu}^{2+}$ yang berada dalam bentuk kompleks tartrat basa, menghasilkan endapan merah bata kupro oksida ($\text{Cu}_2\text{O}$).
