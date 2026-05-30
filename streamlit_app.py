@@ -5,7 +5,7 @@ import time
 # 1. KONFIGURASI HALAMAN
 # ==============================================================================
 st.set_page_config(
-    page_title="ChemiScan | Platform Edu-Lab",
+    page_title="OrganicChem | Platform Edu-Lab",
     page_icon="🧪",
     layout="wide"
 )
@@ -324,7 +324,7 @@ if 'trigger_animation' not in st.session_state:
 # ==============================================================================
 with st.sidebar:
     st.image("https://cdn-icons-png.flaticon.com/512/3022/3022607.png", width=75)
-    st.title("ChemiScan")
+    st.title("OrganicChem")
     st.write("🔬 *Identifikasi Senyawa Organik*")
     st.markdown("---")
     
@@ -352,7 +352,7 @@ if pilihan_halaman == "🏠 HALAMAN UTAMA":
     st.markdown("""
         <div class="banner-utama">
             <h1 style='color: white; margin-bottom: 5px; font-weight: 700;'>Eksplorasi Dunia Kimia Organik Tanpa Batas! 👋</h1>
-            <p style='font-size: 1.2em; opacity: 0.95;'>Selamat datang di OrganicChem, platform media pembelajaran mandiri dan simulasi interaktif untuk menguasai identifikasi gugus fungsi dengan lebih mudah dan menyenangkan.</p>
+            <p style='font-size: 1.2em; opacity: 0.95;'>Solusi cerdas belajar mandiri dan simulasi identifikasi gugus fungsi dalam satu platform.</p>
         </div>
     """, unsafe_allow_html=True)
     
@@ -363,12 +363,6 @@ if pilihan_halaman == "🏠 HALAMAN UTAMA":
         "senyawa organik secara interaktif—kapan saja dan di mana saja, layaknya memiliki laboratorium pribadi."
     )
     
-    st.markdown("---")
-    st.markdown("""
-    ### **RANGKUMAN MATERI PRAKTIKUM KIMIA ORGANIK**
-    Silakan gunakan menu navigasi di sebelah kiri untuk membaca kesatuan rangkuman materi praktikum Kimia Organik yang komprehensif, menggabungkan seluruh informasi sifat fisika, sifat kimia, serta persamaan reaksi lengkap dari keempat bab secara sistematis.
-    """)
-
 # --- BAB I ---
 elif pilihan_halaman == "📘 BAB I. HIDROKARBON":
     st.title("📘 BAB I. HIDROKARBON")
@@ -397,7 +391,7 @@ elif pilihan_halaman == "📘 BAB I. HIDROKARBON":
     
     st.markdown("""
     **2. Alkena dan Alkuna (Hidrokarbon Tidak Jenuh)**
-    * Sangat reaktif karena memiliki ikatan rangkap ($\text{C}=\text{C}$ atau $\text{C}\equiv\text{C}$) yang kaya akan elektron, sehingga mudah mengalami pemutusan ikatan rangkap (adisi).
+    * Sangat reaktif karena memiliki ikatan rangkap 2 atau rangkap 3 yang kaya akan elektron, sehingga mudah mengalami pemutusan ikatan rangkap (adisi).
     * **Uji Adisi Iodium:** Mengadisi halogen pada ikatan rangkap tanpa memerlukan bantuan sinar UV. Ditandai dengan warna ungu iodium yang memudar/hilang seketika.
     """)
     
@@ -458,7 +452,7 @@ elif pilihan_halaman == "📙 BAB II. ALKOHOL, ETER, DAN FENOL":
     
     st.markdown("""
     **3. Uji Iodoform**
-    * Khusus untuk alkohol yang memiliki gugus metil alfa ($\text{CH}_3\text{-CH(OH)-}$), seperti etanol atau 2-propanol. Bereaksi dengan $I_2$ dalam suasana basa ($NaOH$) membentuk endapan kuning kristal iodoform ($CHI_3$) yang berbau khas.
+    * Khusus untuk alkohol yang memiliki gugus metil alfa $(CH_3CH(OH))$, seperti etanol atau 2-propanol. Bereaksi dengan $I_2$ dalam suasana basa ($NaOH$) membentuk endapan kuning kristal iodoform ($CHI_3$) yang berbau khas.
     """)
     
     st.latex(r"\text{R-CH(OH)-CH}_3 + 4\text{I}_2 + 6\text{NaOH} \rightarrow \text{R-COONa} + \text{CHI}_3\downarrow \text{ (Endapan Kuning)} + 5\text{NaI} + 5\text{H}_2\text{O}")
