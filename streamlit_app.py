@@ -493,14 +493,14 @@ elif pilihan_halaman == "📗 BAB III. ALDEHID DAN KETON":
     st.write("---")
     
     st.markdown("""
-    Aldehida ($\text{R-CHO}$) dan keton ($\text{R-CO-R}'$) adalah senyawa organik isomer fungsional yang sama-sama memiliki gugus fungsi karbonil ($\text{C}=\text{O}$). Perbedaan utamanya terletak pada atom C karbonil aldehida yang mengikat minimal satu atom hidrogen, sedangkan pada keton terikat pada dua gugus alkil/aril.
+    Aldehida (${R-CHO}$) dan keton (${R-CO-R}'$) adalah senyawa organik isomer fungsional yang sama-sama memiliki gugus fungsi karbonil (${C}={O}$). Perbedaan utamanya terletak pada atom C karbonil aldehida yang mengikat minimal satu atom hidrogen, sedangkan pada keton terikat pada dua gugus alkil/aril.
 
     #### **A. Sifat Fisika**
     Metanal (formaldehida) merupakan suku paling rendah yang berwujud gas pada suhu kamar dengan bau menyengat. Suku-suku aldehida rendah lainnya berupa cairan dengan bau yang semakin harum (seperti aroma buah-buahan) seiring bertambah panjangnya rantai C. Keton suku rendah (seperti aseton atau propanon) berupa cairan encer, mudah larut dalam air, mudah menguap, dan memiliki aroma yang segar.
 
     #### **B. Reaksi Adisi Karbonil**
     
-    **1. Adisi Natrium Bisulit ($\text{NaHSO}_3$):**
+    **1. Adisi Natrium Bisulit (${NaHSO}_3$):**
     * Reaksi adisi nukleofilik pada gugus karbonil aldehida atau metil keton menghasilkan senyawa aduk berupa kristal padat berwarna putih yang sukar larut.
     """)
     
@@ -508,7 +508,7 @@ elif pilihan_halaman == "📗 BAB III. ALDEHID DAN KETON":
     
     st.markdown("""
     **2. Pembentukan Hemiasetal dan Asetal:**
-    * Reaksi reversibel gugus karbonil dengan alkohol dalam suasana asam gas $\text{HCl}$.
+    * Reaksi reversibel gugus karbonil dengan alkohol dalam suasana asam gas $HCl$.
     """)
     
     st.latex(r"\text{R-CHO (Aldehida)} + \text{R'OH} \xrightarrow{\text{HCl}} \text{R-CH(OH)(OR') (Hemiasetal)}")
@@ -526,14 +526,14 @@ elif pilihan_halaman == "📗 BAB III. ALDEHID DAN KETON":
     
     st.markdown("""
     **2. Uji Fehling:**
-    * Aldehida mereduksi ion $\text{Cu}^{2+}$ yang berada dalam bentuk kompleks tartrat basa, menghasilkan endapan merah bata kupro oksida ($\text{Cu}_2\text{O}$).
+    * Aldehida mereduksi ion ${Cu}^{2+}$ yang berada dalam bentuk kompleks tartrat basa, menghasilkan endapan merah bata kupro oksida (${Cu}_2{O}$).
     """)
     
     st.latex(r"\text{R-CHO} + 2\text{Cu}^{2+} + 5\text{OH}^- \rightarrow \text{R-COO}^- + \text{Cu}_2\text{O}\downarrow\text{ (Endapan Merah Bata)} + 3\text{H}_2\text{O}")
     
     st.markdown("""
     **3. Uji Benedict:**
-    * Memiliki prinsip kerja yang serupa dengan Uji Fehling, namun ion $\text{Cu}^{2+}$ dikomplekskan oleh sitrat. Pereaksi berada dalam kondisi alkalis lemah untuk menghasilkan endapan merah bata $\text{Cu}_2\text{O}$ saat direaksikan dengan aldehida.
+    * Memiliki prinsip kerja yang serupa dengan Uji Fehling, namun ion ${Cu}^{2+}$ dikomplekskan oleh sitrat. Pereaksi berada dalam kondisi alkalis lemah untuk menghasilkan endapan merah bata ${Cu}_2{O}$ saat direaksikan dengan aldehida.
     """)
     
     st.latex(r"\text{R-CHO} + 2\text{Cu}^{2+}\text{(sitrat)} + 5\text{OH}^- \rightarrow \text{R-COO}^- + \text{Cu}_2\text{O}\downarrow\text{ (Endapan Merah Bata)} + 3\text{H}_2\text{O}")
