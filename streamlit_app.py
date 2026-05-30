@@ -2,7 +2,7 @@ import streamlit as st
 import time
 
 # ==============================================================================
-# 1. KONFIGURASI HALAMAN (Harus diletakkan di baris paling atas)
+# 1. KONFIGURASI HALAMAN
 # ==============================================================================
 st.set_page_config(
     page_title="ChemiScan | Platform Edu-Lab",
@@ -41,7 +41,7 @@ st.markdown("""
         margin-bottom: 30px;
         box-shadow: 0 4px 15px rgba(42, 82, 152, 0.2);
     }
-    /* CSS UNTUK TABUNG 2D */
+    /* CSS UNTUK TABUNG REAKSI 2D */
     .tube-wrap { display: flex; justify-content: center; height: 350px; padding-top: 20px;}
     .tube-glass { 
         width: 80px; 
@@ -58,15 +58,15 @@ st.markdown("""
         bottom: 0; left: 0; right: 0; 
         transition: height 1.2s ease, background 1.2s ease; 
     }
-    .precipitate-layer { position: absolute; bottom: 0; left: 0; right: 0; height: 40px; background-color: rgba(0,0,0,0.5); }
-    .cloudy-layer { position: absolute; top: 0; bottom: 0; left: 0; right: 0; background-color: rgba(255,255,255,0.6); }
-    .bubble-fx { position: absolute; background: rgba(0,0,0,0.2); border-radius: 50%; width: 8px; height: 8px; animation: floatUp 1.8s infinite ease-in; }
+    .precipitate-layer { position: absolute; bottom: 0; left: 0; right: 0; height: 40px; background-color: rgba(0,0,0,0.4); }
+    .cloudy-layer { position: absolute; top: 0; bottom: 0; left: 0; right: 0; background-color: rgba(255,255,255,0.5); }
+    .bubble-fx { position: absolute; background: rgba(255,255,255,0.4); border-radius: 50%; width: 8px; height: 8px; animation: floatUp 1.8s infinite ease-in; }
     @keyframes floatUp { 0% { bottom: 0px; opacity: 1; } 100% { bottom: 250px; opacity: 0; } }
     </style>
 """, unsafe_allow_html=True)
 
 # ==============================================================================
-# 3. FUNGSI HELPER & DATABASE (Bahasa Indonesia Penuh)
+# 3. FUNGSI HELPER & SIMULASI TABUNG
 # ==============================================================================
 def force_rerun():
     if hasattr(st, 'rerun'):
@@ -78,6 +78,7 @@ def force_rerun():
 
 def render_tube(tinggi, warna, efek):
     e_html = ""
+    # Deteksi bahasa efek yang dikirimkan oleh database internal
     if efek == "endapan":
         e_html = "<div class='precipitate-layer'></div>"
     elif efek == "keruh":
@@ -111,23 +112,24 @@ flowchart_paths = {
     "Heksana": ["Ceric Nitrat", "Na-Bisulfit", "Hidroksilamin (Uji Ester)", "Uji Barit (NaHCO3)"]
 }
 
+# Database reaksi yang telah dipastikan terjemahan bahasa dan parameter animasinya
 database_reaksi = {
     "1-Butanol": {
         "Ceric Nitrat": {
             "hasil": "(+) Merah Ceri", 
-            "reaksi": r"R-OH + [Ce(NO_3)_6]^{2-} \rightarrow [Ce(OR)(NO_3)_5]^{2-} + HNO_3", 
+            "reaksi": r"\text{R-OH} + [\text{Ce(NO}_3)_6]^{2-} \rightarrow [\text{Ce(OR)(NO}_3)_5]^{2-} + \text{HNO}_3", 
             "alasan": "Gugus -OH bebas dari 1-butanol bereaksi menggantikan ligan nitrat pada ion Cerium(IV) membentuk senyawa kompleks koordinasi yang berwarna merah ceri.", 
             "warna_akhir": "#ef4444", "efek": "tidak_ada"
         },
         "Pereaksi Jones": {
             "hasil": "(+) Hijau", 
-            "reaksi": r"3 R-CH_2OH + 2 CrO_3 + 3 H_2SO_4 \rightarrow 3 R-CHO + Cr_2(SO_4)_3 + 6 H_2O", 
+            "reaksi": r"3\text{R-CH}_2\text{-OH} + 2\text{CrO}_3 + 3\text{H}_2\text{SO}_4 \rightarrow 3\text{R-COOH} + \text{Cr}_2(\text{SO}_4)_3 + 6\text{H}_2\text{O}", 
             "alasan": "1-butanol adalah alkohol primer yang memiliki atom hidrogen alfa. Gugus -OH dioksidasi kuat menjadi asam karboksilat, sedangkan Kromium(VI) jingga tereduksi menjadi Kromium(III) hijau.", 
             "warna_akhir": "#10b981", "efek": "tidak_ada"
         },
         "Pereaksi Lucas (Panas)": {
             "hasil": "(-) Bening", 
-            "reaksi": r"R-CH_2OH + HCl \xrightarrow{ZnCl_2, \Delta} \text{Tidak terjadi endapan}", 
+            "reaksi": r"\text{R-CH}_2\text{-OH} + \text{HCl} \xrightarrow{\text{ZnCl}_2, \Delta} \text{Tidak terjadi reaksi / endapan}", 
             "alasan": "Karbokation primer sangat tidak stabil. Reaksi substitusi nukleofilik (SN1) tidak berjalan membentuk alkil klorida yang tak larut, bahkan setelah dibantu pemanasan.", 
             "warna_akhir": "#f8fafc", "efek": "tidak_ada"
         }
@@ -135,25 +137,25 @@ database_reaksi = {
     "2-Butanol": {
         "Ceric Nitrat": {
             "hasil": "(+) Merah Ceri", 
-            "reaksi": r"R-OH + [Ce(NO_3)_6]^{2-} \rightarrow [Ce(OR)(NO_3)_5]^{2-} + HNO_3", 
+            "reaksi": r"\text{R-OH} + [\text{Ce(NO}_3)_6]^{2-} \rightarrow [\text{Ce(OR)(NO}_3)_5]^{2-} + \text{HNO}_3", 
             "alasan": "Ikatan koordinasi terbentuk antara atom oksigen pada gugus hidroksil sekunder dengan logam Cerium pusat, menghasilkan warna merah.", 
             "warna_akhir": "#ef4444", "efek": "tidak_ada"
         },
         "Pereaksi Jones": {
             "hasil": "(+) Hijau", 
-            "reaksi": r"3 R_2CH-OH + 2 CrO_3 + 3 H_2SO_4 \rightarrow 3 R_2C=O + Cr_2(SO_4)_3 + 6 H_2O", 
+            "reaksi": r"3\text{R}_2\text{CH-OH} + 2\text{CrO}_3 + 3\text{H}_2\text{SO}_4 \rightarrow 3\text{R}_2\text{C}=\text{O} + \text{Cr}_2(\text{SO}_4)_3 + 6\text{H}_2\text{O}", 
             "alasan": "2-butanol dioksidasi oleh reagen Jones menjadi keton. Cr(VI) (jingga) tereduksi ke Cr(III) (hijau).", 
             "warna_akhir": "#10b981", "efek": "tidak_ada"
         },
         "Pereaksi Lucas (Panas)": {
             "hasil": "(+) Emulsi Putih", 
-            "reaksi": r"R_2CH-OH + HCl \xrightarrow{ZnCl_2} R_2CH-Cl \downarrow + H_2O", 
+            "reaksi": r"\text{R}_2\text{CH-OH} + \text{HCl} \xrightarrow{\text{ZnCl}_2} \text{R}_2\text{CH-Cl}\downarrow + \text{H}_2\text{O}", 
             "alasan": "Karbokation sekunder memiliki stabilitas menengah. Reaksi butuh pemanasan untuk mempercepat substitusi menjadi alkil klorida yang mengeruhkan larutan.", 
             "warna_akhir": "#e2e8f0", "efek": "keruh"
         },
         "Uji Iodoform": {
             "hasil": "(+) Endapan Kuning", 
-            "reaksi": r"R-CH(OH)-CH_3 + 4 I_2 + 6 NaOH \rightarrow CHI_3 \downarrow + R-COONa + 5 NaI + 5 H_2O", 
+            "reaksi": r"\text{R-CH(OH)-CH}_3 + 4\text{I}_2 + 6\text{NaOH} \rightarrow \text{CHI}_3\downarrow + \text{R-COONa} + 5\text{NaI} + 5\text{H}_2\text{O}", 
             "alasan": "2-Butanol adalah metil karbinol yang dioksidasi iodin menjadi metil keton. Gugus metilnya tersubstitusi menjadi kristal iodoform kuning.", 
             "warna_akhir": "#fef08a", "efek": "endapan"
         }
@@ -161,19 +163,19 @@ database_reaksi = {
     "t-Butil Alkohol": {
         "Ceric Nitrat": {
             "hasil": "(+) Merah Ceri", 
-            "reaksi": r"R-OH + [Ce(NO_3)_6]^{2-} \rightarrow [Ce(OR)(NO_3)_5]^{2-} + HNO_3", 
+            "reaksi": r"\text{R-OH} + [\text{Ce(NO}_3)_6]^{2-} \rightarrow [\text{Ce(OR)(NO}_3)_5]^{2-} + \text{HNO}_3", 
             "alasan": "Terdapat gugus -OH bebas yang dapat berikatan koordinasi membentuk kompleks merah.", 
             "warna_akhir": "#ef4444", "efek": "tidak_ada"
         },
         "Pereaksi Jones": {
             "hasil": "(-) Tetap Jingga", 
-            "reaksi": r"R_3C-OH + CrO_3 + H^+ \rightarrow \text{Tidak bereaksi}", 
+            "reaksi": r"\text{R}_3\text{C-OH} + \text{CrO}_3 + \text{H}^+ \rightarrow \text{Tidak bereaksi}", 
             "alasan": "Alkohol tersier tidak memiliki atom hidrogen alfa, sehingga sangat kebal dan tidak bisa dioksidasi.", 
             "warna_akhir": "#f97316", "efek": "tidak_ada"
         },
         "Pereaksi Lucas": {
             "hasil": "(+) Emulsi Putih (Seketika)", 
-            "reaksi": r"R_3C-OH + HCl \xrightarrow{ZnCl_2} R_3C-Cl \downarrow + H_2O", 
+            "reaksi": r"\text{R}_3\text{C-OH} + \text{HCl} \xrightarrow{\text{ZnCl}_2} \text{R}_3\text{C-Cl}\downarrow + \text{H}_2\text{O}", 
             "alasan": "Membentuk karbokation tersier yang sangat stabil. Reaksi (SN1) terjadi seketika menghasilkan endapan alkil klorida.", 
             "warna_akhir": "#94a3b8", "efek": "keruh"
         }
@@ -181,25 +183,25 @@ database_reaksi = {
     "Formaldehida": {
         "Ceric Nitrat": {
             "hasil": "(-) Kuning", 
-            "reaksi": r"HCHO + [Ce(NO_3)_6]^{2-} \rightarrow \text{Tidak bereaksi}", 
+            "reaksi": r"\text{HCHO} + [\text{Ce(NO}_3)_6]^{2-} \rightarrow \text{Tidak bereaksi}", 
             "alasan": "Formaldehida merupakan aldehid dan tidak memiliki gugus hidroksil bebas untuk bereaksi dengan Cerium.", 
             "warna_akhir": "#facc15", "efek": "tidak_ada"
         },
         "Na-Bisulfit": {
             "hasil": "(+) Endapan Putih", 
-            "reaksi": r"H-CHO + NaHSO_3 \rightarrow H_2C(OH)SO_3Na \downarrow", 
+            "reaksi": r"\text{H-CHO} + \text{NaHSO}_3 \rightarrow \text{H}_2\text{C(OH)SO}_3\text{Na}\downarrow", 
             "alasan": "Nukleofil bisulfit menyerang karbonil yang miskin elektron, membentuk garam padatan kristal.", 
             "warna_akhir": "#ffffff", "efek": "endapan"
         },
         "Pereaksi Fehling": {
             "hasil": "(+) Merah Bata", 
-            "reaksi": r"H-CHO + 2 Cu^{2+} + 5 OH^- \rightarrow H-COO^- + Cu_2O \downarrow + 3 H_2O", 
+            "reaksi": r"\text{H-CHO} + 2\text{Cu}^{2+} + 5\text{OH}^- \rightarrow \text{H-COO}^- + \text{Cu}_2\text{O}\downarrow + 3\text{H}_2\text{O}", 
             "alasan": "Aldehid adalah reduktor kuat. Ia mereduksi Tembaga(II) sulfat biru menjadi endapan Tembaga(I) oksida (merah bata).", 
             "warna_akhir": "#b91c1c", "efek": "endapan"
         },
         "Pereaksi Schiff": {
             "hasil": "(+) Ungu / Magenta", 
-            "reaksi": r"\text{Aldehid} + \text{Reagen Schiff} \rightarrow \text{Kompleks warna magenta}", 
+            "reaksi": r"\text{Aldehida} + \text{Reagen Schiff} \rightarrow \text{Kompleks warna magenta}", 
             "alasan": "Reaksi adisi spesifik yang memulihkan pewarna p-rosanilin hidroklorida.", 
             "warna_akhir": "#d946ef", "efek": "tidak_ada"
         }
@@ -207,25 +209,25 @@ database_reaksi = {
     "Aseton": {
         "Ceric Nitrat": {
             "hasil": "(-) Kuning", 
-            "reaksi": r"CH_3COCH_3 + [Ce(NO_3)_6]^{2-} \rightarrow \text{Tidak bereaksi}", 
+            "reaksi": r"\text{CH}_3\text{COCH}_3 + [\text{Ce(NO}_3)_6]^{2-} \rightarrow \text{Tidak bereaksi}", 
             "alasan": "Keton tidak memiliki gugus hidroksil alkoholik.", 
             "warna_akhir": "#facc15", "efek": "tidak_ada"
         },
         "Na-Bisulfit": {
             "hasil": "(+) Endapan Putih", 
-            "reaksi": r"CH_3-CO-CH_3 + NaHSO_3 \rightarrow (CH_3)_2C(OH)SO_3Na \downarrow", 
+            "reaksi": r"\text{CH}_3\text{-CO-CH}_3 + \text{NaHSO}_3 \rightarrow (\text{CH}_3)_2\text{C(OH)SO}_3\text{Na}\downarrow", 
             "alasan": "Aseton masih memiliki halangan sterik rendah, sehingga bisa mengalami reaksi adisi membentuk garam bisulfit.", 
             "warna_akhir": "#ffffff", "efek": "endapan"
         },
         "Pereaksi Fehling": {
             "hasil": "(-) Tetap Biru", 
-            "reaksi": r"CH_3-CO-CH_3 + Cu^{2+} \rightarrow \text{Tidak direduksi}", 
+            "reaksi": r"\text{CH}_3\text{-CO-CH}_3 + \text{Cu}^{2+} \rightarrow \text{Tidak direduksi}", 
             "alasan": "Keton tidak memiliki atom hidrogen pada karbon pengikat oksigen sehingga tidak memiliki sifat reduktor.", 
             "warna_akhir": "#3b82f6", "efek": "tidak_ada"
         },
         "Uji Iodoform": {
             "hasil": "(+) Endapan Kuning", 
-            "reaksi": r"CH_3-CO-CH_3 + 3 I_2 + 4 NaOH \rightarrow CHI_3 \downarrow + CH_3COONa + 3 NaI + 3 H_2O", 
+            "reaksi": r"\text{CH}_3\text{-CO-CH}_3 + 3\text{I}_2 + 4\text{NaOH} \rightarrow \text{CHI}_3\downarrow + \text{CH}_3\text{COONa} + 3\text{NaI} + 3\text{H}_2\text{O}", 
             "alasan": "Atom hidrogen alfa pada metil keton sangat asam, tersubstitusi oleh Iodin lalu putus membentuk Iodoform kuning.", 
             "warna_akhir": "#fef08a", "efek": "endapan"
         }
@@ -234,18 +236,18 @@ database_reaksi = {
         "Ceric Nitrat": {
             "hasil": "(-) Kuning", 
             "reaksi": r"\text{Ester} + \text{Ceric Nitrat} \rightarrow \text{Tidak bereaksi}", 
-            "alasan": "Gugus ester tidak bereaksi dengan uji alkohol.", 
+            "alasan": "Gugus ester tidak memiliki komponen penyusun yang reaktif terhadap uji alkohol ceric.", 
             "warna_akhir": "#facc15", "efek": "tidak_ada"
         },
         "Na-Bisulfit": {
             "hasil": "(-) Bening", 
-            "reaksi": r"\text{Ester} + NaHSO_3 \rightarrow \text{Tidak bereaksi}", 
+            "reaksi": r"\text{Ester} + \text{NaHSO}_3 \rightarrow \text{Tidak bereaksi}", 
             "alasan": "Resonansi pasangan elektron bebas dari gugus etoksi menstabilkan karbon karbonil, menjadikannya tidak reaktif terhadap nukleofil lemah.", 
             "warna_akhir": "#f8fafc", "efek": "tidak_ada"
         },
         "Hidroksilamin (Uji Ester)": {
             "hasil": "(+) Merah Violet", 
-            "reaksi": r"\text{1. } R-COOR' + NH_2OH \rightarrow R-CONHOH + R'OH \quad \text{2. } 3 R-CONHOH + FeCl_3 \rightarrow Fe(R-CONHO)_3 + 3 HCl", 
+            "reaksi": r"1.\ \text{R-COOR'} + \text{NH}_2\text{OH} \rightarrow \text{R-CONHOH} + \text{R'-OH} \quad 2.\ 3\text{R-CONHOH} + \text{FeCl}_3 \rightarrow \text{Fe(R-CONHO)}_3 + 3\text{HCl}", 
             "alasan": "Ester diubah oleh hidroksilamin menjadi asam hidroksamat yang dapat mengikat ion Fe3+ menghasilkan kompleks berwarna violet.", 
             "warna_akhir": "#c026d3", "efek": "tidak_ada"
         }
@@ -253,41 +255,51 @@ database_reaksi = {
     "Asam Asetat": {
         "Ceric Nitrat": {
             "hasil": "(-) Kuning", 
-            "reaksi": r"CH_3COOH + \text{Ceric Nitrat} \rightarrow \text{Tidak bereaksi}", 
+            "reaksi": r"\text{CH}_3\text{COOH} + \text{Ceric Nitrat} \rightarrow \text{Tidak bereaksi}", 
             "alasan": "Oksigen karboksil ditarik oleh resonansi ikatan rangkap karbonil, menjadikannya kurang nukleofilik untuk berikatan dengan Cerium.", 
             "warna_akhir": "#facc15", "efek": "tidak_ada"
         },
         "Na-Bisulfit": {
             "hasil": "(-) Bening", 
-            "reaksi": r"CH_3COOH + NaHSO_3 \rightarrow \text{Tidak bereaksi}", 
+            "reaksi": r"\text{CH}_3\text{COOH} + \text{NaHSO}_3 \rightarrow \text{Tidak bereaksi}", 
             "alasan": "Bukan senyawa golongan aldehid atau keton.", 
             "warna_akhir": "#f8fafc", "efek": "tidak_ada"
         },
         "Hidroksilamin (Uji Ester)": {
             "hasil": "(-) Bening", 
-            "reaksi": r"CH_3COOH + NH_2OH + FeCl_3 \rightarrow \text{Tidak bereaksi}", 
+            "reaksi": r"\text{CH}_3\text{COOH} + \text{NH}_2\text{OH} + \text{FeCl}_3 \rightarrow \text{Tidak bereaksi}", 
             "alasan": "Bukan ester. Asam karboksilat tidak memicu pembentukan asam hidroksamat reaktif di kondisi ini.", 
             "warna_akhir": "#f8fafc", "efek": "tidak_ada"
         },
         "Uji Barit (NaHCO3)": {
             "hasil": "(+) Gelembung & Keruh", 
-            "reaksi": r"\text{1. } CH_3COOH + NaHCO_3 \rightarrow CH_3COONa + H_2O + CO_2 \uparrow \quad \text{2. } CO_2 + Ba(OH)_2 \rightarrow BaCO_3 \downarrow + H_2O", 
+            "reaksi": r"1.\ \text{CH}_3\text{COOH} + \text{NaHCO}_3 \rightarrow \text{CH}_3\text{COONa} + \text{H}_2\text{O} + \text{CO}_2\uparrow \quad 2.\ \text{CO}_2 + \text{Ba(OH)}_2 \rightarrow \text{BaCO}_3\downarrow + \text{H}_2\text{O}", 
             "alasan": "Asam karboksilat mendonasikan proton untuk mengurai bikarbonat. Gas CO2 yang terlepas bereaksi dengan air barit membentuk BaCO3 yang keruh.", 
             "warna_akhir": "#f8fafc", "efek": "gelembung"
         }
     },
     "Heksana": {
         "Ceric Nitrat": {
-            "hasil": "(-) Kuning", "reaksi": r"\text{Heksana} + \text{Ceric Nitrat} \rightarrow \text{Tidak bereaksi}", "alasan": "Tidak ada gugus fungsi -OH.", "warna_akhir": "#facc15", "efek": "tidak_ada"
+            "hasil": "(-) Kuning", 
+            "reaksi": r"\text{Heksana} + \text{Ceric Nitrat} \rightarrow \text{Tidak bereaksi}", 
+            "alasan": "Tidak ada gugus fungsi -OH alkoholik.", 
+            "warna_akhir": "#facc15", "efek": "tidak_ada"
         },
         "Na-Bisulfit": {
-            "hasil": "(-) Bening", "reaksi": r"\text{Heksana} + NaHSO_3 \rightarrow \text{Tidak bereaksi}", "alasan": "Tidak ada gugus karbonil.", "warna_akhir": "#f8fafc", "efek": "tidak_ada"
+            "hasil": "(-) Bening", 
+            "reaksi": r"\text{Heksana} + \text{NaHSO}_3 \rightarrow \text{Tidak bereaksi}", 
+            "alasan": "Tidak memiliki gugus aktif karbonil.", 
+            "warna_akhir": "#f8fafc", "efek": "tidak_ada"
         },
         "Hidroksilamin (Uji Ester)": {
-            "hasil": "(-) Bening", "reaksi": r"\text{Heksana} + NH_2OH \rightarrow \text{Tidak bereaksi}", "alasan": "Bukan gugus ester.", "warna_akhir": "#f8fafc", "efek": "tidak_ada"
+            "hasil": "(-) Bening", 
+            "reaksi": r"\text{Heksana} + \text{NH}_2\text{OH} \rightarrow \text{Tidak bereaksi}", 
+            "alasan": "Bukan merupakan senyawa turunan ester.", 
+            "warna_akhir": "#f8fafc", "efek": "tidak_ada"
         },
         "Uji Barit (NaHCO3)": {
-            "hasil": "(-) Bening", "reaksi": r"\text{Heksana} + NaHCO_3 \rightarrow \text{Tidak bereaksi}", 
+            "hasil": "(-) Bening", 
+            "reaksi": r"\text{Heksana} + \text{NaHCO}_3 \rightarrow \text{Tidak bereaksi}", 
             "alasan": "Senyawa hidrokarbon alifatik (jenuh) bersifat non-polar dan inert. Karena secara berturut-turut gagal bereaksi di seluruh uji fungsional, ini membuktikan senyawanya adalah alkana.", 
             "warna_akhir": "#f8fafc", "efek": "tidak_ada"
         }
@@ -409,7 +421,7 @@ elif pilihan_halaman == "📘 BAB I. HIDROKARBON":
     * **Reaksi Substitusi Elektrofilik:** Benzena sukar mengalami adisi melainkan cenderung mengalami reaksi substitusi. Contohnya adalah reaksi Nitrasi menggunakan campuran asam nitrat pekat dan asam sulfat pekat sebagai katalis.
     """)
     
-    st.latex(r"\text{C}_6\text{H}_6 + \text{HNO}_3 \xrightarrow{\text{H}_2\text{SO}_4\text{ pekat}} \text{C}_6\text{H}_5\text{NO}_2 \text (Nitrobenzena) + \text{H}_2\text{O}")
+    st.latex(r"\text{C}_6\text{H}_6 + \text{HNO}_3 \xrightarrow{\text{H}_2\text{SO}_4\text{ pekat}} \text{C}_6\text{H}_5\text{NO}_2 \text{ (Nitrobenzena)} + \text{H}_2\text{O}")
 
 # --- BAB II ---
 elif pilihan_halaman == "📙 BAB II. ALKOHOL, ETER, DAN FENOL":
@@ -593,7 +605,7 @@ elif pilihan_halaman == "📕 BAB IV. ASAM KARBOKSILAT DAN DERIVATNYA":
     
     st.latex(r"3\text{R-CONH-OH} + \text{FeCl}_3 \rightarrow \text{Fe(R-CONHO)}_3 \text{ (Kompleks Ungu)} + 3\text{HCl}")
 
-# --- POST TEST (ASISTEN IDENTIFIKASI CERDAS) ---
+# --- POST TEST ---
 elif pilihan_halaman == "🔬 POST TEST":
     st.title("🔀 Asisten Identifikasi Cerdas (Step-by-Step)")
     st.write("Sistem ini mensimulasikan penelusuran Identifikasi Kualitatif langkah demi langkah. Tekan tombol *Lanjut* untuk melanjutkan ke tahap reaksi berikutnya.")
@@ -639,10 +651,11 @@ elif pilihan_halaman == "🔬 POST TEST":
                     st.latex(log['reaksi'])
                     st.write(f"**Pembahasan:**\n{log['alasan']}")
 
-        # ---------------- LOGIKA ANIMASI & TOMBOL NEXT ----------------
+        # ---------------- LOGIKA ANIMASI & TOMBOL LANJUT ----------------
         if st.session_state.trigger_animation and st.session_state.current_step < len(urutan):
             pereaksi = urutan[st.session_state.current_step]
             
+            # Efek 'tidak_ada' dioper secara eksplisit ke generator tabung
             tube_placeholder.markdown(render_tube("30%", "#f1f5f9", "tidak_ada"), unsafe_allow_html=True)
             status_placeholder.markdown(f"<div style='text-align:center;'><em>Menyiapkan sampel untuk {pereaksi}...</em></div>", unsafe_allow_html=True)
             time.sleep(1.0)
@@ -653,6 +666,7 @@ elif pilihan_halaman == "🔬 POST TEST":
             time.sleep(1.5)
             
             res = database_reaksi[senyawa][pereaksi]
+            # Sinkronisasi warna akhir dan efek fisik (endapan, keruh, atau gelembung)
             tube_placeholder.markdown(render_tube("65%", res["warna_akhir"], res["efek"]), unsafe_allow_html=True)
             status_placeholder.markdown("<div style='text-align:center; font-weight:bold;'>Melihat hasil reaksi...</div>", unsafe_allow_html=True)
             time.sleep(1.2)
