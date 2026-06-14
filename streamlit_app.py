@@ -914,7 +914,7 @@ elif pilihan_halaman == "🔬 Post Test":
                 force_rerun()
             
         with col_log:
-            st.markdown("#### 📑 Logbook & Analisis Teoritis")
+            st.markdown("#### 📑 Hasil & Analisis Teoritis")
             log_container = st.container()
 
         with log_container:
