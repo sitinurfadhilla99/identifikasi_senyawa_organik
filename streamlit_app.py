@@ -493,7 +493,7 @@ if pilihan_halaman == "🏠 Halaman Utama":
         st.markdown("""
         <div style="background: white; padding: 20px; border-radius: 12px; border-top: 5px solid #0ea5e9; box-shadow: 0 4px 6px rgba(0,0,0,0.05); min-height: 180px;">
             <h4 style="margin-top:0; color:#0ea5e9;">📊 Langkah 3: Amati</h4>
-            <p style="font-size: 0.95em; color: #475569;">Klik tombol mulai identifikasi, amati perubahan visual pada <b>Visual Lab</b> (warna/endapan/gas), serta baca hasil evaluasi otomatis pada tab <b>Logbook & Analisis</b>.</p>
+            <p style="font-size: 0.95em; color: #475569;">Klik tombol mulai identifikasi, amati perubahan visual pada <b>Visual Lab</b> (warna/endapan/gas), serta baca hasil evaluasi otomatis pada tab.</p>
         </div>
         """, unsafe_allow_html=True)
 
