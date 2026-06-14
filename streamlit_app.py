@@ -437,12 +437,12 @@ with st.sidebar:
     pilihan_halaman = st.sidebar.radio(
         "Navigasi Menu:",
         [
-            "🏠 HALAMAN UTAMA", 
-            "📘 BAB I. HIDROKARBON", 
-            "📙 BAB II. ALKOHOL, ETER, DAN FENOL", 
-            "📗 BAB III. ALDEHID DAN KETON", 
-            "📕 BAB IV. ASAM KARBOKSILAT DAN DERIVATNYA", 
-            "🔬 POST TEST"
+            "🏠 Halaman Utama", 
+            "📘 Bab I Hidrokarbon", 
+            "📙 Bab II Alkohol, Eter, dan Fenol", 
+            "📗 Bab III Aldehid dan Keton", 
+            "📕 Bab IV Asam Karboksilat dan Derivatnya", 
+            "🔬 Post Test"
         ]
     )
     st.markdown("---")
@@ -452,7 +452,7 @@ with st.sidebar:
 # 5. LOGIKA KONTEN TIAP HALAMAN
 # ==============================================================================
 
-if pilihan_halaman == "🏠 HALAMAN UTAMA":
+if pilihan_halaman == "🏠 Halaman Utama":
     st.markdown("""
         <div class="banner-utama">
             <h1 style='color: white; margin-bottom: 5px; font-weight: 700;'>Eksplorasi Dunia Kimia Organik Tanpa Batas! 👋</h1>
@@ -477,7 +477,7 @@ if pilihan_halaman == "🏠 HALAMAN UTAMA":
         st.markdown("""
         <div style="background: white; padding: 20px; border-radius: 12px; border-top: 5px solid #0f766e; box-shadow: 0 4px 6px rgba(0,0,0,0.05); min-height: 180px;">
             <h4 style="margin-top:0; color:#0f766e;">📖 Langkah 1: Pelajari</h4>
-            <p style="font-size: 0.95em; color: #475569;">Buka <b>Menu Navigasi</b> di samping kiri. Pilih materi dari <b>BAB I hingga BAB IV</b> untuk membaca teori dasar, sifat fisik/kimia, dan persamaan reaksi kimia senyawa organik.</p>
+            <p style="font-size: 0.95em; color: #475569;">Buka <b>Navigasi Menu</b> di samping kiri. Pilih materi dari <b>BAB I hingga BAB IV</b> untuk membaca teori dasar, sifat fisik/kimia, dan persamaan reaksi kimia senyawa organik.</p>
         </div>
         """, unsafe_allow_html=True)
         
@@ -493,14 +493,14 @@ if pilihan_halaman == "🏠 HALAMAN UTAMA":
         st.markdown("""
         <div style="background: white; padding: 20px; border-radius: 12px; border-top: 5px solid #0ea5e9; box-shadow: 0 4px 6px rgba(0,0,0,0.05); min-height: 180px;">
             <h4 style="margin-top:0; color:#0ea5e9;">📊 Langkah 3: Amati</h4>
-            <p style="font-size: 0.95em; color: #475569;">Klik tombol reaksi, amati perubahan visual pada <b>Visual Lab</b> (warna/endapan/gas), serta baca hasil evaluasi otomatis pada tab <b>Logbook & Analisis</b>.</p>
+            <p style="font-size: 0.95em; color: #475569;">Klik tombol mulai identifikasi, amati perubahan visual pada <b>Visual Lab</b> (warna/endapan/gas), serta baca hasil evaluasi otomatis pada tab <b>Logbook & Analisis</b>.</p>
         </div>
         """, unsafe_allow_html=True)
 
     st.info("💡 **Tips:** Pastikan koneksi internet stabil agar transisi animasi tabung reaksi berjalan dengan mulus!")
 
-elif pilihan_halaman == "📘 BAB I. HIDROKARBON":
-    st.title("📘 BAB I. HIDROKARBON")
+elif pilihan_halaman == "📘 Bab I Hidrokarbon":
+    st.title("📘 Bab I Hidrokarbon")
     st.write("---")
     
     st.write("**Pilih Sub-Bab Materi:**")
@@ -603,8 +603,8 @@ elif pilihan_halaman == "📘 BAB I. HIDROKARBON":
                     # ANIMASI API MERAH & JELAGA UNTUK AROMATIK
                     st.markdown(render_flame("kotor"), unsafe_allow_html=True)
 
-elif pilihan_halaman == "📙 BAB II. ALKOHOL, ETER, DAN FENOL":
-    st.title("📙 BAB II. ALKOHOL, ETER, DAN FENOL")
+elif pilihan_halaman == "📙 Bab II Alkohol, Eter, dan Fenol":
+    st.title("📙 Bab II Alkohol, Eter, dan Fenol")
     st.write("---")
     
     st.write("**Pilih Sub-Bab Materi:**")
@@ -707,8 +707,8 @@ elif pilihan_halaman == "📙 BAB II. ALKOHOL, ETER, DAN FENOL":
                     st.markdown(render_tube("65%", "#fecdd3", "none"), unsafe_allow_html=True)
                     st.warning("⚠️ **Hasil:** (-) Negatif. Alkohol biasa tidak memicu warna ungu dengan FeCl3.")
 
-elif pilihan_halaman == "📗 BAB III. ALDEHID DAN KETON":
-    st.title("📗 BAB III. ALDEHID DAN KETON")
+elif pilihan_halaman == "📗 Bab III Aldehid dan Keton":
+    st.title("📗 Bab III Aldehid dan Keton")
     st.write("---")
     
     st.write("**Pilih Sub-Bab Materi:**")
@@ -796,8 +796,8 @@ elif pilihan_halaman == "📗 BAB III. ALDEHID DAN KETON":
                     st.markdown(render_tube("65%", "#f8fafc", "precipitate", warna_endapan="#ffffff"), unsafe_allow_html=True)
                     st.success("✅ **Hasil:** (+) Terbentuk endapan kristal putih (Khusus untuk metil keton / keton suku rendah seperti aseton).")
 
-elif pilihan_halaman == "📕 BAB IV. ASAM KARBOKSILAT DAN DERIVATNYA":
-    st.title("📕 BAB IV. ASAM KARBOKSILAT DAN DERIVATNYA")
+elif pilihan_halaman == "📕 Bab IV Asam Karboksilat dan Derivatnya":
+    st.title("📕 Bab IV Asam Karboksilat dan Derivatnya")
     st.write("---")
     
     st.write("**Pilih Sub-Bab Materi:**")
@@ -873,7 +873,7 @@ elif pilihan_halaman == "📕 BAB IV. ASAM KARBOKSILAT DAN DERIVATNYA":
 # ==============================================================================
 # 6. POST TEST CERDAS
 # ==============================================================================
-elif pilihan_halaman == "🔬 POST TEST":
+elif pilihan_halaman == "🔬 Post Test":
     st.title("🔀 Asisten Identifikasi Cerdas (Step-by-Step)")
     st.write("Sistem ini mensimulasikan penelusuran Identifikasi Kualitatif langkah demi langkah. Tekan tombol Lanjut untuk melanjutkan ke tahap reaksi berikutnya berdasarkan spesifikasi pereaksi.")
 
